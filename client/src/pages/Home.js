@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
+import HomeContainer from "../components/HomeContainer";
+import HomeBody from "../components/HomeBody";
+import HomeFooter from "../components/HomeFooter";
+import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 
@@ -24,14 +27,15 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <SearchBar />
-        <Button onClick={this.handleOnSubmit}/>
-      </div>
+      <HomeContainer>
+        <Nav />
+        <HomeBody>
+          <SearchBar />
+        </HomeBody>
+        <HomeFooter />
+      </HomeContainer>
     );
   }
 }
 
 export default Home;
-
-//process.env.RITOAPIKEY
