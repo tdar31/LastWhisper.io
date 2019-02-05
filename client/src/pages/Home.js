@@ -14,15 +14,15 @@ class Home extends Component {
     isLoaded: false,
     profile: {},
     matches: [],
-    selectedButton: null
+    selectedButton: 1
   };
 
   componentDidMount() {
     this.setSelectedButton = this.setSelectedButton.bind(this);
   }
 
-  setSelectedButton(id){
-    this.setState({selectedButton: id});
+  setSelectedButton(id) {
+    this.setState({ selectedButton: id });
   }
 
   handleOnSubmit = event => {
@@ -50,16 +50,47 @@ class Home extends Component {
 
   render() {
     return (
-      <HomeContainer>
+      <HomeContainer
+        className={
+          this.state.selectedButton === 1
+            ? "is-success"
+            : this.state.selectedButton === 2
+            ? "is-info"
+            : this.state.selectedButton === 3
+            ? "is-danger"
+            : "is-dark"
+        }
+      >
         <Nav />
         <HomeBody>
           <Banner />
           <SearchBar onClick={this.handleOnSubmit} />
         </HomeBody>
         <HomeFooter>
-          <HomeFooterButton className={this.state.selectedButton === 1? "thresh is-active" : "thresh"} onClick={() => this.setSelectedButton(1)}>Thresh</HomeFooterButton>
-          <HomeFooterButton className={this.state.selectedButton === 2? "brand is-active" : "brand"} onClick={() => this.setSelectedButton(2)}>Brand</HomeFooterButton>
-          <HomeFooterButton className={this.state.selectedButton === 3? "sejuani is-active" : "sejuani"} onClick={() => this.setSelectedButton(3)}>Sejuani</HomeFooterButton>
+          <HomeFooterButton
+            onClick={() => this.setSelectedButton(1)}
+            className={
+              this.state.selectedButton === 1 ? "thresh is-active" : "thresh"
+            }
+          >
+            Thresh
+          </HomeFooterButton>
+          <HomeFooterButton
+            onClick={() => this.setSelectedButton(2)}
+            className={
+              this.state.selectedButton === 2 ? "brand is-active" : "brand"
+            }
+          >
+            Brand
+          </HomeFooterButton>
+          <HomeFooterButton
+            onClick={() => this.setSelectedButton(3)}
+            className={
+              this.state.selectedButton === 3 ? "sejuani is-active" : "sejuani"
+            }
+          >
+            Sejuani
+          </HomeFooterButton>
         </HomeFooter>
       </HomeContainer>
     );

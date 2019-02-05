@@ -1,11 +1,10 @@
 import React from "react";
 import "./style.css";
 
-function HomeContainer({ children }) {
+function HomeContainer({ className, children }) {
   return (
-    <section className="hero is-success is-fullheight">{children}</section>
+    <section className= {["hero is-fullheight", className].join(" ")}>{children}</section>
   );
-  //className={["btn btn-lg", `btn-${type}`, className].join(" ")}
 }
 
 export default HomeContainer;

@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 
-function HomeFooterButton({ type = "inactive", onClick, className, children }) {
+function HomeFooterButton({ onClick, className, children }) {
   return (
-    <li onClick={onClick} className={[`is-${type}`, className].join(" ")}>
+    <li onClick={onClick} className={className}>
       <a>{children}</a>
     </li>
   );
