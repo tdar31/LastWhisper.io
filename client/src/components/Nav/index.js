@@ -5,9 +5,7 @@ function Nav() {
     <header className="navbar">
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item">
-            <div>Last Whisper</div>
-          </a>
+          <a className="navbar-item">Last Whisper</a>
           <span className="navbar-burger burger" data-target="navbarMenuHeroC">
             <span />
             <span />

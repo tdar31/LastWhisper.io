@@ -1,0 +1,7 @@
+html {
+  overflow: hidden;
+}
+
+.hero.is-success {
+  background-image: radial-gradient(circle, #23d160, #1ba049);
+}

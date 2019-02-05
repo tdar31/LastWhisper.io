@@ -1,13 +1,14 @@
 import React from "react";
+import "./style.css";
 
-function HomeBody({ children }) {
+function ProfileBody({ children }) {
   return (
     <div className="hero-body">
-      <div className="container has-text-centered">
+      <div className="container">
         {children}
       </div>
     </div>
   );
 }
 
-export default HomeBody;
+export default ProfileBody;

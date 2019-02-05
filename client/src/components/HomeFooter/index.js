@@ -8,13 +8,13 @@ function HomeFooter() {
         <div className="container">
           <ul>
             <li className="is-active">
-              <a>Thresh</a>
+              <a className="thresh">Thresh</a>
             </li>
             <li>
-              <a>Brand</a>
+              <a className="brand">Brand</a>
             </li>
             <li>
-              <a>Sejuani</a>
+              <a className="sejuani">Sejuani</a>
             </li>
           </ul>
         </div>
