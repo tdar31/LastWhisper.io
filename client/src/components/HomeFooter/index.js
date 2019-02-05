@@ -1,22 +1,12 @@
 import React from "react";
 import "./style.css";
 
-function HomeFooter() {
+function HomeFooter({ type = "inactive", onClick, className, children }) {
   return (
     <div className="hero-foot">
       <nav className="tabs is-boxed is-fullwidth">
         <div className="container">
-          <ul>
-            <li className="is-active">
-              <a className="thresh">Thresh</a>
-            </li>
-            <li>
-              <a className="brand">Brand</a>
-            </li>
-            <li>
-              <a className="sejuani">Sejuani</a>
-            </li>
-          </ul>
+          <ul>{children}</ul>
         </div>
       </nav>
     </div>
@@ -24,3 +14,5 @@ function HomeFooter() {
 }
 
 export default HomeFooter;
+
+//https://stackoverflow.com/questions/45262381/toggle-css-class-for-two-buttons-when-either-is-clicked

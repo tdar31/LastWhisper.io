@@ -6,17 +6,24 @@ import HomeFooter from "../components/HomeFooter";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import Banner from "../components/Banner";
-import Button from "../components/Button";
+import HomeFooterButton from "../components/HomeFooterButton";
 
 class Home extends Component {
   state = {
     error: null,
     isLoaded: false,
     profile: {},
-    matches: []
+    matches: [],
+    selectedButton: null
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setSelectedButton = this.setSelectedButton.bind(this);
+  }
+
+  setSelectedButton(id){
+    this.setState({selectedButton: id});
+  }
 
   handleOnSubmit = event => {
     console.log("Submit button clicked");
@@ -35,7 +42,7 @@ class Home extends Component {
     API.getMatchHistory(profile)
       .then(res => {
         this.setState({ matches: res.data }, function onceStateUpdated() {
-        console.log("this.state.matches: ", this.state.matches)
+          console.log("this.state.matches: ", this.state.matches);
         });
       })
       .catch(err => console.log(err));
@@ -49,7 +56,11 @@ class Home extends Component {
           <Banner />
           <SearchBar onClick={this.handleOnSubmit} />
         </HomeBody>
-        <HomeFooter />
+        <HomeFooter>
+          <HomeFooterButton className={this.state.selectedButton === 1? "thresh is-active" : "thresh"} onClick={() => this.setSelectedButton(1)}>Thresh</HomeFooterButton>
+          <HomeFooterButton className={this.state.selectedButton === 2? "brand is-active" : "brand"} onClick={() => this.setSelectedButton(2)}>Brand</HomeFooterButton>
+          <HomeFooterButton className={this.state.selectedButton === 3? "sejuani is-active" : "sejuani"} onClick={() => this.setSelectedButton(3)}>Sejuani</HomeFooterButton>
+        </HomeFooter>
       </HomeContainer>
     );
   }
