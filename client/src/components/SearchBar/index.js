@@ -1,17 +1,18 @@
 import React from "react";
+import "./style.css";
 
 function SearchBar({ onClick, value }) {
   return (
     <div className="field has-addons has-addons-centered">
-      <p className="control">
+      <p className="control ">
         <input
-          className="input"
+          className="input searchBarInput"
           type="text"
           placeholder="Search by Summoner Name"
           value={value}
         />
       </p>
-      {/* FIGURE OUT HOW TO FIGURE OUT WHICH OPTION IS SELECTED AND RETURN TO FRONT END FOR QUERY */}
+      {/* FIGURE OUT HOW TO KNOW WHICH OPTION IS SELECTED AND RETURN TO FRONT END FOR QUERY */}
       <p className="control">
         <span className="select">
           <select>

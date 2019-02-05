@@ -5,24 +5,40 @@ import HomeBody from "../components/HomeBody";
 import HomeFooter from "../components/HomeFooter";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
+import Banner from "../components/Banner";
 import Button from "../components/Button";
 
 class Home extends Component {
   state = {
     error: null,
     isLoaded: false,
-    profile: {}
+    profile: {},
+    matches: []
   };
 
-  componentDidMount() {
-    API.getTEST()
-      .then(res => console.log("DIDMOUNT: ", res.data))
-      .catch(err => console.log(err));
-  }
+  componentDidMount() {}
 
   handleOnSubmit = event => {
-    event.preventDefault();
     console.log("Submit button clicked");
+    event.preventDefault();
+    API.getUser()
+      .then(res =>
+        this.setState({ profile: res.data }, function onceStateUpdated() {
+          this.getMatchHistory(this.state.profile);
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  getMatchHistory = profile => {
+    console.log("GET MATCH HISTORY: ", this.state.profile);
+    API.getMatchHistory(profile)
+      .then(res => {
+        this.setState({ matches: res.data }, function onceStateUpdated() {
+        console.log("this.state.matches: ", this.state.matches)
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -30,7 +46,8 @@ class Home extends Component {
       <HomeContainer>
         <Nav />
         <HomeBody>
-          <SearchBar />
+          <Banner />
+          <SearchBar onClick={this.handleOnSubmit} />
         </HomeBody>
         <HomeFooter />
       </HomeContainer>

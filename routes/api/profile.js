@@ -10,7 +10,7 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  // .get(profileController.findById)
+  .get(profileController.getMatchHistory)
   // .put(booksController.update)
   // .delete(booksController.remove);
 

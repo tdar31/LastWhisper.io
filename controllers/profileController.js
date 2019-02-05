@@ -1,30 +1,40 @@
 // const db = require("../models");
 var axios = require("axios");
+const { parse, stringify } = require("flatted/cjs");
 
 module.exports = {
   findAll: function(req, res) {
-    // console.log("FINALL GET TEST");
     axios
       .get(
         "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/RiotSchmick?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35"
       )
       .then(res => {
-        console.log("res: ", res.data);
+        console.log(res.data);
         return res.data;
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
+  getMatchHistory: function(req, res) {
+    // console.log("req.params: ", req.params.id);
     axios
       .get(
-        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/RiotSchmick?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35"
+        "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/" +
+          req.params.id +
+          "?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35"
       )
-      .then(function(res) {
-        console.log("res: ", res);
-        return res.data
+      .then(res => {
+        let json = stringify(res.data);
+        return json
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(error => {
+        console.log(error);
       });
   }
+  //
+  //https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/9L5-DLyjjuEFWRp23w1yN8P4YBRAyiVbe02xb7gPyN2WZg?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35
+  //
   // create: function(req, res) {
   //   db.Book
   //     .create(req.body)
