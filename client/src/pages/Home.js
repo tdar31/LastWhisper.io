@@ -55,9 +55,9 @@ class Home extends Component {
           this.state.selectedButton === 1
             ? "is-success"
             : this.state.selectedButton === 2
-            ? "is-info"
-            : this.state.selectedButton === 3
             ? "is-danger"
+            : this.state.selectedButton === 3
+            ? "is-info"
             : "is-dark"
         }
       >
