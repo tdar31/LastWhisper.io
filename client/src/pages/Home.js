@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import { BrowserRouter as Link } from "react-router-dom";
 import HomeContainer from "../components/HomeContainer";
 import HomeBody from "../components/HomeBody";
 import HomeFooter from "../components/HomeFooter";
@@ -16,7 +17,7 @@ class Home extends Component {
     matches: [],
     selectedButton: 1,
     inputValue: "",
-    q: "",
+    q: ""
   };
 
   componentDidMount() {
@@ -24,20 +25,10 @@ class Home extends Component {
   }
 
   setSelectedButton(id) {
-    this.setState({ selectedButton: id });
-  }
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
+    this.setState({ selectedButton: id }, function() {
+      console.log("selectedBTN: ", this.state.selectedButton);
     });
-  };
-  
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.getBooks();
-  };
+  }
 
   handleOnSubmit = event => {
     let queryUser = this.state.inputValue;
@@ -79,7 +70,16 @@ class Home extends Component {
         <Nav />
         <HomeBody>
           <Banner />
-          <SearchBar onClick={this.handleOnSubmit} value={this.state.inputValue}/>
+          <SearchBar onClick={this.handleOnSubmit}>
+            <Link
+              to={{
+                pathname: "/profile/"+this.state.profile.name,
+                state: { profile: this.state.profile }
+              }}
+            >
+              GO
+            </Link>
+          </SearchBar>
         </HomeBody>
         <HomeFooter>
           <HomeFooterButton

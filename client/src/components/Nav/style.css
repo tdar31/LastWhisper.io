@@ -1,0 +1,3 @@
+.hero.is-success a:not(.button):not(.dropdown-item):not(.tag) {
+    color: black;
+}

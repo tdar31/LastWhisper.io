@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default {
-  getUser: function() {
-    console.log("INSIDE API.JS")
-    return axios.get("/api/profile");
+  getUser: function(queryUser) {
+    console.log("INSIDE API.JS", queryUser)
+    return axios.get("/api/profile", queryUser);
   },
   getMatchHistory: function(userData) {
     // const name = userData.profile.name

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function Nav() {
+function ProfileNav({ className }) {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -29,17 +29,21 @@ function Nav() {
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
           <a className="navbar-item">Home</a>
-
           <a className="navbar-item">Documentation</a>
         </div>
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <div className="buttons">
-              <a className="button is-success">
-                <strong>Sign up</strong>
-              </a>
-              <a className="button is-light">Log in</a>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">Theme</a>
+
+              <div className="navbar-dropdown is-right">
+                <a className="navbar-item">Thresh</a>
+                <hr className="navbar-divider" />
+                <a className="navbar-item">Brand</a>
+                <hr className="navbar-divider" />
+                <a className="navbar-item">Sejuani</a>
+              </div>
             </div>
           </div>
         </div>
@@ -48,4 +52,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default ProfileNav;

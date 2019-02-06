@@ -1,0 +1,11 @@
+.hero.is-success a:not(.button):not(.dropdown-item):not(.tag) {
+  color: black;
+}
+
+.hero.is-danger a:not(.button):not(.dropdown-item):not(.tag) {
+  color: black;
+}
+
+.hero.is-info a:not(.button):not(.dropdown-item):not(.tag) {
+  color: black;
+}
