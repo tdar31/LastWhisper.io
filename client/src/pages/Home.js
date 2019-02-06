@@ -14,7 +14,9 @@ class Home extends Component {
     isLoaded: false,
     profile: {},
     matches: [],
-    selectedButton: 1
+    selectedButton: 1,
+    inputValue: "",
+    q: "",
   };
 
   componentDidMount() {
@@ -25,8 +27,21 @@ class Home extends Component {
     this.setState({ selectedButton: id });
   }
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+  
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.getBooks();
+  };
+
   handleOnSubmit = event => {
-    console.log("Submit button clicked");
+    let queryUser = this.state.inputValue;
+    console.log("Submit button clicked", queryUser);
     event.preventDefault();
     API.getUser()
       .then(res =>
@@ -64,7 +79,7 @@ class Home extends Component {
         <Nav />
         <HomeBody>
           <Banner />
-          <SearchBar onClick={this.handleOnSubmit} />
+          <SearchBar onClick={this.handleOnSubmit} value={this.state.inputValue}/>
         </HomeBody>
         <HomeFooter>
           <HomeFooterButton

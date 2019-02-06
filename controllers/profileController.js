@@ -6,7 +6,7 @@ module.exports = {
   findAll: function(req, res) {
     axios
       .get(
-        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/RiotSchmick?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35"
+        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/RiotSchmick?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
         console.log(res.data);
@@ -21,7 +21,7 @@ module.exports = {
       .get(
         "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/" +
           req.params.id +
-          "?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35"
+          "?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
         let json = stringify(res.data);
