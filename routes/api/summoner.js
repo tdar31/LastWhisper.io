@@ -1,16 +1,16 @@
 const router = require("express").Router();
-const profileController = require("../../controllers/profileController");
+const summonerController = require("../../controllers/summonerController");
 console.log("INSIDE PROFILE ROUTES")
 
-// Matches with "/api/books"
+// Matches with "/api/summoner"
 router.route("/")
-  .get(profileController.findAll)
+  .get(summonerController.findAll)
   // .post(booksController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/summoner/:id"
 router
   .route("/:id")
-  .get(profileController.getMatchHistory)
+  .get(summonerController.getMatchHistory)
   // .put(booksController.update)
   // .delete(booksController.remove);
 

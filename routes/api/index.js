@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const profileRoutes = require("./profile");
+const summonerRoutes = require("./summoner");
 
-router.use("/profile", profileRoutes);
+router.use("/summoner", summonerRoutes);
 
 module.exports = router;
