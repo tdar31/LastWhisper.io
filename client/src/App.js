@@ -10,8 +10,8 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/summoner/:username" component={ProfilePage} />
-          <Route exact path="/summoner/:username/:theme" component={ProfilePage} />
+          <Route exact path="/summoner/:username/:region" component={ProfilePage} />
+          <Route exact path="/summoner/:username/:region/:theme" component={ProfilePage} />
           <Route component={NoMatch} />
         </Switch>
       </Router>

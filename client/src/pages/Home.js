@@ -14,7 +14,8 @@ class Home extends Component {
     profile: {},
     matches: [],
     selectedButton: 1,
-    inputValue: ""
+    inputValue: "",
+    region: ""
   };
 
   componentDidMount() {
@@ -25,10 +26,11 @@ class Home extends Component {
     // Getting the value and name of the input which triggered the change
     const { value } = event.target;
 
+    let typedValue = value.split(' ').join('')
     // Updating the input's state
     this.setState(
       {
-        inputValue: value
+        inputValue: typedValue
       },
       function onceStateUpdated() {
         console.log("this.state.inputValue: ", this.state.inputValue);
@@ -50,7 +52,7 @@ class Home extends Component {
     let queryUser = this.state.inputValue.trim();
     let selectedTheme = this.state.selectedButton;
 
-    window.location.assign("summoner/" + queryUser + "/" + selectedTheme);
+    window.location.assign("summoner/" + queryUser + "/na/" + selectedTheme);
   };
 
   render() {
