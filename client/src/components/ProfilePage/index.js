@@ -63,9 +63,6 @@ class ProfilePage extends Component {
         <ProfileContainer className={this.state.theme}>
           <ProfileNav />
           <ProfileBody>
-            <Col size="md-2">
-              <Link to="/">← Back to Authors</Link>
-            </Col>
           </ProfileBody>
         </ProfileContainer>
       </div>

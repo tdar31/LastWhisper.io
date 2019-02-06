@@ -28,7 +28,7 @@ function ProfileNav({ className }) {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item">Home</a>
+          <a className="navbar-item" href="/">Home</a>
           <a className="navbar-item">Documentation</a>
         </div>
 

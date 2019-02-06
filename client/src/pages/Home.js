@@ -11,18 +11,30 @@ import HomeFooterButton from "../components/HomeFooterButton";
 
 class Home extends Component {
   state = {
-    error: null,
-    isLoaded: false,
     profile: {},
     matches: [],
     selectedButton: 1,
-    inputValue: "",
-    q: ""
+    inputValue: ""
   };
 
   componentDidMount() {
     this.setSelectedButton = this.setSelectedButton.bind(this);
   }
+
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const { value } = event.target;
+
+    // Updating the input's state
+    this.setState(
+      {
+        inputValue: value
+      },
+      function onceStateUpdated() {
+        console.log("this.state.inputValue: ", this.state.inputValue);
+      }
+    );
+  };
 
   setSelectedButton(id) {
     this.setState({ selectedButton: id }, function() {
@@ -31,27 +43,14 @@ class Home extends Component {
   }
 
   handleOnSubmit = event => {
-    let queryUser = this.state.inputValue;
-    console.log("Submit button clicked", queryUser);
+    console.log("Submit button clicked");
     event.preventDefault();
-    API.getUser()
-      .then(res =>
-        this.setState({ profile: res.data }, function onceStateUpdated() {
-          this.getMatchHistory(this.state.profile);
-        })
-      )
-      .catch(err => console.log(err));
-  };
 
-  getMatchHistory = profile => {
-    console.log("GET MATCH HISTORY: ", this.state.profile);
-    API.getMatchHistory(profile)
-      .then(res => {
-        this.setState({ matches: res.data }, function onceStateUpdated() {
-          console.log("this.state.matches: ", this.state.matches);
-        });
-      })
-      .catch(err => console.log(err));
+    //Take in 
+    let queryUser = this.state.inputValue.trim();
+    let selectedTheme = this.state.selectedButton;
+
+    window.location.assign("summoner/" + queryUser + "/" + selectedTheme);
   };
 
   render() {
@@ -70,10 +69,13 @@ class Home extends Component {
         <Nav />
         <HomeBody>
           <Banner />
-          <SearchBar onClick={this.handleOnSubmit}>
+          <SearchBar
+            onChange={this.handleInputChange}
+            onClick={this.handleOnSubmit}
+          >
             <Link
               to={{
-                pathname: "/profile/"+this.state.profile.name,
+                pathname: "/profile/" + this.state.profile.name,
                 state: { profile: this.state.profile }
               }}
             >
