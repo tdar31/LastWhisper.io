@@ -4,9 +4,10 @@ const { parse, stringify } = require("flatted/cjs");
 
 module.exports = {
   findAll: function(req, res) {
+    console.log("FIND ALL // req.params: ", req.params.username)
     axios
       .get(
-        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/RiotSchmick?api_key="+process.env.RITOAPIKEY
+        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+req.params.username+"?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
         console.log(res.data);
@@ -16,11 +17,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   getMatchHistory: function(req, res) {
-    // console.log("req.params: ", req.params.id);
+    console.log("GET MATCH HISTORY // req.params: ", req.params);
     axios
       .get(
         "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/" +
-          req.params.id +
+          req.params.username +
           "?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {

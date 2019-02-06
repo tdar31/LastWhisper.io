@@ -29,9 +29,9 @@ class ProfilePage extends Component {
     this.setSelectedButton = this.setSelectedButton.bind(this);
 
     //Get Player Data
-    let queryUser = this.props.match.params.id
+    let queryUser = this.props.match.params.username
     console.log("Submit button clicked-> queryUser: ", queryUser);
-    API.getUser()
+    API.getUser(queryUser)
       .then(res =>
         this.setState({ profile: res.data }, function onceStateUpdated() {
           this.getMatchHistory(this.state.profile);
