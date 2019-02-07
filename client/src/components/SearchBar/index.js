@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function SearchBar({ onClick, value, onChange }) {
+function SearchBar({ onClick, value, onChange, region }) {
   return (
     <div className="field has-addons has-addons-centered">
       <p className="control ">
@@ -18,8 +18,16 @@ function SearchBar({ onClick, value, onChange }) {
         <span className="select">
           <select>
             <option>NA</option>
-            <option>EU</option>
+            <option>EUNE</option>
+            <option>LAN</option>
+            <option>EUW</option>
             <option>KR</option>
+            <option>OCE</option>
+            <option>RU</option>
+            <option>JP</option>
+            <option>BR</option>
+            <option>TR</option>
+            <option>LAS</option>
           </select>
         </span>
       </p>

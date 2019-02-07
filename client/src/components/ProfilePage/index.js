@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col } from "../Grid";
+import API from "../../utils/API";
 import ProfileNav from "../ProfileNav";
 import ProfileBody from "../ProfileBody";
 import ProfileContainer from "../ProfileContainer";
-import API from "../../utils/API";
+import UserBanner from "../UserBanner";
+import UserBody from "../UserBody";
 
 class ProfilePage extends Component {
   state = {
@@ -29,12 +29,15 @@ class ProfilePage extends Component {
     this.setSelectedButton = this.setSelectedButton.bind(this);
 
     //Get Player Data
-    let queryUser = this.props.match.params.username
+    let queryUser = {
+      username: this.props.match.params.username,
+      region: this.props.match.params.region
+    }
     console.log("Submit button clicked-> queryUser: ", queryUser);
     API.getUser(queryUser)
       .then(res =>
         this.setState({ profile: res.data }, function onceStateUpdated() {
-          this.getMatchHistory(this.state.profile);
+          this.getMatchHistory(this.state.profile.accountId);
         })
       )
       .catch(err => console.log(err));
@@ -42,7 +45,12 @@ class ProfilePage extends Component {
 
   getMatchHistory = profile => {
     console.log("GET MATCH HISTORY: ", this.state.profile);
-    API.getMatchHistory(profile)
+
+    let userData = {
+      accountId: profile,
+      region: this.props.match.params.region
+    }
+    API.getMatchHistory(userData)
       .then(res => {
         this.setState({ matches: res.data }, function onceStateUpdated() {
           console.log("this.state.matches: ", this.state.matches);
@@ -63,6 +71,7 @@ class ProfilePage extends Component {
         <ProfileContainer className={this.state.theme}>
           <ProfileNav />
           <ProfileBody>
+            <UserBanner username={this.state.profile.name} level={this.state.profile.summonerLevel} region={this.props.match.params.region}/>
           </ProfileBody>
         </ProfileContainer>
       </div>
