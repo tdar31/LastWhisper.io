@@ -30,7 +30,7 @@ participants[i].stats.participantId
 
 //////////
 
-Home Page -> search -> API call for basic info (done) -> checks account Id against cached accountId's in DB
+Home Page -> search -> API call for basic info -> checks account Id against cached accountId's in DB
 
 if found -> return existing save profile data and match history and populate profile page -> Only update if update button is hit
 

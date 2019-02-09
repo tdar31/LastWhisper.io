@@ -68,13 +68,13 @@ class ProfilePage extends Component {
   };
 
   getMatchData = gameId => {
-    let userData2 = {
+    let matchData = {
       accountId: this.state.profile.accountId,
       region: this.props.match.params.region,
       matchData: gameId
     };
 
-    API.getMatchData(userData2)
+    API.getMatchData(matchData)
       .then(res => {
         this.setState({ matchData: res.data }, function onceStateUpdated() {
           console.log("this.state.matchData: ", this.state.matchData);
@@ -85,6 +85,8 @@ class ProfilePage extends Component {
   };
 
   findPlayerMatchStats = () => {
+    //Loop that looks through all return match data searching for participantIdentites where
+    //the player's id matches the queried players account id then pushing those stats to a new array for rendering
     for (
       let i = 0;
       i < 10; //Can't be more that 10 people in a queue
@@ -97,28 +99,22 @@ class ProfilePage extends Component {
         let playerId = this.state.matchData.participantIdentities[i]
           .participantId;
         console.log(playerId);
-        // console.log(this.state.matchData.participants)
         for (let i = 0; i < 10; i++) {
           if (this.state.matchData.participants[i].participantId === playerId)
-          //Something with this not triggering rerender of components
           this.setState( state => {
             const selectedPlayerData = [...state.selectedPlayerData, this.state.matchData.participants[i]] 
             return {
               selectedPlayerData
             }
+          }, function onceStateUpdated() {
+            console.log(
+              "this.state.selectedPlayerData: ",
+              this.state.selectedPlayerData
+            );
           })
-            // this.state.selectedPlayerData.push(
-              
-            // );
-          // console.log(
-          //   "this.state.selectedPlayerData",
-          //   this.state.selectedPlayerData
-          // );
         }
       }
     }
-    console.log(this.state.selectedPlayerData);
-    // console.log(championId);
   };
 
   setSelectedButton(id) {
@@ -145,20 +141,27 @@ class ProfilePage extends Component {
                     championId={playerData.championId}
                     spell1Id={playerData.spell1Id}
                     spell2Id={playerData.spell2Id}
+                    assists={playerData.stats.assists}
+                    champLevel={playerData.stats.champLevel}
+                    deaths={playerData.stats.deaths}
+                    goldEarned={playerData.stats.goldEarned}
+                    goldSpent={playerData.stats.goldSpent}
+                    item0={playerData.stats.item0}
+                    item1={playerData.stats.item1}
+                    item2={playerData.stats.item2}
+                    item3={playerData.stats.item3}
+                    item4={playerData.stats.item4}
+                    item5={playerData.stats.item5}
+                    item6={playerData.stats.item6}
+                    kills={playerData.stats.kills}
+                    win={playerData.stats.win}
+                    role={playerData.timeline.role}
                   />
                 ))}
               </GameContainer>
             </UserBody>
           </ProfileBody>
         </ProfileContainer>
-        {/* Not rendering data.  Nothing to iterate through  */}
-        {this.state.selectedPlayerData.map(playerData => (
-          <GameItem
-            championId={playerData.championId}
-            spell1Id={playerData.spell1Id}
-            spell2Id={playerData.spell2Id}
-          />
-        ))}
       </div>
     );
   }
