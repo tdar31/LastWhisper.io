@@ -24,9 +24,10 @@ module.exports = {
           "?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
-        let json = stringify(res.data);
+        // console.log(res.data)
+        // let json = stringify(res.data);
         // console.log(json)
-        return json
+        return res.data
       })
       .then(dbModel => res.json(dbModel))
       .catch(error => {

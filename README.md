@@ -25,10 +25,6 @@ participants[i].stats.participantId
     - assists
     - champLevel
     - role
-    - 
-
-
-
 
 //////////
 
