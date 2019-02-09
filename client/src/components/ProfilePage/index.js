@@ -100,9 +100,16 @@ class ProfilePage extends Component {
         // console.log(this.state.matchData.participants)
         for (let i = 0; i < 10; i++) {
           if (this.state.matchData.participants[i].participantId === playerId)
-            this.state.selectedPlayerData.push(
-              this.state.matchData.participants[i]
-            );
+          //Something with this not triggering rerender of components
+          this.setState( state => {
+            const selectedPlayerData = [...state.selectedPlayerData, this.state.matchData.participants[i]] 
+            return {
+              selectedPlayerData
+            }
+          })
+            // this.state.selectedPlayerData.push(
+              
+            // );
           // console.log(
           //   "this.state.selectedPlayerData",
           //   this.state.selectedPlayerData
@@ -133,7 +140,6 @@ class ProfilePage extends Component {
             />
             <UserBody>
               <GameContainer>
-                <GameItem />
                 {this.state.selectedPlayerData.map(playerData => (
                   <GameItem
                     championId={playerData.championId}
@@ -142,15 +148,10 @@ class ProfilePage extends Component {
                   />
                 ))}
               </GameContainer>
-
-              {/* <GameContainer
-                championId={this.state.selectedPlayerData[0].championId}
-                spell1Id={this.state.selectedPlayerData[0].spell1Id}
-                spell2Id={this.state.selectedPlayerData[0].spell2Id}
-              /> */}
             </UserBody>
           </ProfileBody>
         </ProfileContainer>
+        {/* Not rendering data.  Nothing to iterate through  */}
         {this.state.selectedPlayerData.map(playerData => (
           <GameItem
             championId={playerData.championId}
