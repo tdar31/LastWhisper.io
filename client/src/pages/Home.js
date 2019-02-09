@@ -85,7 +85,7 @@ class Home extends Component {
             </Link>
           </SearchBar>
         </HomeBody>
-        <HomeFooter>
+        {/* <HomeFooter>
           <HomeFooterButton
             onClick={() => this.setSelectedButton(1)}
             className={
@@ -110,7 +110,7 @@ class Home extends Component {
           >
             Sejuani
           </HomeFooterButton>
-        </HomeFooter>
+        </HomeFooter> */}
       </HomeContainer>
     );
   }

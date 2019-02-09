@@ -10,7 +10,6 @@ module.exports = {
         "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+req.params.username+"?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
-        console.log(res.data);
         return res.data;
       })
       .then(dbModel => res.json(dbModel))
@@ -26,6 +25,7 @@ module.exports = {
       )
       .then(res => {
         let json = stringify(res.data);
+        // console.log(json)
         return json
       })
       .then(dbModel => res.json(dbModel))

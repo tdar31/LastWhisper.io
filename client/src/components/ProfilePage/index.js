@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import ProfileNav from "../ProfileNav";
+import Nav from "../Nav";
 import ProfileBody from "../ProfileBody";
 import ProfileContainer from "../ProfileContainer";
 import UserBanner from "../UserBanner";
@@ -69,9 +69,10 @@ class ProfilePage extends Component {
     return (
       <div>
         <ProfileContainer className={this.state.theme}>
-          <ProfileNav />
+          <Nav />
           <ProfileBody>
             <UserBanner username={this.state.profile.name} level={this.state.profile.summonerLevel} region={this.props.match.params.region}/>
+            <UserBody />
           </ProfileBody>
         </ProfileContainer>
       </div>

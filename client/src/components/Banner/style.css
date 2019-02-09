@@ -1,0 +1,12 @@
+.dot {
+  color: rgb(189, 49, 49);
+}
+
+.bannerTxt {
+  color: #333;
+}
+
+.textContainer {
+  margin-top: 15vh;
+  font-size: 100px !important;
+}
