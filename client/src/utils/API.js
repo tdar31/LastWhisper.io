@@ -17,8 +17,8 @@ export default {
   },
   getMatchData: function(userData2) {
     console.log("Inside getMatchData: ", userData2);
-    return axios.get(
-      "/api/summoner/" + userData2.accountId + "/na/" + userData2.getMatchData
+    return axios.put(
+      "/api/summoner/" + userData2.accountId + "/na/" + userData2.getMatchData, userData2
     );
   }
   // // Deletes the book with the given id

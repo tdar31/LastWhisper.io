@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import API from "../../utils/API";
 import Nav from "../Nav";
 import ProfileBody from "../ProfileBody";
@@ -33,7 +34,7 @@ class ProfilePage extends Component {
     let queryUser = {
       username: this.props.match.params.username,
       region: this.props.match.params.region
-    }
+    };
     console.log("Submit button clicked-> queryUser: ", queryUser);
     API.getUser(queryUser)
       .then(res =>
@@ -50,12 +51,15 @@ class ProfilePage extends Component {
     let userData = {
       accountId: profile,
       region: this.props.match.params.region
-    }
+    };
     API.getMatchHistory(userData)
       .then(res => {
         this.setState({ matches: res.data }, function onceStateUpdated() {
-          console.log("this.state.matches: ", this.state.matches.matches[0].gameId)
-          this.getMatchData(this.state.matches.matches[0].gameId.toString())
+          console.log(
+            "this.state.matches: ",
+            this.state.matches.matches[0].gameId
+          );
+          this.getMatchData(this.state.matches.matches[0].gameId.toString());
         });
       })
       .catch(err => console.log(err));
@@ -66,15 +70,16 @@ class ProfilePage extends Component {
       accountId: this.state.profile.accountId,
       region: this.props.match.params.region,
       matchData: gameId
-    }
+    };
+
     API.getMatchData(userData2)
-    .then(res => {
-      this.setState({ matchData: res.data }, function onceStateUpdated() {
-        console.log("this.state.matchData: ", this.state.matchData);
-      });
-    })
-    .catch(err => console.log(err));
-  }
+      .then(res => {
+        this.setState({ matchData: res.data }, function onceStateUpdated() {
+          console.log("this.state.matchData: ", this.state.matchData);
+        });
+      })
+      .catch(err => console.log(err));
+  };
 
   setSelectedButton(id) {
     this.setState({ selectedButton: id }, function() {
@@ -88,7 +93,11 @@ class ProfilePage extends Component {
         <ProfileContainer className={this.state.theme}>
           <Nav />
           <ProfileBody>
-            <UserBanner username={this.state.profile.name} level={this.state.profile.summonerLevel} region={this.props.match.params.region}/>
+            <UserBanner
+              username={this.state.profile.name}
+              level={this.state.profile.summonerLevel}
+              region={this.props.match.params.region}
+            />
             <UserBody />
           </ProfileBody>
         </ProfileContainer>

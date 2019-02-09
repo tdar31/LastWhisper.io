@@ -35,13 +35,12 @@ module.exports = {
       });
   },
   getMatchData: function(req, res) {
-    console.log("GET MATCH DATA // req.params: ", req.params);
+    console.log("GET MATCH DATA // req.params: ", req.body);
     axios
       .get(
-        "https://na1.api.riotgames.com/lol/match/v4/matches/2972931312?api_key="+process.env.RITOAPIKEY
+        "https://na1.api.riotgames.com/lol/match/v4/matches/"+ req.body.matchData+"?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
-        // console.log(res.data)
         // let json = stringify(res.data);
         // console.log(json)
         return res.data

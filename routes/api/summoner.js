@@ -9,7 +9,10 @@ router.route("/:username/:region").get(summonerController.getMatchHistory);
 // .put(booksController.update)
 // .delete(booksController.remove);
 
-router.route("/:username/:region/:matchData").get(summonerController.getMatchData);
+//Need to make a get route to call data but can't pass objects thru to req.body with get requests and need to make at least 10 to start
+//Intentionally incorrectly use .put route to allow for this
+//Will try and see if there is a better solution but for now ¯\_(ツ)_/¯
+router.route("/:username/:region/:matchData").put(summonerController.getMatchData);
 // .put(booksController.update)
 // .delete(booksController.remove);
 
