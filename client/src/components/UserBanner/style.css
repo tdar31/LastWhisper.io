@@ -1,18 +1,43 @@
 .userBanner {
-    border-radius: 10px;
+  border-radius: 10px;
+}
+
+.title {
+  margin-bottom: 5px !important;
+  font-size: 20px !important;
+}
+
+.updateButton {
+  margin-bottom: 15px !important;
+  border-radius: 10px;
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.updateButton:hover {
+  color: rgb(46, 46, 46);
 }
 
 .userIcon {
-    height: 100px;
-    width: 100px;
-    border-radius: 10px;
-    background-color:black !important;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: black !important;
+  margin: 15px;
 }
 
 .has-background-dark {
-    background-color: rgba(54, 54, 54, 0.7) !important;
+  background-color: rgba(54, 54, 54, 0.7) !important;
 }
-
-.is-horizontal-center {
-    justify-content: center;
-  }

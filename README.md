@@ -19,6 +19,8 @@ participants[i].stats.participantId
 
 -> stats
     - win
+    - spell1Id
+    - spell2Id
     - item1 through item6
     - kills
     - deaths

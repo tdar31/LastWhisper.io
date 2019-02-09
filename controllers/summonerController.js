@@ -4,10 +4,13 @@ var axios = require("axios");
 
 module.exports = {
   findAll: function(req, res) {
-    console.log("FIND ALL // req.params: ", req.params.username)
+    console.log("FIND ALL // req.params: ", req.params.username);
     axios
       .get(
-        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+req.params.username+"?api_key="+process.env.RITOAPIKEY
+        "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +
+          req.params.username +
+          "?api_key=" +
+          process.env.RITOAPIKEY
       )
       .then(res => {
         return res.data;
@@ -21,13 +24,14 @@ module.exports = {
       .get(
         "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/" +
           req.params.username +
-          "?api_key="+process.env.RITOAPIKEY
+          "?api_key=" +
+          process.env.RITOAPIKEY
       )
       .then(res => {
         // console.log(res.data)
         // let json = stringify(res.data);
         // console.log(json)
-        return res.data
+        return res.data;
       })
       .then(dbModel => res.json(dbModel))
       .catch(error => {
@@ -38,12 +42,15 @@ module.exports = {
     console.log("GET MATCH DATA // req.params: ", req.body);
     axios
       .get(
-        "https://na1.api.riotgames.com/lol/match/v4/matches/"+ req.body.matchData+"?api_key="+process.env.RITOAPIKEY
+        "https://na1.api.riotgames.com/lol/match/v4/matches/" +
+          req.body.matchData +
+          "?api_key=" +
+          process.env.RITOAPIKEY
       )
       .then(res => {
         // let json = stringify(res.data);
         // console.log(json)
-        return res.data
+        return res.data;
       })
       .then(dbModel => res.json(dbModel))
       .catch(error => {

@@ -3,13 +3,31 @@ import "./style.css";
 
 function UserBanner({ image, username, level, region, children }) {
   return (
-    <div className="userBanner has-background-dark columns">
-      <div className="column is-9">REEEE</div>
-      <div className="column is-3">
-        <img src={require("../../images/3879.jpg")} className="userIcon column is-offset-4"></img>
-        <div className="column has-text-centered">{username+" "}{region.toUpperCase()}</div>
-        <div className="column has-text-centered">{level}</div>
-      </div>
+    <div className="userBanner has-background-dark">
+      <nav className="level">
+        <div className="level-item has-text-centered">
+          <div>
+            <img className="userIcon" src={require("../../images/3879.jpg")} />
+            <p className="heading">{username}</p>
+            <p className="title">{level}</p>
+            <button className="updateButton">Update</button>
+          </div>
+        </div>
+        <div className="level-item has-text-centered">
+          <div>
+            <img className="userIcon" src={require("../../images/3879.jpg")} />
+            <p className="heading">{username}</p>
+            <p className="title">{level}</p>
+          </div>
+        </div>
+        <div className="level-item has-text-centered">
+          <div>
+            <img className="userIcon" src={require("../../images/3879.jpg")}  />
+            <p className="heading">{username}</p>
+            <p className="title">{level}</p>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }

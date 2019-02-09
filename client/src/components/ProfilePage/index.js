@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
 import API from "../../utils/API";
 import Nav from "../Nav";
 import ProfileBody from "../ProfileBody";
 import ProfileContainer from "../ProfileContainer";
+import GameContainer from "../GameContainer";
+import GameItem from "../GameItem";
 import UserBanner from "../UserBanner";
 import UserBody from "../UserBody";
 
@@ -11,9 +12,10 @@ class ProfilePage extends Component {
   state = {
     profile: {},
     matches: [],
-    selectedButton: null,
+    // selectedButton: null,
     theme: "",
-    matchData: {}
+    matchData: {},
+    selectedPlayerData: [] //This state doesn't get pushed to DB.  Only used to parse data
   };
 
   componentWillMount() {
@@ -23,12 +25,12 @@ class ProfilePage extends Component {
       ? this.setState({ theme: "is-danger" })
       : this.props.match.params.theme === "3"
       ? this.setState({ theme: "is-info" })
-      : this.setState({ theme: "is-dark" });
+      : this.setState({ theme: "is-danger" });
   }
 
   componentDidMount() {
     //Binds this for button selection
-    this.setSelectedButton = this.setSelectedButton.bind(this);
+    // this.setSelectedButton = this.setSelectedButton.bind(this);
 
     //Get Player Data
     let queryUser = {
@@ -76,9 +78,40 @@ class ProfilePage extends Component {
       .then(res => {
         this.setState({ matchData: res.data }, function onceStateUpdated() {
           console.log("this.state.matchData: ", this.state.matchData);
+          this.findPlayerMatchStats();
         });
       })
       .catch(err => console.log(err));
+  };
+
+  findPlayerMatchStats = () => {
+    for (
+      let i = 0;
+      i < 10; //Can't be more that 10 people in a queue
+      i++
+    ) {
+      if (
+        this.state.matchData.participantIdentities[i].player.accountId ===
+        this.state.profile.accountId
+      ) {
+        let playerId = this.state.matchData.participantIdentities[i]
+          .participantId;
+        console.log(playerId);
+        // console.log(this.state.matchData.participants)
+        for (let i = 0; i < 10; i++) {
+          if (this.state.matchData.participants[i].participantId === playerId)
+            this.state.selectedPlayerData.push(
+              this.state.matchData.participants[i]
+            );
+          // console.log(
+          //   "this.state.selectedPlayerData",
+          //   this.state.selectedPlayerData
+          // );
+        }
+      }
+    }
+    console.log(this.state.selectedPlayerData);
+    // console.log(championId);
   };
 
   setSelectedButton(id) {
@@ -98,9 +131,33 @@ class ProfilePage extends Component {
               level={this.state.profile.summonerLevel}
               region={this.props.match.params.region}
             />
-            <UserBody />
+            <UserBody>
+              <GameContainer>
+                <GameItem />
+                {this.state.selectedPlayerData.map(playerData => (
+                  <GameItem
+                    championId={playerData.championId}
+                    spell1Id={playerData.spell1Id}
+                    spell2Id={playerData.spell2Id}
+                  />
+                ))}
+              </GameContainer>
+
+              {/* <GameContainer
+                championId={this.state.selectedPlayerData[0].championId}
+                spell1Id={this.state.selectedPlayerData[0].spell1Id}
+                spell2Id={this.state.selectedPlayerData[0].spell2Id}
+              /> */}
+            </UserBody>
           </ProfileBody>
         </ProfileContainer>
+        {this.state.selectedPlayerData.map(playerData => (
+          <GameItem
+            championId={playerData.championId}
+            spell1Id={playerData.spell1Id}
+            spell2Id={playerData.spell2Id}
+          />
+        ))}
       </div>
     );
   }

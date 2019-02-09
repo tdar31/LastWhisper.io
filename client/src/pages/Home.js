@@ -52,7 +52,7 @@ class Home extends Component {
     let queryUser = this.state.inputValue.trim();
     let selectedTheme = this.state.selectedButton;
 
-    window.location.assign("summoner/" + queryUser + "/na/" + selectedTheme);
+    window.location.assign("summoner/" + queryUser + "/na/");
   };
 
   render() {
@@ -65,7 +65,7 @@ class Home extends Component {
             ? "is-danger"
             : this.state.selectedButton === 3
             ? "is-info"
-            : "is-dark"
+            : "is-light"
         }
       >
         <Nav />
