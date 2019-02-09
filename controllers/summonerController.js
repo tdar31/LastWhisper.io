@@ -1,6 +1,6 @@
 // const db = require("../models");
 var axios = require("axios");
-const { parse, stringify } = require("flatted/cjs");
+// const { parse, stringify } = require("flatted/cjs");
 
 module.exports = {
   findAll: function(req, res) {
@@ -16,12 +16,29 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   getMatchHistory: function(req, res) {
-    console.log("GET MATCH HISTORY // req.params: ", req.params);
+    // console.log("GET MATCH HISTORY // req.params: ", req.params);
     axios
       .get(
         "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/" +
           req.params.username +
           "?api_key="+process.env.RITOAPIKEY
+      )
+      .then(res => {
+        // console.log(res.data)
+        // let json = stringify(res.data);
+        // console.log(json)
+        return res.data
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  getMatchData: function(req, res) {
+    console.log("GET MATCH DATA // req.params: ", req.params);
+    axios
+      .get(
+        "https://na1.api.riotgames.com/lol/match/v4/matches/2972931312?api_key="+process.env.RITOAPIKEY
       )
       .then(res => {
         // console.log(res.data)

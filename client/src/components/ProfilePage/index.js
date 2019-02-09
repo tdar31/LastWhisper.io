@@ -11,7 +11,8 @@ class ProfilePage extends Component {
     profile: {},
     matches: [],
     selectedButton: null,
-    theme: ""
+    theme: "",
+    matchData: {}
   };
 
   componentWillMount() {
@@ -53,11 +54,27 @@ class ProfilePage extends Component {
     API.getMatchHistory(userData)
       .then(res => {
         this.setState({ matches: res.data }, function onceStateUpdated() {
-          console.log("this.state.matches: ", this.state.matches);
+          console.log("this.state.matches: ", this.state.matches.matches[0].gameId)
+          this.getMatchData(this.state.matches.matches[0].gameId.toString())
         });
       })
       .catch(err => console.log(err));
   };
+
+  getMatchData = gameId => {
+    let userData2 = {
+      accountId: this.state.profile.accountId,
+      region: this.props.match.params.region,
+      matchData: gameId
+    }
+    API.getMatchData(userData2)
+    .then(res => {
+      this.setState({ matchData: res.data }, function onceStateUpdated() {
+        console.log("this.state.matchData: ", this.state.matchData);
+      });
+    })
+    .catch(err => console.log(err));
+  }
 
   setSelectedButton(id) {
     this.setState({ selectedButton: id }, function() {

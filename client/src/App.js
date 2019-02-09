@@ -13,6 +13,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/summoner/:username/:region" component={ProfilePage} />
           <Route exact path="/summoner/:username/:region/:theme" component={ProfilePage} />
+          <Route exact path="/summoner/:username/:region/:matchData" component={ProfilePage} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
