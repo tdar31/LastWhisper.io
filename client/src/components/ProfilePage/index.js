@@ -7,6 +7,7 @@ import GameContainer from "../GameContainer";
 import GameItem from "../GameItem";
 import UserBanner from "../UserBanner";
 import UserBody from "../UserBody";
+const champJsonData = require("../../assets/jsonData/champions.json");
 
 class ProfilePage extends Component {
   state = {
@@ -15,7 +16,8 @@ class ProfilePage extends Component {
     // selectedButton: null,
     theme: "",
     matchData: {},
-    selectedPlayerData: [] //This state doesn't get pushed to DB.  Only used to parse data
+    selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
+    // test: "../../assets/images/champion/555.png"
   };
 
   componentWillMount() {
@@ -26,6 +28,8 @@ class ProfilePage extends Component {
       : this.props.match.params.theme === "3"
       ? this.setState({ theme: "is-info" })
       : this.setState({ theme: "is-danger" });
+
+    console.log(champJsonData);
   }
 
   componentDidMount() {
@@ -101,14 +105,46 @@ class ProfilePage extends Component {
         console.log(playerId);
         for (let i = 0; i < 10; i++) {
           if (this.state.matchData.participants[i].participantId === playerId)
-          this.setState( state => {
-            const selectedPlayerData = [...state.selectedPlayerData, this.state.matchData.participants[i]] 
-            return {
-              selectedPlayerData
-            }
-          }, function onceStateUpdated() {
+            this.setState(
+              state => {
+                //Pushing found match stats specific to player to new array which is passed down as props
+                const selectedPlayerData = [
+                  ...state.selectedPlayerData,
+                  this.state.matchData.participants[i]
+                ];
+                return {
+                  selectedPlayerData
+                };
+              },
+              function onceStateUpdated() {
+                console.log(
+                  "this.state.selectedPlayerData: ",
+                  this.state.selectedPlayerData
+                );
+              }
+            );
+        }
+      }
+    }
+  };
+
+  parseDataId = () => {
+    //This is "decrypting" some of the returned match data that is store in number id's instead of strings such as champ names
+    //items etc.  The following loops through a local JSON file with all the info include the parings and updates.  EX champId: 555 = Pyke // spell1Id: 14 = Ignite
+    for (let i = 0; i < this.state.selectedPlayerData.length; i++) {
+      for (let j = 0; j < champJsonData.length; j++) {
+        if (this.state.selectedPlayerData[i].champId === champJsonData[j].key) {
+          //This process of creating a duplicate object to update these locations
+          //since react does not like updating nested objects within a state
+          let duplicateObj = Object.assign({}, this.state.selectedPlayerData[i]);
+          duplicateObj.champId = champJsonData[i].name;
+          
+          this.setState({
+            selectedPlayerData: duplicateObj
+          },
+          function onceStateUpdated() {
             console.log(
-              "this.state.selectedPlayerData: ",
+              "AFTER UPDATEthis.state.selectedPlayerData: ",
               this.state.selectedPlayerData
             );
           })
@@ -116,6 +152,7 @@ class ProfilePage extends Component {
       }
     }
   };
+
 
   setSelectedButton(id) {
     this.setState({ selectedButton: id }, function() {
@@ -138,9 +175,9 @@ class ProfilePage extends Component {
               <GameContainer>
                 {this.state.selectedPlayerData.map(playerData => (
                   <GameItem
-                    championId={playerData.championId}
-                    spell1Id={playerData.spell1Id}
-                    spell2Id={playerData.spell2Id}
+                    championId={[`/images/champion/${playerData.championId}.png`].join(" ")}
+                    spell1Id={[`/images/summonerspell/${playerData.spell1Id}.png`].join(" ")}
+                    spell2Id={[`/images/summonerspell/${playerData.spell2Id}.png`].join(" ")}
                     assists={playerData.stats.assists}
                     champLevel={playerData.stats.champLevel}
                     deaths={playerData.stats.deaths}

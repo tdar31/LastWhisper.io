@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+// import logo from '../../../public/images/profileicon/3879.jpg';
+// import src from '../../assets/images/profileicon/3879.jpg';
 
 function UserBanner({ image, username, level, region, children }) {
   return (
@@ -7,7 +9,7 @@ function UserBanner({ image, username, level, region, children }) {
       <nav className="level">
         <div className="level-item has-text-centered">
           <div>
-            <img className="userIcon" src={require("../../images/3879.jpg")} />
+            <img className="userIcon" src={process.env.PUBLIC_URL + '/images/profileicon/3879.jpg'} />
             <p className="heading">{username}</p>
             <p className="title">{level}</p>
             <button className="updateButton">Update</button>
@@ -15,14 +17,14 @@ function UserBanner({ image, username, level, region, children }) {
         </div>
         <div className="level-item has-text-centered">
           <div>
-            <img className="userIcon" src={require("../../images/3879.jpg")} />
+            {/* <img className="userIcon"/> */}
             <p className="heading">{username}</p>
             <p className="title">{level}</p>
           </div>
         </div>
         <div className="level-item has-text-centered">
           <div>
-            <img className="userIcon" src={require("../../images/3879.jpg")}  />
+            {/* <img className="userIcon"/> */}
             <p className="heading">{username}</p>
             <p className="title">{level}</p>
           </div>
