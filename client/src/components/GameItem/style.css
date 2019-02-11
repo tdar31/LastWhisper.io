@@ -1,6 +1,4 @@
 .champIcon,
-.spell1,
-.spell2,
 .assists,
 .champLevel,
 .deaths,
@@ -14,12 +12,17 @@
 .item5,
 .item6,
 .kills,
-.win,
-.role {
+.win {
   border-radius: 10px;
 }
 
-.champIcon,
+.GameItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
 .containerZero,
 .containerOne,
 .containerTwo,
@@ -37,8 +40,4 @@
   /* margin-bottom: 50% */
 }
 
-.spell1,
-.spell2,
-.champName {
-  display: block;
-}
+

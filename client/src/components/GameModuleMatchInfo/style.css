@@ -1,0 +1,31 @@
+.GameModuleMatchInfo {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: rgb(74, 107, 214);
+  text-align: center;
+  padding: 15px 30px 15px 30px;
+  margin: 20px;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  /* max-height: 200px; */
+}
+
+.GameModuleMatchInfo:hover {
+  box-shadow: 0 0 10px #333333;
+}
+
+.outcome {
+  margin-bottom: 15px;
+}
+
+.gameCreationDate,
+.gameCreationTime,
+.gameDuration {
+  font-size: 12px;
+}
+
+.gameDuration {
+  color: #3a3a3a;
+}

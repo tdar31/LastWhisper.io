@@ -20,14 +20,15 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  -moz-transition: all 0.1s ease-in;
-  -o-transition: all 0.1s ease-in;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  color: rgb(46, 46, 46);
 }
 
 .updateButton:hover {
-  color: rgb(46, 46, 46);
+  transform: scale(1.1);
 }
 
 .userIcon {

@@ -111,10 +111,9 @@ class ProfilePage extends Component {
     //the player's id matches the queried players account id then pushing those stats to
     //a new array for rendering in gameItems component in profile page
 
-
     //This iterates through all the matchData games returned by API which is now saved to the state
     for (let h = 0; h < this.state.matchData.length; h++) {
-      let matchDataArray = this.state.matchData[h]
+      let matchDataArray = this.state.matchData[h];
       console.log("matchDataArray: ", matchDataArray);
       //Once the matchData is selected this loop goes through and search for the match paricipant
       //where the Identity matches the profile.accountId (queried users ID)
@@ -127,19 +126,29 @@ class ProfilePage extends Component {
           matchDataArray.participantIdentities[i].player.accountId ===
           this.state.profile.accountId
         ) {
-          let playerId = matchDataArray.participantIdentities[i]
-            .participantId;
+          let playerId = matchDataArray.participantIdentities[i].participantId;
           //Once the participant matching the queried user and their corresponding participantMatchID is found
           //this loop iterates through the matchData searching for the participantMatchID then pushing
           //the data where the participantMatchID === to a new array to be pushed down to game item
           for (let j = 0; j < 10; j++) {
-            if (matchDataArray.participants[j].participantId === playerId)
+            if (matchDataArray.participants[j].participantId === playerId) {
+              let compiledPlayerData = matchDataArray.participants[j];
+              compiledPlayerData.gameCreation = matchDataArray.gameCreation;
+              compiledPlayerData.gameDuration = matchDataArray.gameDuration;
+              compiledPlayerData.gameMode = matchDataArray.gameMode;
+              compiledPlayerData.gameType = matchDataArray.gameType;
+              compiledPlayerData.gameVersion = matchDataArray.gameVersion;
+              compiledPlayerData.queueId = matchDataArray.queueId;
+              compiledPlayerData.seasonId = matchDataArray.seasonId;
+              compiledPlayerData.teams = matchDataArray.teams;
+              compiledPlayerData.platformId = matchDataArray.platformId;
+
               this.setState(
                 state => {
                   //Pushing found match stats specific to player to new array which is passed down as props to game item
                   const selectedPlayerData = [
                     ...state.selectedPlayerData,
-                    matchDataArray.participants[j]
+                    compiledPlayerData
                   ];
                   return {
                     selectedPlayerData
@@ -152,12 +161,12 @@ class ProfilePage extends Component {
                   );
                 }
               );
+            }
           }
         }
       }
     }
   };
-
 
   //Not needed for now but will likely need in the future?
   //Saving it for now just incase I need it for later
@@ -208,8 +217,17 @@ class ProfilePage extends Component {
             />
             <UserBody>
               <GameContainer>
-                {this.state.selectedPlayerData.map(playerData => (
+                {this.state.selectedPlayerData.map((playerData, index) => (
                   <GameItem
+                    key={index}
+                    gameCreation={playerData.gameCreation}
+                    gameDuration={playerData.gameDuration}
+                    gameMode={playerData.gameMode}
+                    gameType={playerData.gameType}
+                    platformId={playerData.platformId}
+                    queueId={playerData.queueId}
+                    seasonId={playerData.seasonId}
+                    championIdRAW={playerData.championId}
                     championId={[
                       `/images/champion/${playerData.championId}.png`
                     ].join(" ")}
