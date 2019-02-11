@@ -2,12 +2,16 @@
 
 To-do
 
+
+- Filter for runes
+- Finish building out skeleton for GameItem
+- Last ten games from API
 - Swap to single color schema
-- Build out and parse rest of match history data returned from account API call
+- Build out and parse rest of match history data returned from account API call (done)
 - Buy domain (done)
 - Have region be linked to part of the query so you can toggle (done)
 - Relink MongoDB and setup model structure
-- Swapping font to a local import
+- Swapping font to a local import (done)
 
 /////////
 

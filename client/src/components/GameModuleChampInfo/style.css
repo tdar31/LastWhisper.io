@@ -1,47 +1,54 @@
 .GameModuleChampInfo {
   background-color: rgb(74, 107, 214);
   text-align: center;
-  /* border-radius: 10px; */
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  /* padding: 15px 15px 15px 15px; */
-  /* margin: 20px; */
-  display: inline-block;
-}
-
-.spell1,
-.spell2 {
-  border-radius: 0px !important;
-  display: block;
-  height: 20px;
-  width: 20px;
-}
-
-.containerOne,
-.containerTwo {
-  display: inline-block;
-}
-
-.spell1,
-.spell2,
-.role {
   border-radius: 10px;
+  margin: 20px;
+}
+
+.champContainer {
+  position: relative;
+  padding: 15px 15px 0px 15px;
 }
 
 .spell1,
 .spell2 {
-  display: block;
-  margin: 5px 0px 5px 0px;
+  border-radius: 5px !important;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 75px;
+  border: 1px solid #ddd;
+}
+
+.spell1 {
+  top: 0;
+  left: 0;
+  margin-left: 10px;
+}
+
+.spell2 {
+  top: 0;
+  right: 0;
+  margin-right: 10px;
 }
 
 .champIcon {
-  display: inline-block;
-  height: 60px;
-  width: 60px;
+  display: block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #ddd;
+}
+
+.champName {
+  /* margin-top: 20px; */
 }
 
 .role {
   font-size: 10px;
+  margin-bottom: 5px;
 }

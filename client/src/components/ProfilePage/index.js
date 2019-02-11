@@ -229,7 +229,7 @@ class ProfilePage extends Component {
                     seasonId={playerData.seasonId}
                     championIdRAW={playerData.championId}
                     championId={[
-                      `/images/champion/${playerData.championId}.png`
+                      `/images/tiles/${playerData.championId}.jpg`
                     ].join(" ")}
                     spell1Id={[
                       `/images/summonerspell/${playerData.spell1Id}.png`
