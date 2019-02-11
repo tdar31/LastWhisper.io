@@ -1,76 +1,74 @@
 import React, { Component } from "react";
-var data = require("../../assets/jsonData/champions.json");
-// import "./style.css";
+import "./style.css";
 
 class GameItem extends Component {
-  state = {
-    champIdGI: ""
-  };
-  // props,
-  // children,
-  // championId = "",
-  // spell1Id,
-  // spell2Id,
-  // assists,
-  // champLevel,
-  // deaths,
-  // goldEarned,
-  // goldSpent,
-  // item0,
-  // item1,
-  // item2,
-  // item3,
-  // item4,
-  // item5,
-  // item6,
-  // kills,
-  // win,
-  // role
-
   componentDidMount() {
-    this.setState(
-      {
-        champIdGI: this.props.championId
-      },
-      function onceStateUpdated() {
-        console.log(
-          "this.state.champIdGI: ",
-          this.state.champIdGI
-        );
-      }
-    );
+    console.log("this.props.win: ", this.props.win);
   }
 
   render() {
     return (
       <div className="GameItem has-background-dark">
-        <img
-          className="champIcon"
-          // src={require("../../assets/images/champion/555.png")}
-          src={process.env.PUBLIC_URL + this.props.championId}
-        />
-        <img src={process.env.PUBLIC_URL + this.props.spell1Id}></img>
-        <img src={process.env.PUBLIC_URL + this.props.spell2Id}></img>
-        <div>assists{this.props.assists}</div>
-        <div>champLevel{this.props.champLevel}</div>
-        <div>deaths{this.props.deaths}</div>
-        <div>goldEarned{this.props.goldEarned}</div>
-        <div>goldSpent{this.props.goldSpent}</div>
-        <div>item0/{this.props.item0}</div>
-        <div>item1/{this.props.item1}</div>
-        <div>item2/{this.props.item2}</div>
-        <div>item3/{this.props.item3}</div>
-        <div>item4/{this.props.item4}</div>
-        <div>item5/{this.props.item5}</div>
-        <div>item6/{this.props.item6}</div>
-        <div>kills{this.props.kills}</div>
-        <div>win{this.props.win}</div>
-        <div>role{this.props.role}</div>
+        <div className="containerZero">
+          <img alt="img"
+            className="champIcon"
+            src={process.env.PUBLIC_URL + this.props.championId}
+          />
+          <div className="containerOne">
+            <img alt="img"
+              className="spell1"
+              src={process.env.PUBLIC_URL + this.props.spell1Id}
+            />
+            <img alt="img"
+              className="spell2"
+              src={process.env.PUBLIC_URL + this.props.spell2Id}
+            />
+          </div>
+          <span className="champName">Pyke</span>
+          <div className="role">{this.props.role}</div>
+        </div>
+
+        <div className="containerTwo">
+          <div className="kills">kills{this.props.kills}</div>
+          <div className="deaths">deaths{this.props.deaths}</div>
+          <div className="assists">assists{this.props.assists}</div>
+          <div className="champLevel">champLevel{this.props.champLevel}</div>
+          <div className="goldEarned">goldEarned{this.props.goldEarned}</div>
+          <div className="goldSpent">goldSpent{this.props.goldSpent}</div>
+        </div>
+        <div className="containerThree">
+          <img alt="img"
+            className="item0"
+            src={process.env.PUBLIC_URL + this.props.item0}
+          />
+          <img alt="img"
+            className="item1"
+            src={process.env.PUBLIC_URL + this.props.item1}
+          />
+          <img alt="img"
+            className="item2"
+            src={process.env.PUBLIC_URL + this.props.item2}
+          />
+          <img alt="img"
+            className="item3"
+            src={process.env.PUBLIC_URL + this.props.item3}
+          />
+          <img alt="img"
+            className="item4"
+            src={process.env.PUBLIC_URL + this.props.item4}
+          />
+          <img alt="img"
+            className="item5"
+            src={process.env.PUBLIC_URL + this.props.item5}
+          />
+          <img alt="img"
+            className="item6"
+            src={process.env.PUBLIC_URL + this.props.item6}
+          />
+        </div>
       </div>
     );
   }
 }
-
-// console.log({championId.toString()})
 
 export default GameItem;

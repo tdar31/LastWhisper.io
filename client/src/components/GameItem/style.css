@@ -1,0 +1,44 @@
+.champIcon,
+.spell1,
+.spell2,
+.assists,
+.champLevel,
+.deaths,
+.goldEarned,
+.goldSpent,
+.item0,
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6,
+.kills,
+.win,
+.role {
+  border-radius: 10px;
+}
+
+.champIcon,
+.containerZero,
+.containerOne,
+.containerTwo,
+.containerThree {
+  display: inline-block;
+}
+
+.item0,
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6 {
+  /* margin-bottom: 50% */
+}
+
+.spell1,
+.spell2,
+.champName {
+  display: block;
+}
