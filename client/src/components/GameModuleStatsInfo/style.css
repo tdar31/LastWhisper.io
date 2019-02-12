@@ -1,0 +1,13 @@
+.GameModuleStatsInfo {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: rgb(74, 107, 214);
+  text-align: center;
+}
+
+.perkPrimaryStyle,
+.perkSubStyle {
+  background-color: aqua;
+  padding: 3px;
+  border-radius: 10px;
+}

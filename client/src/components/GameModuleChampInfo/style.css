@@ -6,7 +6,11 @@
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   border-radius: 10px;
-  margin: 20px;
+  /* margin: 20px; */
+}
+
+.GameModuleChampInfo:hover {
+  box-shadow: 0 0 10px #333333;
 }
 
 .champContainer {

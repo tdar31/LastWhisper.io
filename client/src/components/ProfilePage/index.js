@@ -266,6 +266,14 @@ class ProfilePage extends Component {
                     kills={playerData.stats.kills}
                     win={playerData.stats.win}
                     role={playerData.timeline.role}
+                    perkPrimaryStyle={[
+                      `/images/perk-images/Styles/${playerData.stats.perkPrimaryStyle}.png`
+                    ].join(" ")}
+                    perkSubStyle={[
+                      `/images/perk-images/Styles/${playerData.stats.perkSubStyle}.png`
+                    ].join(" ")}
+                    totalMinionsKilled={playerData.stats.totalMinionsKilled}
+                    neutralMinionsKilled={playerData.stats.neutralMinionsKilled}
                   />
                 ))}
               </GameContainer>

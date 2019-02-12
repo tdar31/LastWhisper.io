@@ -3,8 +3,8 @@
 To-do
 
 
-- Filter for runes
-- Finish building out skeleton for GameItem
+- Filter for runes (done)
+- Finish building out skeleton for GameItem (done)
 - Last ten games from API
 - Swap to single color schema
 - Build out and parse rest of match history data returned from account API call (done)
@@ -12,6 +12,20 @@ To-do
 - Have region be linked to part of the query so you can toggle (done)
 - Relink MongoDB and setup model structure
 - Swapping font to a local import (done)
+
+///////// (API // DATABASE)
+
+Home Page -> search -> API call for basic info -> checks account Id against cached accountId's in DB
+
+if found -> return existing save profile data and match history and populate profile page -> Only update if update button is hit
+
+if not found -> 2nd API call using accountId to search for match data -> create new profile with account data + match history as push to mongoDB -> return new profile and populate profile page
+
+when update button is hit repeat 'if not found' but overwrite existing profile with newly returned data
+
+- All api calls have to match region searched
+- Input sanitization needs to be setup (Riot has restrictios on usernames but still should have something)
+- Remove mulitple themes and just go with one (red)
 
 /////////
 
@@ -45,20 +59,6 @@ Clarity => 13
 Smite => 11
 Teleport => 12
 Mark => 32
-
-/////////
-
-Home Page -> search -> API call for basic info -> checks account Id against cached accountId's in DB
-
-if found -> return existing save profile data and match history and populate profile page -> Only update if update button is hit
-
-if not found -> 2nd API call using accountId to search for match data -> create new profile with account data + match history as push to mongoDB -> return new profile and populate profile page
-
-when update button is hit repeat 'if not found' but overwrite existing profile with newly returned data
-
-- All api calls have to match region searched
-- Input sanitization needs to be setup (Riot has restrictios on usernames but still should have something)
-- Remove mulitple themes and just go with one (red)
 
 //// GAME ITEM NOTES
 
