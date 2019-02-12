@@ -6,12 +6,11 @@
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   border-radius: 10px;
-  /* margin: 20px; */
 }
 
-.GameModuleChampInfo:hover {
+/* .GameModuleChampInfo:hover {
   box-shadow: 0 0 10px #333333;
-}
+} */
 
 .champContainer {
   position: relative;
@@ -26,7 +25,17 @@
   position: absolute;
   z-index: 1;
   margin-top: 75px;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.spell1:hover,
+.spell2:hover,
+.champIcon:hover {
+  box-shadow: 0 0 10px #333333;
 }
 
 .spell1 {
@@ -45,11 +54,11 @@
   display: block;
   height: 100px;
   width: 100px;
-  border: 1px solid #ddd;
-}
-
-.champName {
-  /* margin-top: 20px; */
+  border: 2px solid #ddd;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .role {

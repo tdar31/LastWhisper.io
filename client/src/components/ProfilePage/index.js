@@ -168,33 +168,6 @@ class ProfilePage extends Component {
     }
   };
 
-  //Not needed for now but will likely need in the future?
-  //Saving it for now just incase I need it for later
-  // parseDataId = () => {
-  //   //This is "decrypting" some of the returned match data that is store in number id's instead of strings such as champ names
-  //   //items etc.  The following loops through a local JSON file with all the info include the parings and updates.  EX champId: 555 = Pyke // spell1Id: 14 = Ignite
-  //   for (let i = 0; i < this.state.selectedPlayerData.length; i++) {
-  //     for (let j = 0; j < champJsonData.length; j++) {
-  //       if (this.state.selectedPlayerData[i].champId === champJsonData[j].key) {
-  //         //This process of creating a duplicate object to update these locations
-  //         //since react does not like updating nested objects within a state
-  //         let duplicateObj = Object.assign({}, this.state.selectedPlayerData[i]);
-  //         duplicateObj.champId = champJsonData[i].name;
-
-  //         this.setState({
-  //           selectedPlayerData: duplicateObj
-  //         },
-  //         function onceStateUpdated() {
-  //           console.log(
-  //             "AFTER UPDATEthis.state.selectedPlayerData: ",
-  //             this.state.selectedPlayerData
-  //           );
-  //         })
-  //       }
-  //     }
-  //   }
-  // };
-
   setSelectedButton(id) {
     this.setState({ selectedButton: id }, function() {
       console.log("selectedBTN: ", this.state.selectedButton);
@@ -227,7 +200,7 @@ class ProfilePage extends Component {
                     platformId={playerData.platformId}
                     queueId={playerData.queueId}
                     seasonId={playerData.seasonId}
-                    championIdRAW={playerData.championId}
+                    championIdRAW={playerData.championId.toString()}
                     championId={[
                       `/images/tiles/${playerData.championId}.jpg`
                     ].join(" ")}

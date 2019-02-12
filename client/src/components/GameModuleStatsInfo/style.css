@@ -3,11 +3,52 @@
   border-radius: 10px;
   background-color: rgb(74, 107, 214);
   text-align: center;
+  padding: 10px;
+}
+
+.totalMinionsKilled,
+.csPM,
+.creepScore,
+.kills,
+.totalDeaths,
+.KDA,
+.champLevel,
+.goldEarned {
+  font-size: 12px;
 }
 
 .perkPrimaryStyle,
 .perkSubStyle {
-  background-color: aqua;
+  background-color: #2e2e2e;
   padding: 3px;
   border-radius: 10px;
+  height: 30px;
+  width: 30px;
+  margin-top: 10px;
+  border: 2px solid #ddd;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.perkPrimaryStyle:hover,
+.perkSubStyle:hover {
+  box-shadow: 0 0 10px #333333;
+}
+
+.perkPrimaryStyle {
+  margin-right: 5px;
+}
+
+.perkSubStyle {
+  margin-left: 5px;
+}
+
+.csPM {
+  color: #2e2e2e;
+}
+
+.totalDeaths {
+  color: #a52121;
 }

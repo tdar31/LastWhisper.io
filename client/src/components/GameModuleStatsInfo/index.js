@@ -20,16 +20,16 @@ function GameModuleStatsInfo({
       <img className="perkPrimaryStyle" src={perkPrimaryStyle} />
       <img className="perkSubStyle" src={perkSubStyle} />
       <div className="totalMinionsKilled">
-        {creepScore} ({creepScorePerMin}) CS
+        {creepScore} <span className="csPM">({creepScorePerMin})</span>  CS
       </div>
       <div className="creepScore" />
 
       <div className="kills">
-        {kills} / {deaths} / {assists}
+        {kills} /<span className="totalDeaths"> {deaths} </span>/ {assists}
       </div>
       <div className="KDA">KDA: {KDA}</div>
-      <div className="champLevel">Level: {champLevel}</div>
-      <div className="goldEarned">Gold Earned: {goldEarned}</div>
+      <div className="champLevel"></div>
+      <div className="goldEarned"> Level: {champLevel} Gold: {goldEarned}</div>
     </div>
   );
 }

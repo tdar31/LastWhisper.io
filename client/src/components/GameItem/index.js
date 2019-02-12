@@ -4,6 +4,7 @@ import "./style.css";
 import GameModuleMatchInfo from "../GameModuleMatchInfo";
 import GameModuleChampInfo from "../GameModuleChampInfo";
 import GameModuleStatsInfo from "../GameModuleStatsInfo";
+import GameModuleItemInfo from "../GameModuleItemInfo";
 const champJsonData = require("../../assets/jsonData/champions.json");
 
 class GameItem extends Component {
@@ -13,7 +14,9 @@ class GameItem extends Component {
     gameDuration: "",
     win: "",
     deaths: "",
-    KDA: ""
+    KDA: "",
+    champName: "",
+    role: ""
   };
 
   componentDidMount() {
@@ -32,6 +35,7 @@ class GameItem extends Component {
     // console.log("Minutes: ", minutes);
     var seconds = this.props.gameDuration - minutes * 60;
     let gD = [minutes + `m ` + seconds + "s"].join(" ");
+    //
     //Swaps win/loss Boolean to text
     //Need to figure out what to do for remake?
     if (this.props.win) {
@@ -43,6 +47,7 @@ class GameItem extends Component {
         win: "Defeat"
       });
     }
+    //
     //Calculating Creep Score + Creep Score Per Minute
     let creepS =
       (+this.props.totalMinionsKilled + +this.props.neutralMinionsKilled) /
@@ -51,6 +56,7 @@ class GameItem extends Component {
     let cs = +this.props.totalMinionsKilled + +this.props.neutralMinionsKilled;
     //Creep Score Per Minute
     let csPM = Math.round(creepS * 10) / 10;
+    //
     //Calculating KDA score
     if (this.props.deaths == "0") {
       this.setState(
@@ -71,6 +77,15 @@ class GameItem extends Component {
         }
       );
     }
+    //
+    //Swaps champ ID number with champ name
+    for (let i = 0; i < champJsonData.length; i++) {
+      if (champJsonData[i].key === this.props.championIdRAW) {
+        this.setState({
+          champName: champJsonData[i].name
+        });
+      }
+    }
 
     //Updates everything calculated above and push it to state
     this.setState({
@@ -83,7 +98,8 @@ class GameItem extends Component {
   }
 
   calculateKDA = () => {
-    let kda = (+this.props.kills + +this.props.assists) / +this.state.deaths;
+    let kd = (+this.props.kills + +this.props.assists) / +this.state.deaths;
+    let kda = Math.round(kd * 10) / 10;
     this.setState(
       {
         KDA: kda
@@ -104,7 +120,7 @@ class GameItem extends Component {
           outcome={this.state.win}
         />
         <GameModuleChampInfo
-          champName={this.props.championIdRAW}
+          champName={this.state.champName}
           champIcon={process.env.PUBLIC_URL + this.props.championId}
           spell1={process.env.PUBLIC_URL + this.props.spell1Id}
           spell2={process.env.PUBLIC_URL + this.props.spell2Id}
@@ -126,43 +142,15 @@ class GameItem extends Component {
           creepScore={this.state.creepScore}
           KDA={this.state.KDA}
         />
-        <div className="containerThree">
-          <img
-            alt="img"
-            className="item0"
-            src={process.env.PUBLIC_URL + this.props.item0}
-          />
-          <img
-            alt="img"
-            className="item1"
-            src={process.env.PUBLIC_URL + this.props.item1}
-          />
-          <img
-            alt="img"
-            className="item2"
-            src={process.env.PUBLIC_URL + this.props.item2}
-          />
-          <img
-            alt="img"
-            className="item3"
-            src={process.env.PUBLIC_URL + this.props.item3}
-          />
-          <img
-            alt="img"
-            className="item4"
-            src={process.env.PUBLIC_URL + this.props.item4}
-          />
-          <img
-            alt="img"
-            className="item5"
-            src={process.env.PUBLIC_URL + this.props.item5}
-          />
-          <img
-            alt="img"
-            className="item6"
-            src={process.env.PUBLIC_URL + this.props.item6}
-          />
-        </div>
+        <GameModuleItemInfo
+          item0={process.env.PUBLIC_URL + this.props.item0}
+          item1={process.env.PUBLIC_URL + this.props.item1}
+          item2={process.env.PUBLIC_URL + this.props.item2}
+          item3={process.env.PUBLIC_URL + this.props.item3}
+          item4={process.env.PUBLIC_URL + this.props.item4}
+          item5={process.env.PUBLIC_URL + this.props.item5}
+          item6={process.env.PUBLIC_URL + this.props.item6}
+        />
       </div>
     );
   }

@@ -35,8 +35,9 @@
   height: 100px;
   width: 100px;
   border-radius: 10px;
-  background-color: black !important;
+  /* background-color: black !important; */
   margin: 15px;
+  border: 2px solid #ddd;
 }
 
 .has-background-dark {
