@@ -41,7 +41,8 @@
 }
 
 .item6 {
-  margin-bottom: 25px;
+  display: inline-block;
+  margin-bottom: 12.5%;
 }
 
 .item0:hover,
@@ -52,8 +53,5 @@
 .item5:hover,
 .item6:hover {
   box-shadow: 0 0 10px #333333;
-}
-
-.item6 {
-  display: inline-block;
+  cursor: pointer;
 }

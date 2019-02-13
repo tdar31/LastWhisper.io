@@ -2,7 +2,9 @@
 
 To-do
 
-
+- Tooltips that are dynamic
+- Modals with dymaic info
+- Change bar to reflect color of win or loss
 - Filter for runes (done)
 - Finish building out skeleton for GameItem (done)
 - Last ten games from API

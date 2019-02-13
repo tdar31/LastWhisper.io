@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import moment from "moment";
+import _ from "lodash";
 import "./style.css";
 import GameModuleMatchInfo from "../GameModuleMatchInfo";
 import GameModuleChampInfo from "../GameModuleChampInfo";
 import GameModuleStatsInfo from "../GameModuleStatsInfo";
 import GameModuleItemInfo from "../GameModuleItemInfo";
-const champJsonData = require("../../assets/jsonData/champions.json");
+import GameModuleFullMatchInfo from "../GameModuleFullMatchInfo";
+const champJsonData = require("../../assets/jsonData/en_US/championFull.json");
+// const itemJsonData = require("../../assets/jsonData/en_US/item.json");
 
 class GameItem extends Component {
   state = {
@@ -16,11 +19,46 @@ class GameItem extends Component {
     deaths: "",
     KDA: "",
     champName: "",
-    role: ""
+    item0: "",
+    champKeyPairs: []
   };
 
+  componentWillMount() {
+    // console.log("itemJsonData: ", itemJsonData);
+    // console.log("champJsonData: ", champJsonData);
+    // console.log("champJsonDataINSIDE: ", champJsonData.keys);
+    for (var key in champJsonData.keys) {
+      // console.log(key);
+      let champKeysArr = champJsonData.keys[key];
+      // console.log(champKeysArr);
+      let item = {
+        id: key,
+        name: champKeysArr
+      };
+      // console.log(item);
+
+      this.setState(state => {
+        //Pushing found match stats specific to player to new array which is passed down as props to game item
+        const champKeyPairs = [...state.champKeyPairs, item];
+        return {
+          champKeyPairs
+        };
+      });
+    }
+  }
+
   componentDidMount() {
-    console.log("champData: ", champJsonData);
+    console.log(this.state.champKeyPairs)
+    for (let i = 0; i < this.state.champKeyPairs.length; i++) {
+      if (this.state.champKeyPairs[i].id === this.props.championIdRAW) {
+        this.setState({
+          champName: this.state.champKeyPairs[i].name
+        });
+      }
+    }
+    // Swaps champ ID number with champ name
+
+    //
     //Converts game Creation into Date
     let dt = new Date(this.props.gameCreation);
     let gC = moment(dt).format("MMM Do YYYY,h:mm a");
@@ -78,14 +116,25 @@ class GameItem extends Component {
       );
     }
     //
-    //Swaps champ ID number with champ name
-    for (let i = 0; i < champJsonData.length; i++) {
-      if (champJsonData[i].key === this.props.championIdRAW) {
-        this.setState({
-          champName: champJsonData[i].name
-        });
-      }
-    }
+    // for (let i = 0; i < itemJsonData.length; i++) {
+    //   if (itemJsonData.data[i] === this.props.item0) {
+    //     this.setState({
+    //       item0: itemJsonData.data[i].name
+    //     },
+    //     function onceitemJsonData() {
+    //       console.log("item0: ", this.state.item0);
+    //     });
+    //   }
+    // }
+
+    // console.log(itemJsonData.data.fuckyou.name)
+    // _.findKey(itemJsonData.data, {})
+    //   for (item0 in itemJsonData.data) {
+    //     if (itemJsonData.data.hasOwnProperty("3401")) {
+
+    //         return console.log("---: ", item0 + " -> " + itemJsonData.data.item0.name);
+    //     }
+    // }
 
     //Updates everything calculated above and push it to state
     this.setState({
@@ -151,6 +200,7 @@ class GameItem extends Component {
           item5={process.env.PUBLIC_URL + this.props.item5}
           item6={process.env.PUBLIC_URL + this.props.item6}
         />
+        <GameModuleFullMatchInfo />
       </div>
     );
   }

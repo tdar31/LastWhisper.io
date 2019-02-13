@@ -12,7 +12,7 @@ function GameModuleChampInfo({ champName, champIcon, spell1, spell2, role }) {
         <img alt="img" className="spell2" data-tip="Flash" src={spell2} />
       </div>
       <div className="champName">{champName}</div>
-      <div className="role">{role}</div>
+      {/* <div className="role">{role}</div> */}
     </div>
   );
 }

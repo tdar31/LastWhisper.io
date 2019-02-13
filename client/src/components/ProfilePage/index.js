@@ -17,7 +17,6 @@ class ProfilePage extends Component {
     theme: "",
     matchData: [],
     selectedPlayerData: [] //This state doesn't get pushed to DB.  Only used to parse data
-    // test: "../../assets/images/champion/555.png"
   };
 
   componentWillMount() {
@@ -218,6 +217,9 @@ class ProfilePage extends Component {
                     item0={[`/images/item/${playerData.stats.item0}.png`].join(
                       " "
                     )}
+                    item0idRAW={[`${playerData.stats.item0}.png`].join(
+                      " "
+                    )}
                     item1={[`/images/item/${playerData.stats.item1}.png`].join(
                       " "
                     )}
@@ -240,10 +242,14 @@ class ProfilePage extends Component {
                     win={playerData.stats.win}
                     role={playerData.timeline.role}
                     perkPrimaryStyle={[
-                      `/images/perk-images/Styles/${playerData.stats.perkPrimaryStyle}.png`
+                      `/images/perk-images/Styles/${
+                        playerData.stats.perkPrimaryStyle
+                      }.png`
                     ].join(" ")}
                     perkSubStyle={[
-                      `/images/perk-images/Styles/${playerData.stats.perkSubStyle}.png`
+                      `/images/perk-images/Styles/${
+                        playerData.stats.perkSubStyle
+                      }.png`
                     ].join(" ")}
                     totalMinionsKilled={playerData.stats.totalMinionsKilled}
                     neutralMinionsKilled={playerData.stats.neutralMinionsKilled}

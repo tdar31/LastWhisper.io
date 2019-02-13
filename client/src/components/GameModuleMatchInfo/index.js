@@ -14,9 +14,16 @@ function GameModuleMatchInfo({
       <div className="queueId">Normal</div>
       <b className="outcome">{outcome}</b>
       <div className="gameCreationDate">{gameCreationDate}</div>
-      <div className="gameCreationTime">{gameCreationTime}</div>
+      <div className="gameCreationTime">{gameCreationTime}
+      
+      
+      
+      </div>
       <div className="gameDuration">{gameDuration}</div>
     </div>
+
+
+
   );
 }
 

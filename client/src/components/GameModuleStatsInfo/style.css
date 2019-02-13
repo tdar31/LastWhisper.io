@@ -35,6 +35,7 @@
 .perkPrimaryStyle:hover,
 .perkSubStyle:hover {
   box-shadow: 0 0 10px #333333;
+  cursor: pointer;
 }
 
 .perkPrimaryStyle {
