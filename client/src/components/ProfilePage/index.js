@@ -206,9 +206,11 @@ class ProfilePage extends Component {
                     spell1Id={[
                       `/images/summonerspell/${playerData.spell1Id}.png`
                     ].join(" ")}
+                    spell1RawId={playerData.spell1Id.toString()}
                     spell2Id={[
                       `/images/summonerspell/${playerData.spell2Id}.png`
                     ].join(" ")}
+                    spell2RawId={playerData.spell2Id.toString()}
                     assists={playerData.stats.assists}
                     champLevel={playerData.stats.champLevel}
                     deaths={playerData.stats.deaths}
@@ -250,13 +252,13 @@ class ProfilePage extends Component {
                         playerData.stats.perkPrimaryStyle
                       }.png`
                     ].join(" ")}
-                    perkPrimaryStyleRawId={playerData.stats.perkPrimaryStyle.toString()}
+                    perkPrimaryStyleRawId={playerData.stats.perkPrimaryStyle}
                     perkSubStyle={[
                       `/images/perk-images/Styles/${
                         playerData.stats.perkSubStyle
                       }.png`
                     ].join(" ")}
-                    perkSubStyleRawId={playerData.stats.perkSubStyle.toString()}
+                    perkSubStyleRawId={playerData.stats.perkSubStyle}
                     totalMinionsKilled={playerData.stats.totalMinionsKilled}
                     neutralMinionsKilled={playerData.stats.neutralMinionsKilled}
                   />

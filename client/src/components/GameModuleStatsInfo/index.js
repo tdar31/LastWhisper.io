@@ -14,13 +14,15 @@ function GameModuleStatsInfo({
   totalMinionsKilled,
   creepScore,
   creepScorePerMin,
-  KDA
+  KDA,
+  perkPrimaryStyleName,
+  perkSubStyleName
 }) {
   return (
     <div className="GameModuleStatsInfo">
       <ReactTooltip place="top" type="dark" effect="solid" />
-      <img data-tip="1" className="perkPrimaryStyle" src={perkPrimaryStyle} />
-      <img data-tip="2" className="perkSubStyle" src={perkSubStyle} />
+      <img data-tip={perkPrimaryStyleName} className="perkPrimaryStyle" src={perkPrimaryStyle} />
+      <img data-tip={perkSubStyleName} className="perkSubStyle" src={perkSubStyle} />
       <div className="totalMinionsKilled">
         {creepScore} <span className="csPM">({creepScorePerMin})</span> CS
       </div>

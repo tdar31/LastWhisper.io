@@ -9,6 +9,8 @@ import GameModuleItemInfo from "../GameModuleItemInfo";
 import GameModuleFullMatchInfo from "../GameModuleFullMatchInfo";
 const champJsonData = require("../../assets/jsonData/en_US/championFull.json");
 const itemJsonData = require("../../assets/jsonData/en_US/item.json");
+const summonerJsonData = require("../../assets/jsonData/en_US/summoner.json");
+const runesJsonData = require("../../assets/jsonData/en_US/runesReforged.json");
 
 class GameItem extends Component {
   state = {
@@ -22,6 +24,7 @@ class GameItem extends Component {
     item0: "",
     champKeyPairs: [],
     itemKeyPairs: [],
+    summonerKeyPairs: [],
     itemArray: [],
     item0: "",
     item1: "",
@@ -29,13 +32,16 @@ class GameItem extends Component {
     item3: "",
     item4: "",
     item5: "",
-    item6: ""
+    item6: "",
+    spell1: "",
+    spell2: "",
+    perkPrimary: "",
+    perkSub: ""
   };
 
   componentWillMount() {
-    // console.log("itemJsonData: ", itemJsonData.data);
-    // console.log("champJsonData: ", champJsonData);
-    //
+    console.log("runesJsonData: ", runesJsonData);
+
     //Finds all items and pairs them with their ID in an array of objects for parsing through
     //For-in loop since json data provided by Riot is a single nested object
     for (var key in itemJsonData.data) {
@@ -79,24 +85,30 @@ class GameItem extends Component {
       });
     }
     //
-    //Prep items for name swap
-    let itemArr = [];
-    itemArr.push(
-      this.props.item0RawId,
-      this.props.item1RawId,
-      this.props.item2RawId,
-      this.props.item3RawId,
-      this.props.item4RawId,
-      this.props.item5RawId,
-      this.props.item6RawId
-    );
-    this.setState({
-      itemArray: itemArr
-    });
+    //Swap Summoner ID with names
+    for (var key in summonerJsonData.data) {
+      // console.log(key);
+      let summonerKeysArr = summonerJsonData.data[key].key;
+      let summonerKeysName = summonerJsonData.data[key].name;
+      // console.log(summonerKeysArr);
+      // console.log(summonerKeysName);
+      let sums = {
+        id: summonerKeysArr,
+        name: summonerKeysName
+      };
+      // console.log(sums);
+      this.setState(state => {
+        //Pushing found match stats specific to player to new array which is passed down as props to game item
+        const summonerKeyPairs = [...state.summonerKeyPairs, sums];
+        return {
+          summonerKeyPairs
+        };
+      });
+    }
   }
 
   componentDidMount() {
-    console.log(this.state.itemKeyPairs);
+    // console.log(this.state.perkPrimary, this.state.perkSub)
     //
     // Swaps champ ID number with champ name
     for (let i = 0; i < this.state.champKeyPairs.length; i++) {
@@ -149,7 +161,34 @@ class GameItem extends Component {
         });
       }
     }
-
+    //
+    //Swap summoner ID with name
+    for (let i = 0; i < this.state.summonerKeyPairs.length; i++) {
+      if (this.state.summonerKeyPairs[i].id === this.props.spell1RawId) {
+        this.setState({
+          spell1: this.state.summonerKeyPairs[i].name
+        });
+      }
+      if (this.state.summonerKeyPairs[i].id === this.props.spell2RawId) {
+        this.setState({
+          spell2: this.state.summonerKeyPairs[i].name
+        });
+      }
+    }
+    //
+    //Swap rune ID with name
+    for (let i = 0; i < runesJsonData.length; i++) {
+      if (runesJsonData[i].id === this.props.perkPrimaryStyleRawId) {
+        this.setState({
+          perkPrimary: runesJsonData[i].key
+        });
+      }
+      if (runesJsonData[i].id === this.props.perkSubStyleRawId) {
+        this.setState({
+          perkSub: runesJsonData[i].key
+        });
+      }
+    }
     //
     //Converts game Creation into Date
     let dt = new Date(this.props.gameCreation);
@@ -167,7 +206,7 @@ class GameItem extends Component {
     let gD = [minutes + `m ` + seconds + "s"].join(" ");
     //
     //Swaps win/loss Boolean to text
-    //Need to figure out what to do for remake?
+    //Need to figure out what to do for remake? Work on this later
     if (this.props.win) {
       this.setState({
         win: "Victory"
@@ -244,7 +283,9 @@ class GameItem extends Component {
           champName={this.state.champName}
           champIcon={process.env.PUBLIC_URL + this.props.championId}
           spell1={process.env.PUBLIC_URL + this.props.spell1Id}
+          spell1Name={this.state.spell1}
           spell2={process.env.PUBLIC_URL + this.props.spell2Id}
+          spell2Name={this.state.spell2}
           role={this.props.role}
         />
         <GameModuleStatsInfo
@@ -257,7 +298,9 @@ class GameItem extends Component {
           perkPrimaryStyle={
             process.env.PUBLIC_URL + this.props.perkPrimaryStyle
           }
+          perkPrimaryStyleName={this.state.perkPrimary}
           perkSubStyle={process.env.PUBLIC_URL + this.props.perkSubStyle}
+          perkSubStyleName={this.state.perkSub}
           totalMinionsKilled={this.props.totalMinionsKilled}
           creepScorePerMin={this.state.creepScorePerMin}
           creepScore={this.state.creepScore}
