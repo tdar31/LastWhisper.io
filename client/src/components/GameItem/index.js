@@ -8,7 +8,7 @@ import GameModuleStatsInfo from "../GameModuleStatsInfo";
 import GameModuleItemInfo from "../GameModuleItemInfo";
 import GameModuleFullMatchInfo from "../GameModuleFullMatchInfo";
 const champJsonData = require("../../assets/jsonData/en_US/championFull.json");
-// const itemJsonData = require("../../assets/jsonData/en_US/item.json");
+const itemJsonData = require("../../assets/jsonData/en_US/item.json");
 
 class GameItem extends Component {
   state = {
@@ -20,13 +20,45 @@ class GameItem extends Component {
     KDA: "",
     champName: "",
     item0: "",
-    champKeyPairs: []
+    champKeyPairs: [],
+    itemKeyPairs: [],
+    item0: "",
+    item1: "",
+    item2: "",
+    item3: "",
+    item4: "",
+    item5: "",
+    item6: ""
   };
 
   componentWillMount() {
-    // console.log("itemJsonData: ", itemJsonData);
+    // console.log("itemJsonData: ", itemJsonData.data);
     // console.log("champJsonData: ", champJsonData);
-    // console.log("champJsonDataINSIDE: ", champJsonData.keys);
+    //
+    //Finds all items and pairs them with their ID in an array of objects for parsing through
+    //For-in loop since json data provided by Riot is a single nested object
+    for (var key in itemJsonData.data) {
+      // console.log(key);
+      let itemKeysArr = itemJsonData.data[key].name;
+      // console.log(itemKeysArr);
+      let item = {
+        id: key,
+        name: itemKeysArr
+      };
+      // console.log(item);
+
+      this.setState(state => {
+        //Pushing found match stats specific to player to new array which is passed down as props to game item
+        const itemKeyPairs = [...state.itemKeyPairs, item];
+        return {
+          itemKeyPairs
+        };
+      });
+    }
+
+    //
+    //Swaps ID of champ to their name
+    //For-in loop since json data provided by Riot is a single nested object
     for (var key in champJsonData.keys) {
       // console.log(key);
       let champKeysArr = champJsonData.keys[key];
@@ -48,7 +80,7 @@ class GameItem extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.champKeyPairs)
+    console.log(this.state.itemKeyPairs);
     for (let i = 0; i < this.state.champKeyPairs.length; i++) {
       if (this.state.champKeyPairs[i].id === this.props.championIdRAW) {
         this.setState({

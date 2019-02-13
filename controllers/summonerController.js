@@ -4,7 +4,7 @@ var axios = require("axios");
 
 module.exports = {
   findAll: function(req, res) {
-    console.log("FIND ALL // req.params: ", req.params.username);
+    // console.log("FIND ALL // req.params: ", req.params.username);
     axios
       .get(
         "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +
@@ -39,7 +39,7 @@ module.exports = {
       });
   },
   getMatchData: function(req, res) {
-    console.log("GET MATCH DATA // req.params: ", req.body);
+    // console.log("GET MATCH DATA // req.params: ", req.body);
     axios
       .get(
         "https://na1.api.riotgames.com/lol/match/v4/matches/" +

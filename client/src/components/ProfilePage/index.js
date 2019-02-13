@@ -28,7 +28,7 @@ class ProfilePage extends Component {
       ? this.setState({ theme: "is-info" })
       : this.setState({ theme: "is-danger" });
 
-    console.log(champJsonData);
+    // console.log(champJsonData);
   }
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class ProfilePage extends Component {
       username: this.props.match.params.username,
       region: this.props.match.params.region
     };
-    console.log("Submit button clicked-> queryUser: ", queryUser);
+    // console.log("Submit button clicked-> queryUser: ", queryUser);
     API.getUser(queryUser)
       .then(res =>
         this.setState({ profile: res.data }, function onceStateUpdated() {
@@ -51,7 +51,7 @@ class ProfilePage extends Component {
   }
 
   getMatchHistory = profile => {
-    console.log("GET MATCH HISTORY: ", this.state.profile);
+    // console.log("GET MATCH HISTORY: ", this.state.profile);
 
     let userData = {
       accountId: profile,
@@ -113,7 +113,7 @@ class ProfilePage extends Component {
     //This iterates through all the matchData games returned by API which is now saved to the state
     for (let h = 0; h < this.state.matchData.length; h++) {
       let matchDataArray = this.state.matchData[h];
-      console.log("matchDataArray: ", matchDataArray);
+      // console.log("matchDataArray: ", matchDataArray);
       //Once the matchData is selected this loop goes through and search for the match paricipant
       //where the Identity matches the profile.accountId (queried users ID)
       for (
@@ -154,10 +154,10 @@ class ProfilePage extends Component {
                   };
                 },
                 function onceStateUpdated() {
-                  console.log(
-                    "this.state.selectedPlayerData: ",
-                    this.state.selectedPlayerData
-                  );
+                  // console.log(
+                  //   "this.state.selectedPlayerData: ",
+                  //   this.state.selectedPlayerData
+                  // );
                 }
               );
             }

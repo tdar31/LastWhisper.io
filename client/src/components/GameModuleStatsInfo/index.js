@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTooltip from "react-tooltip";
 import "./style.css";
 
 function GameModuleStatsInfo({
@@ -17,10 +18,11 @@ function GameModuleStatsInfo({
 }) {
   return (
     <div className="GameModuleStatsInfo">
-      <img className="perkPrimaryStyle" src={perkPrimaryStyle} />
-      <img className="perkSubStyle" src={perkSubStyle} />
+      <ReactTooltip place="top" type="dark" effect="solid" />
+      <img data-tip="1" className="perkPrimaryStyle" src={perkPrimaryStyle} />
+      <img data-tip="2" className="perkSubStyle" src={perkSubStyle} />
       <div className="totalMinionsKilled">
-        {creepScore} <span className="csPM">({creepScorePerMin})</span>  CS
+        {creepScore} <span className="csPM">({creepScorePerMin})</span> CS
       </div>
       <div className="creepScore" />
 
@@ -28,8 +30,11 @@ function GameModuleStatsInfo({
         {kills} /<span className="totalDeaths"> {deaths} </span>/ {assists}
       </div>
       <div className="KDA">KDA: {KDA}</div>
-      <div className="champLevel"></div>
-      <div className="goldEarned"> Level: {champLevel} Gold: {goldEarned}</div>
+      <div className="champLevel" />
+      <div className="goldEarned">
+        {" "}
+        Level: {champLevel} Gold: {goldEarned}
+      </div>
     </div>
   );
 }

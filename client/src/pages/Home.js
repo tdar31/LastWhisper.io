@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 import { BrowserRouter as Link } from "react-router-dom";
 import HomeContainer from "../components/HomeContainer";
 import HomeBody from "../components/HomeBody";
-import HomeFooter from "../components/HomeFooter";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import Banner from "../components/Banner";
-import HomeFooterButton from "../components/HomeFooterButton";
 
 class Home extends Component {
   state = {
@@ -33,19 +30,19 @@ class Home extends Component {
         inputValue: typedValue
       },
       function onceStateUpdated() {
-        console.log("this.state.inputValue: ", this.state.inputValue);
+        // console.log("this.state.inputValue: ", this.state.inputValue);
       }
     );
   };
 
   setSelectedButton(id) {
     this.setState({ selectedButton: id }, function() {
-      console.log("selectedBTN: ", this.state.selectedButton);
+      // console.log("selectedBTN: ", this.state.selectedButton);
     });
   }
 
   handleOnSubmit = event => {
-    console.log("Submit button clicked");
+    // console.log("Submit button clicked");
     event.preventDefault();
 
     //Take in 
