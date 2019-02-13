@@ -217,27 +217,31 @@ class ProfilePage extends Component {
                     item0={[`/images/item/${playerData.stats.item0}.png`].join(
                       " "
                     )}
-                    item0idRAW={[`${playerData.stats.item0}.png`].join(
-                      " "
-                    )}
+                    item0RawId={playerData.stats.item0.toString()}
                     item1={[`/images/item/${playerData.stats.item1}.png`].join(
                       " "
                     )}
+                    item1RawId={playerData.stats.item1.toString()}
                     item2={[`/images/item/${playerData.stats.item2}.png`].join(
                       " "
                     )}
+                    item2RawId={playerData.stats.item2.toString()}
                     item3={[`/images/item/${playerData.stats.item3}.png`].join(
                       " "
                     )}
+                    item3RawId={playerData.stats.item3.toString()}
                     item4={[`/images/item/${playerData.stats.item4}.png`].join(
                       " "
                     )}
+                    item4RawId={playerData.stats.item4.toString()}
                     item5={[`/images/item/${playerData.stats.item5}.png`].join(
                       " "
                     )}
+                    item5RawId={playerData.stats.item5.toString()}
                     item6={[`/images/item/${playerData.stats.item6}.png`].join(
                       " "
                     )}
+                    item6RawId={playerData.stats.item6.toString()}
                     kills={playerData.stats.kills}
                     win={playerData.stats.win}
                     role={playerData.timeline.role}
@@ -246,11 +250,13 @@ class ProfilePage extends Component {
                         playerData.stats.perkPrimaryStyle
                       }.png`
                     ].join(" ")}
+                    perkPrimaryStyleRawId={playerData.stats.perkPrimaryStyle.toString()}
                     perkSubStyle={[
                       `/images/perk-images/Styles/${
                         playerData.stats.perkSubStyle
                       }.png`
                     ].join(" ")}
+                    perkSubStyleRawId={playerData.stats.perkSubStyle.toString()}
                     totalMinionsKilled={playerData.stats.totalMinionsKilled}
                     neutralMinionsKilled={playerData.stats.neutralMinionsKilled}
                   />

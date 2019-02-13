@@ -22,6 +22,7 @@ class GameItem extends Component {
     item0: "",
     champKeyPairs: [],
     itemKeyPairs: [],
+    itemArray: [],
     item0: "",
     item1: "",
     item2: "",
@@ -77,10 +78,27 @@ class GameItem extends Component {
         };
       });
     }
+    //
+    //Prep items for name swap
+    let itemArr = [];
+    itemArr.push(
+      this.props.item0RawId,
+      this.props.item1RawId,
+      this.props.item2RawId,
+      this.props.item3RawId,
+      this.props.item4RawId,
+      this.props.item5RawId,
+      this.props.item6RawId
+    );
+    this.setState({
+      itemArray: itemArr
+    });
   }
 
   componentDidMount() {
     console.log(this.state.itemKeyPairs);
+    //
+    // Swaps champ ID number with champ name
     for (let i = 0; i < this.state.champKeyPairs.length; i++) {
       if (this.state.champKeyPairs[i].id === this.props.championIdRAW) {
         this.setState({
@@ -88,7 +106,49 @@ class GameItem extends Component {
         });
       }
     }
-    // Swaps champ ID number with champ name
+    //
+    // Swaps item ID number with item name
+    //I cannot find a better way to do this as the I can't make the state be part of the
+    //iterator and have to do it one at at time.
+    //Gonna look into this so more later but for now its
+    //gotta be hardcoded with 6 for loops
+    for (let i = 0; i < this.state.itemKeyPairs.length; i++) {
+      if (this.state.itemKeyPairs[i].id === this.props.item0RawId) {
+        this.setState({
+          item0: this.state.itemKeyPairs[i].name
+        });
+      }
+      if (this.state.itemKeyPairs[i].id === this.props.item1RawId) {
+        this.setState({
+          item1: this.state.itemKeyPairs[i].name
+        });
+      }
+      if (this.state.itemKeyPairs[i].id === this.props.item2RawId) {
+        this.setState({
+          item2: this.state.itemKeyPairs[i].name
+        });
+      }
+      if (this.state.itemKeyPairs[i].id === this.props.item3RawId) {
+        this.setState({
+          item3: this.state.itemKeyPairs[i].name
+        });
+      }
+      if (this.state.itemKeyPairs[i].id === this.props.item4RawId) {
+        this.setState({
+          item4: this.state.itemKeyPairs[i].name
+        });
+      }
+      if (this.state.itemKeyPairs[i].id === this.props.item5RawId) {
+        this.setState({
+          item5: this.state.itemKeyPairs[i].name
+        });
+      }
+      if (this.state.itemKeyPairs[i].id === this.props.item6RawId) {
+        this.setState({
+          item6: this.state.itemKeyPairs[i].name
+        });
+      }
+    }
 
     //
     //Converts game Creation into Date
@@ -148,26 +208,6 @@ class GameItem extends Component {
       );
     }
     //
-    // for (let i = 0; i < itemJsonData.length; i++) {
-    //   if (itemJsonData.data[i] === this.props.item0) {
-    //     this.setState({
-    //       item0: itemJsonData.data[i].name
-    //     },
-    //     function onceitemJsonData() {
-    //       console.log("item0: ", this.state.item0);
-    //     });
-    //   }
-    // }
-
-    // console.log(itemJsonData.data.fuckyou.name)
-    // _.findKey(itemJsonData.data, {})
-    //   for (item0 in itemJsonData.data) {
-    //     if (itemJsonData.data.hasOwnProperty("3401")) {
-
-    //         return console.log("---: ", item0 + " -> " + itemJsonData.data.item0.name);
-    //     }
-    // }
-
     //Updates everything calculated above and push it to state
     this.setState({
       gameCreationDate: gCD,
@@ -225,12 +265,19 @@ class GameItem extends Component {
         />
         <GameModuleItemInfo
           item0={process.env.PUBLIC_URL + this.props.item0}
+          item0Name={this.state.item0}
           item1={process.env.PUBLIC_URL + this.props.item1}
+          item1Name={this.state.item1}
           item2={process.env.PUBLIC_URL + this.props.item2}
+          item2Name={this.state.item2}
           item3={process.env.PUBLIC_URL + this.props.item3}
+          item3Name={this.state.item3}
           item4={process.env.PUBLIC_URL + this.props.item4}
+          item4Name={this.state.item4}
           item5={process.env.PUBLIC_URL + this.props.item5}
+          item5Name={this.state.item5}
           item6={process.env.PUBLIC_URL + this.props.item6}
+          item6Name={this.state.item6}
         />
         <GameModuleFullMatchInfo />
       </div>
