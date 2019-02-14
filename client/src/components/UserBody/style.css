@@ -1,8 +1,15 @@
 .has-background-dark {
-    /* background-color: rgba(54, 54, 54, 0.7) !important; */
+  /* background-color: rgba(54, 54, 54, 0.7) !important; */
+}
+
+.columns:not(.is-desktop) {
+  display: block;
 }
 
 .userBody {
-    margin-top: 25px;
-    border-radius: 10px;
+  border-radius: 10px;
+}
+
+.level {
+  margin-top: 25px;
 }

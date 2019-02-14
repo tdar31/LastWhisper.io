@@ -187,7 +187,7 @@ class ProfilePage extends Component {
   render() {
     return (
       <div>
-        <Particles
+        {/* <Particles
           params={{
             particles: {
               number: {
@@ -259,7 +259,7 @@ class ProfilePage extends Component {
               }
             }
           }}
-        />
+        /> */}
         <ProfileContainer className={this.state.theme}>
           <Nav />
           <ProfileBody>
@@ -272,6 +272,7 @@ class ProfilePage extends Component {
               ].join(" ")}
             />
             <UserBody>
+              {" "}
               <GameContainer>
                 {this.state.selectedPlayerData.map((playerData, index) => (
                   <GameItem

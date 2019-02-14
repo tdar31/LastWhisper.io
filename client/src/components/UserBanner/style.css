@@ -1,5 +1,7 @@
 .userBanner {
   border-radius: 10px;
+  /* Don't touch this one k */
+  margin-bottom: 37px; 
 }
 
 .title {

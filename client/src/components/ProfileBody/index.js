@@ -4,7 +4,9 @@ import "./style.css";
 function ProfileBody({ children }) {
   return (
     <div className="hero-body">
-      <div className="container">{children}</div>
+      <div className="container">
+        {children}
+      </div>
     </div>
   );
 }

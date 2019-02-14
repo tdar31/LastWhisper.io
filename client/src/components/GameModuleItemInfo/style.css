@@ -6,6 +6,7 @@
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
+  margin: 20px 0px 20px 0px;
 }
 
 .itemContainer {
