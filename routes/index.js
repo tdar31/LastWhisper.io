@@ -1,7 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
-console.log("INSIDE indexjsAPI FOLDER")
+// console.log("INSIDE indexjsAPI FOLDER")
 
 // API Routes
 router.use("/api", apiRoutes);

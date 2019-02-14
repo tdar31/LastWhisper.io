@@ -1,9 +1,10 @@
 .GameModuleMatchInfo {
   display: inline-block;
   border-radius: 10px;
-  background-color: rgb(74, 107, 214);
+  background-color: whitesmoke;
   text-align: center;
   padding: 15px 30px 15px 30px;
+  color: #3a3a3a; 
   /* margin: 20px; */
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
@@ -27,5 +28,4 @@
 }
 
 .gameDuration {
-  color: #3a3a3a;
 }

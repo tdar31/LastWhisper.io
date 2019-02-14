@@ -40,7 +40,7 @@ class GameItem extends Component {
   };
 
   componentWillMount() {
-    console.log("runesJsonData: ", runesJsonData);
+    // console.log("runesJsonData: ", runesJsonData);
 
     //Finds all items and pairs them with their ID in an array of objects for parsing through
     //For-in loop since json data provided by Riot is a single nested object

@@ -1,11 +1,13 @@
 .GameModuleChampInfo {
-  background-color: rgb(74, 107, 214);
+  background-color: whitesmoke;
   text-align: center;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   border-radius: 10px;
+  color: #3a3a3a;
+
 }
 
 /* .GameModuleChampInfo:hover {
@@ -25,7 +27,7 @@
   position: absolute;
   z-index: 1;
   margin-top: 75px;
-  border: 2px solid #ddd;
+  border: 2px solid #999999;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -55,14 +57,14 @@
   display: block;
   height: 100px;
   width: 100px;
-  border: 2px solid #ddd;
+  border: 2px solid #999999;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
 
-.role {
+/* .role {
   font-size: 10px;
   margin-bottom: 5px;
-}
+} */

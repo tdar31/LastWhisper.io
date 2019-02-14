@@ -2,7 +2,7 @@
 
 To-do
 
-- Tooltips that are dynamic
+- Tooltips that are dynamic (done)
 - Modals with dymaic info
 - Change bar to reflect color of win or loss
 - Filter for runes (done)

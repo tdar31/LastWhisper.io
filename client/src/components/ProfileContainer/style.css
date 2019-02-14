@@ -8,9 +8,23 @@
 }
 
 .hero.is-danger {
-  background-image: radial-gradient(circle, #b37671, #991d11);
+  /* background-image: url(../../assets/backgrounds/background-2.png) */
+  background-image: radial-gradient(circle, #bb4b4b, #6e1614);
+  /* background-image: url(../../assets/backgrounds/background-1.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
 }
 
 .hero.is-info {
   background-image: radial-gradient(circle, #0c77c7, #2a2f61);
 }
+
+/* html { 
+  background: url(../../assets/backgrounds/background-1.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */

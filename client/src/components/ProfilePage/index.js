@@ -7,34 +7,20 @@ import GameContainer from "../GameContainer";
 import GameItem from "../GameItem";
 import UserBanner from "../UserBanner";
 import UserBody from "../UserBody";
-const champJsonData = require("../../assets/jsonData/champions.json");
-
+import Particles from "react-particles-js";
+// import background from "../../../public/images/backgrounds/background-1.png"
 class ProfilePage extends Component {
   state = {
     profile: {},
     matches: [],
-    // selectedButton: null,
+    rankedStats: [],
     theme: "",
     matchData: [],
     selectedPlayerData: [] //This state doesn't get pushed to DB.  Only used to parse data
+    // selectedButton: null,
   };
 
   componentWillMount() {
-    this.props.match.params.theme === "1"
-      ? this.setState({ theme: "is-success" })
-      : this.props.match.params.theme === "2"
-      ? this.setState({ theme: "is-danger" })
-      : this.props.match.params.theme === "3"
-      ? this.setState({ theme: "is-info" })
-      : this.setState({ theme: "is-danger" });
-
-    // console.log(champJsonData);
-  }
-
-  componentDidMount() {
-    //Binds this for button selection
-    // this.setSelectedButton = this.setSelectedButton.bind(this);
-
     //Get Player Data
     let queryUser = {
       username: this.props.match.params.username,
@@ -45,10 +31,39 @@ class ProfilePage extends Component {
       .then(res =>
         this.setState({ profile: res.data }, function onceStateUpdated() {
           this.getMatchHistory(this.state.profile.accountId);
+          // this.getSummonerRankedData(this.state.profile.id);
         })
       )
       .catch(err => console.log(err));
+    this.props.match.params.theme === "1"
+      ? this.setState({ theme: "is-success" })
+      : this.props.match.params.theme === "2"
+      ? this.setState({ theme: "is-danger" })
+      : this.props.match.params.theme === "3"
+      ? this.setState({ theme: "is-info" })
+      : this.setState({ theme: "is-danger" });
   }
+
+  componentDidMount() {
+    //Binds this for button selection
+    // this.setSelectedButton = this.setSelectedButton.bind(this);
+  }
+
+  // getSummonerRankedData = encryptedID => {
+  //   let encryptData = {
+  //     encryptId: encryptedID,
+  //     region: this.props.match.params.region,
+  //     dummyData: this.props.match.params.region
+  //   };
+  //   API.getSummonerRankedData(encryptData)
+  //     .then(res => {
+  //       this.setState({ rankedStats: res.data }, function onceStateUpdated() {
+  //         // this.getMatchData(this.state.matches.matches[0].gameId.toString());
+  //         console.log("this.state.rankedStats: ", this.state.rankedStats)
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   getMatchHistory = profile => {
     // console.log("GET MATCH HISTORY: ", this.state.profile);
@@ -60,10 +75,6 @@ class ProfilePage extends Component {
     API.getMatchHistory(userData)
       .then(res => {
         this.setState({ matches: res.data }, function onceStateUpdated() {
-          // console.log(
-          //   "this.state.matches: ",
-          //   this.state.matches.matches[0].gameId
-          // );
           this.getMatchData(this.state.matches.matches[0].gameId.toString());
         });
       })
@@ -176,6 +187,79 @@ class ProfilePage extends Component {
   render() {
     return (
       <div>
+        <Particles
+          params={{
+            particles: {
+              number: {
+                value: 35,
+                density: { enable: true, value_area: 800 }
+              },
+              color: { value: "#ffffff" },
+              shape: {
+                type: "edge",
+                stroke: { width: 0, color: "#000000" },
+                polygon: { nb_sides: 1 }
+                // image: { src: "img/github.svg", width: 100, height: 100 }
+              },
+              opacity: {
+                value: 0.21646062821684559,
+                random: false,
+                anim: {
+                  enable: false,
+                  speed: 1,
+                  opacity_min: 0.1,
+                  sync: false
+                }
+              },
+              size: {
+                value: 3.0,
+                random: false
+              },
+              line_linked: {
+                enable: false,
+                distance: 150,
+                color: "#ffffff",
+                opacity: 0.4,
+                width: 1
+              },
+              move: {
+                enable: true,
+                speed: 5,
+                direction: "none",
+                random: false,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+                attract: {
+                  enable: false,
+                  rotateX: 600,
+                  rotateY: 641.3648243462092
+                }
+              }
+            },
+            interactivity: {
+              detect_on: "window",
+              events: {
+                onhover: { enable: false, mode: "bubble" },
+                //   onclick: { enable: false, mode: "push" },
+                resize: true
+              },
+              modes: {
+                grab: { distance: 400, line_linked: { opacity: 1 } },
+                bubble: {
+                  distance: 400,
+                  size: 40,
+                  duration: 2,
+                  opacity: 8,
+                  speed: 3
+                },
+                repulse: { distance: 200, duration: 0.4 },
+                push: { particles_nb: 4 },
+                remove: { particles_nb: 2 }
+              }
+            }
+          }}
+        />
         <ProfileContainer className={this.state.theme}>
           <Nav />
           <ProfileBody>
