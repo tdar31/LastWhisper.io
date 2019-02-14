@@ -15,6 +15,7 @@ class ProfilePage extends Component {
     matches: [],
     rankedStats: [],
     theme: "",
+    iterations: 3,
     matchData: [],
     selectedPlayerData: [] //This state doesn't get pushed to DB.  Only used to parse data
     // selectedButton: null,
@@ -75,7 +76,9 @@ class ProfilePage extends Component {
     API.getMatchHistory(userData)
       .then(res => {
         this.setState({ matches: res.data }, function onceStateUpdated() {
-          this.getMatchData(this.state.matches.matches[0].gameId.toString());
+          for (let i = 0; i < this.state.iterations; i++) {
+            this.getMatchData(this.state.matches.matches[i].gameId.toString());
+          }
         });
       })
       .catch(err => console.log(err));
@@ -99,18 +102,12 @@ class ProfilePage extends Component {
             };
           },
           function onceStateUpdated() {
-            // console.log(
-            //   "this.state.matchData: ",
-            //   this.state.matchData[0].participantIdentities
-
-            // );
-            this.findPlayerMatchStats();
+            console.log("this.state.matchData: ", this.state.matchData);
+            if (+this.state.matchData.length === +this.state.iterations) {
+              this.findPlayerMatchStats();
+            }
           }
         );
-        // this.setState({ matchData: res.data }, function onceStateUpdated() {
-        //   console.log("this.state.matchData: ", this.state.matchData);
-        //   this.findPlayerMatchStats();
-        // });
       })
       // .then(this.findPlayerMatchStats())
       .catch(err => console.log(err));
@@ -123,8 +120,8 @@ class ProfilePage extends Component {
 
     //This iterates through all the matchData games returned by API which is now saved to the state
     for (let h = 0; h < this.state.matchData.length; h++) {
+      console.log("h: ", h);
       let matchDataArray = this.state.matchData[h];
-      // console.log("matchDataArray: ", matchDataArray);
       //Once the matchData is selected this loop goes through and search for the match paricipant
       //where the Identity matches the profile.accountId (queried users ID)
       for (
@@ -137,6 +134,7 @@ class ProfilePage extends Component {
           this.state.profile.accountId
         ) {
           let playerId = matchDataArray.participantIdentities[i].participantId;
+          console.log("playerId: ", playerId);
           //Once the participant matching the queried user and their corresponding participantMatchID is found
           //this loop iterates through the matchData searching for the participantMatchID then pushing
           //the data where the participantMatchID === to a new array to be pushed down to game item
