@@ -7,7 +7,7 @@
   transition: all 0.2s ease-in;
   border-radius: 10px;
   color: #3a3a3a;
-  margin: 20px 0px 20px 0px;
+  margin: 20px 20px 20px 0px;
 }
 
 /* .GameModuleChampInfo:hover {
@@ -16,7 +16,7 @@
 
 .champContainer {
   position: relative;
-  padding: 15px 15px 0px 15px;
+  padding: 14px 15px 1px 15px;
 }
 
 .spell1,

@@ -3,14 +3,13 @@
   border-radius: 10px;
   background-color: whitesmoke;
   text-align: center;
-  padding: 15px 30px 15px 30px;
+  padding: 18px 30px 18px 30px;
   color: #3a3a3a; 
-  margin: 20px 0px 20px 0px;
+  margin: 20px 20px 20px 0px !important;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  /* max-height: 200px; */
 }
 
 .GameModuleMatchInfo:hover {
