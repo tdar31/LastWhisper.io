@@ -22,6 +22,7 @@
   align-items: center;
   vertical-align: middle;
   margin-bottom: 25px;  
+  border-radius: 10px;
 }
 
 .containerZero,
@@ -31,14 +32,5 @@
   display: inline-block;
 }
 
-.item0,
-.item1,
-.item2,
-.item3,
-.item4,
-.item5,
-.item6 {
-  /* margin-bottom: 50% */
-}
 
 

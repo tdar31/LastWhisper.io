@@ -3,7 +3,7 @@ import "./style.css";
 
 function UserBody({ props, playerMatchData, children }) {
   return (
-    <div className="userBody has-background-dark columns">
+    <div className="userBody columns">
       {children}
     </div>
   );

@@ -75,14 +75,31 @@ class ProfilePage extends Component {
     };
     API.getMatchHistory(userData)
       .then(res => {
-        this.setState({ matches: res.data }, function onceStateUpdated() {
-          for (let i = 0; i < this.state.iterations; i++) {
-            this.getMatchData(this.state.matches.matches[i].gameId.toString());
+        this.setState({ matches: res.data }
+          , 
+          async function asyncCall() {
+            console.log('calling');
+            var result = await this.resolveAfter2Seconds();
+            console.log(result);
+            // expected output: 'resolved'
           }
-        });
+        //   function onceStateUpdated() {
+        //   for (let i = 0; i < this.state.iterations; i++) {
+        //     this.getMatchData(this.state.matches.matches[i].gameId.toString());
+        //   }
+        // }
+        );
       })
       .catch(err => console.log(err));
   };
+
+  resolveAfter2Seconds = () => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 500);
+    });
+  }
 
   getMatchData = gameId => {
     let matchData = {

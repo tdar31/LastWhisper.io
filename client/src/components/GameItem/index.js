@@ -12,6 +12,8 @@ const itemJsonData = require("../../assets/jsonData/en_US/item.json");
 const summonerJsonData = require("../../assets/jsonData/en_US/summoner.json");
 const runesJsonData = require("../../assets/jsonData/en_US/runesReforged.json");
 
+//https://stackoverflow.com/questions/14220321/how-do-i-return-the-response-from-an-asynchronous-call
+
 class GameItem extends Component {
   state = {
     gameCreationDate: "",
@@ -123,7 +125,7 @@ class GameItem extends Component {
     //I cannot find a better way to do this as the I can't make the state be part of the
     //iterator and have to do it one at at time.
     //Gonna look into this so more later but for now its
-    //gotta be hardcoded with 6 for loops
+    //gotta be hardcoded with 6 if statements
     for (let i = 0; i < this.state.itemKeyPairs.length; i++) {
       if (this.state.itemKeyPairs[i].id === this.props.item0RawId) {
         this.setState({
@@ -227,7 +229,7 @@ class GameItem extends Component {
     let csPM = Math.round(creepS * 10) / 10;
     //
     //Calculating KDA score
-    if (this.props.deaths == "0") {
+    if (this.props.deaths === 0) {
       this.setState(
         {
           deaths: "1"
@@ -272,7 +274,7 @@ class GameItem extends Component {
 
   render() {
     return (
-      <div className="GameItem">
+      <div className="GameItem has-background-dark">
         <GameModuleMatchInfo
           gameCreationDate={this.state.gameCreationDate}
           gameCreationTime={this.state.gameCreationTime}
