@@ -21,8 +21,10 @@
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-  margin-bottom: 25px;  
+  margin-bottom: 25px;
   border-radius: 10px;
+  background-color: rgba(54, 54, 54, 0.7);
+  box-shadow: 0 2px 3px rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.1);
 }
 
 .containerZero,
@@ -31,6 +33,3 @@
 .containerThree {
   display: inline-block;
 }
-
-
-

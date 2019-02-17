@@ -274,7 +274,7 @@ class GameItem extends Component {
 
   render() {
     return (
-      <div className="GameItem has-background-dark">
+      <div className="GameItem">
         <GameModuleMatchInfo
           gameCreationDate={this.state.gameCreationDate}
           gameCreationTime={this.state.gameCreationTime}

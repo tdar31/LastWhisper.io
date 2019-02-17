@@ -292,6 +292,9 @@ class ProfilePage extends Component {
               profileIcon={[
                 `/images/profileicon/${this.state.profile.profileIconId}.png`
               ].join(" ")}
+              rank={[
+                `/images/ranked/diamond_4.png`
+              ].join(" ")}
             />
             <UserBody>
               {" "}
