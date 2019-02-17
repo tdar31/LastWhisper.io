@@ -3,11 +3,23 @@ import "./style.css";
 
 function Nav() {
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
+    <nav
+      class="navbar is-dark"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        {/* <a class="navbar-item" href="https://bulma.io">
+          <img
+            src="https://bulma.io/images/bulma-logo.png"
+            width="112"
+            height="28"
+          />
+        </a> */}
+
         <a
           role="button"
-          className="navbar-burger burger"
+          class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -18,22 +30,16 @@ function Nav() {
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-start">
-          <a className="navbar-item" href="/">Home</a>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Home
+          </a>
 
-          <a className="navbar-item">Documentation</a>
-        </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            {/* <div className="buttons">
-              <a className="button is-success">
-                <strong>Sign up</strong>
-              </a>
-              <a className="button is-light">Log in</a>
-            </div> */}
-          </div>
+          <a class="navbar-item champItem">Champions</a>
+          <a class="navbar-item itemItem">Items</a>
+          {/* <a class="navbar-item">Champions</a>
+          <a class="navbar-item">Champions</a> */}
         </div>
       </div>
     </nav>

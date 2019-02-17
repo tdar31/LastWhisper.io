@@ -4,7 +4,8 @@
 }
 
 .hero.is-success {
-  background-image: radial-gradient(circle, #10a556, #0b1e11);
+  background-image: radial-gradient(circle, #535f64, #2f3436);
+  /* background-image: radial-gradient(circle, #10a556, #0b1e11); */
 }
 
 .hero.is-danger {

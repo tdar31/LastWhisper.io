@@ -1,12 +1,14 @@
-.hero.is-success a:not(.button):not(.dropdown-item):not(.tag) {
-  color: black;
+.hero.is-success a:not(.button):not(.dropdown-item):not(.tag):hover {
+  /* color: #701313; */
+  /* color: black; */
 }
 
-#navbarBasicExample {
-  background-color: #992929;
-  box-shadow: 0 0 10px #333333;
+.navContainer {
+  width: 100%;
+  height: 50px;
+  background-color: #701313;
 }
 
-.level {
-  
+.champItem:hover {
+  color: red;
 }

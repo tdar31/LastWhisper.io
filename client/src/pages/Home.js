@@ -12,18 +12,25 @@ class Home extends Component {
     matches: [],
     selectedButton: 1,
     inputValue: "",
-    region: ""
+    region: "",
+    isOpen: false
   };
 
   componentDidMount() {
     this.setSelectedButton = this.setSelectedButton.bind(this);
   }
 
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     const { value } = event.target;
 
-    let typedValue = value.split(' ').join('')
+    let typedValue = value.split(" ").join("");
     // Updating the input's state
     this.setState(
       {
@@ -45,7 +52,7 @@ class Home extends Component {
     // console.log("Submit button clicked");
     event.preventDefault();
 
-    //Take in 
+    //Take in
     let queryUser = this.state.inputValue.trim();
     let selectedTheme = this.state.selectedButton;
 

@@ -17,7 +17,8 @@ class ProfilePage extends Component {
     theme: "",
     iterations: 3,
     matchData: [],
-    selectedPlayerData: [] //This state doesn't get pushed to DB.  Only used to parse data
+    selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
+    modal: false
     // selectedButton: null,
   };
 
@@ -42,7 +43,7 @@ class ProfilePage extends Component {
       ? this.setState({ theme: "is-danger" })
       : this.props.match.params.theme === "3"
       ? this.setState({ theme: "is-info" })
-      : this.setState({ theme: "is-danger" });
+      : this.setState({ theme: "is-success" });
   }
 
   componentDidMount() {
@@ -66,6 +67,12 @@ class ProfilePage extends Component {
   //     .catch(err => console.log(err));
   // }
 
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
+
   getMatchHistory = profile => {
     // console.log("GET MATCH HISTORY: ", this.state.profile);
 
@@ -75,31 +82,32 @@ class ProfilePage extends Component {
     };
     API.getMatchHistory(userData)
       .then(res => {
-        this.setState({ matches: res.data }
-          , 
+        this.setState(
+          { matches: res.data },
+          //API data for matches is async so use promises to force data to return in order
           async function asyncCall() {
-            console.log('calling');
-            var result = await this.resolveAfter2Seconds();
-            console.log(result);
-            // expected output: 'resolved'
+            for (let i = 0; i < this.state.iterations; i++) {
+              console.log("calling");
+              var result = await this.resolveAfter10thofSecond(
+                this.state.matches.matches[i].gameId.toString()
+              );
+              console.log(result);
+              // expected output: 'resolved'
+            }
           }
-        //   function onceStateUpdated() {
-        //   for (let i = 0; i < this.state.iterations; i++) {
-        //     this.getMatchData(this.state.matches.matches[i].gameId.toString());
-        //   }
-        // }
         );
       })
       .catch(err => console.log(err));
   };
 
-  resolveAfter2Seconds = () => {
+  resolveAfter10thofSecond = gameId => {
     return new Promise(resolve => {
       setTimeout(() => {
-        resolve('resolved');
-      }, 500);
+        resolve("resolved");
+        this.getMatchData(gameId);
+      }, 100);
     });
-  }
+  };
 
   getMatchData = gameId => {
     let matchData = {
@@ -126,7 +134,6 @@ class ProfilePage extends Component {
           }
         );
       })
-      // .then(this.findPlayerMatchStats())
       .catch(err => console.log(err));
   };
 
@@ -151,7 +158,7 @@ class ProfilePage extends Component {
           this.state.profile.accountId
         ) {
           let playerId = matchDataArray.participantIdentities[i].participantId;
-          console.log("playerId: ", playerId);
+          // console.log("playerId: ", playerId);
           //Once the participant matching the queried user and their corresponding participantMatchID is found
           //this loop iterates through the matchData searching for the participantMatchID then pushing
           //the data where the participantMatchID === to a new array to be pushed down to game item
@@ -180,10 +187,10 @@ class ProfilePage extends Component {
                   };
                 },
                 function onceStateUpdated() {
-                  // console.log(
-                  //   "this.state.selectedPlayerData: ",
-                  //   this.state.selectedPlayerData
-                  // );
+                  console.log(
+                    "this.state.selectedPlayerData: ",
+                    this.state.selectedPlayerData
+                  );
                 }
               );
             }
