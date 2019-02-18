@@ -1,6 +1,7 @@
 .GameModuleStatsInfo {
   display: inline-block;
   border-radius: 10px;
+  background-color: rgba(54, 54, 54, 0.7);
   background-color: whitesmoke;
   text-align: center;
   padding: 10px;
@@ -36,7 +37,7 @@
 
 .perkPrimaryStyle:hover,
 .perkSubStyle:hover {
-  box-shadow: 0 0 10px #333333;
+  box-shadow: 0 0 3px #333333;
   cursor: pointer;
 }
 

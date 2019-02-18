@@ -8,6 +8,8 @@
 
 .userBody {
   border-radius: 10px;
+  /* overflow-y: scroll; */
+  height: 650px;
 }
 
 .level {

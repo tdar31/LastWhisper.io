@@ -37,7 +37,7 @@
 .spell1:hover,
 .spell2:hover,
 .champIcon:hover {
-  box-shadow: 0 0 10px #333333;
+  box-shadow: 0 0 3px #333333;
   cursor: pointer;
 }
 

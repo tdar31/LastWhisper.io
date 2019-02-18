@@ -1,5 +1,6 @@
 .GameModuleFullMatchInfo {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  background-color: rgb(112, 112, 112);
   text-align: center;
   border-radius: 10px;
   margin: 20px 0px 20px 0px;
@@ -7,7 +8,7 @@
 }
 
 .fullMatchText {
-  color: #3a3a3a;
+  color: whitesmoke;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -15,6 +16,6 @@
 }
 
 .fullMatchText:hover {
-  text-shadow: 0 0 10px #333333;
+  text-shadow: 0 3px 3px rgba(10, 10, 10, 0.5);
   cursor: pointer;
 }

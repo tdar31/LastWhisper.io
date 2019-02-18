@@ -15,7 +15,7 @@ class ProfilePage extends Component {
     matches: [],
     rankedStats: [],
     theme: "",
-    iterations: 3,
+    iterations: 5,
     matchData: [],
     selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
     modal: false
