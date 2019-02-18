@@ -13,7 +13,9 @@ class UserBanner extends Component {
                 className="userIcon"
                 src={process.env.PUBLIC_URL + this.props.profileIcon}
               />
-              <p className="title">{this.props.level}</p>
+              <div className="levelContainer">
+                <p className="levelText">{this.props.level}</p>
+              </div>
             </div>
             <div class="media-content">
               <p className="rankedSoloText">Ranked Solo</p>
