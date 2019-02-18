@@ -1,33 +1,9 @@
 .profileContainer {
-  /* background-image: radial-gradient(circle, #23d160, #1ba049); */
+  background-image: radial-gradient(circle, #535f64, #2f3436);
   /* min-height: 100vh; */
 }
 
-.hero.is-success {
-  background-image: radial-gradient(circle, #535f64, #2f3436);
-  /* background-image: radial-gradient(circle, #10a556, #0b1e11); */
+html,
+body {
+  overflow: hidden;
 }
-
-.hero.is-danger {
-  /* background-image: url(../../assets/backgrounds/background-11.png) */
-  background-image: radial-gradient(circle, #535f64, #2f3436);
-  /* background-image: radial-gradient(circle, #0c77c7, #2a2f61); */
-
-  /* background-image: url(../../assets/backgrounds/background-1.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
-}
-
-.hero.is-info {
-  background-image: radial-gradient(circle, #0c77c7, #2a2f61);
-}
-
-/* html { 
-  background: url(../../assets/backgrounds/background-1.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */

@@ -37,13 +37,13 @@ class ProfilePage extends Component {
         })
       )
       .catch(err => console.log(err));
-    this.props.match.params.theme === "1"
-      ? this.setState({ theme: "is-success" })
-      : this.props.match.params.theme === "2"
-      ? this.setState({ theme: "is-danger" })
-      : this.props.match.params.theme === "3"
-      ? this.setState({ theme: "is-info" })
-      : this.setState({ theme: "is-success" });
+    // this.props.match.params.theme === "1"
+    //   ? this.setState({ theme: "is-success" })
+    //   : this.props.match.params.theme === "2"
+    //   ? this.setState({ theme: "is-danger" })
+    //   : this.props.match.params.theme === "3"
+    //   ? this.setState({ theme: "is-info" })
+    //   : this.setState({ theme: "is-success" });
   }
 
   componentDidMount() {

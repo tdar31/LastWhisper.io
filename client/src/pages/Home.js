@@ -62,15 +62,15 @@ class Home extends Component {
   render() {
     return (
       <HomeContainer
-        className={
-          this.state.selectedButton === 1
-            ? "is-success"
-            : this.state.selectedButton === 2
-            ? "is-danger"
-            : this.state.selectedButton === 3
-            ? "is-info"
-            : "is-light"
-        }
+        // className={
+        //   this.state.selectedButton === 1
+        //     ? "is-success"
+        //     : this.state.selectedButton === 2
+        //     ? "is-danger"
+        //     : this.state.selectedButton === 3
+        //     ? "is-info"
+        //     : "is-light"
+        // }
       >
         <Nav />
         <HomeBody>

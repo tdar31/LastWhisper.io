@@ -52,6 +52,7 @@
 .box {
   background-color: rgba(54, 54, 54, 0.7);
   margin-bottom: 35px;
+  width: 980px;
 }
 
 .rankedSoloText,
@@ -64,23 +65,40 @@
   margin-bottom: 5px;
   border-spacing: 15px;
   text-shadow: 0 3px 3px rgba(10, 10, 10, 0.5);
+  font-size: 14px;
 }
 
 .media-left,
 .media-content {
-  text-align: center;
   background-color: rgb(112, 112, 112);
-  padding: 7px 15px 27px 15px;
   text-shadow: 0 3px 3px rgba(10, 10, 10, 0.5);
   border-radius: 10px;
 }
 
 .media-left {
   position: relative;
+  text-align: center;
+  padding: 7px 15px 27px 15px;
 }
 
 .media-content {
   margin-right: 1rem;
+  padding: 7px 15px 6px 15px;
+}
+
+.rankedSoloText {
+  text-align: left;
+  font-size: 14px;
+}
+
+.rankPlacementText {
+  color: #cecece;
+}
+
+.positionText {
+  color: whitesmoke;
+
+  font-size: 14px;
 }
 
 .levelContainer {
@@ -88,14 +106,14 @@
   position: absolute;
   top: 0px;
   border-radius: 10px;
-  margin-top: 128px;
-  margin-left: 44px;
+  margin-top: 121px;
+  margin-left: 42px;
   /* margin: 0 auto;
   margin-top: 10px; */
   width: 20%;
   left: 0;
   right: 0;
-  padding: 0px 8px 0px 8px;
+  /* padding: 0px 8px 0px 8px; */
   min-width: 45px;
   background-color: #82652e;
   background-color: #1e2328;

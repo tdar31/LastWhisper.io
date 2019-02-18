@@ -3,7 +3,7 @@ import "./style.css";
 
 function HomeContainer({ className, children }) {
   return (
-    <section className= {["hero is-fullheight", className].join(" ")}>{children}</section>
+    <section className= {"hero is-fullheight homeContainer"}>{children}</section>
   );
 }
 

@@ -2,7 +2,11 @@ html {
   overflow: hidden;
 }
 
-.hero.is-success {
+.homeContainer {
+  background-image: radial-gradient(circle, #535f64, #2f3436);
+}
+
+/* .hero.is-success {
   background-image: radial-gradient(circle, #10a556, #0b1e11);
 }
 
@@ -12,4 +16,4 @@ html {
 
 .hero.is-info {
   background-image: radial-gradient(circle, #0c77c7, #2a2f61);
-}
+} */

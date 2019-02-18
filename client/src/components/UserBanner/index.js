@@ -8,7 +8,9 @@ class UserBanner extends Component {
         <div class="box">
           <article class="media">
             <div class="media-left">
-              <p className="userText">{this.props.username}</p>
+              <p className="userText">
+                <b>{this.props.username}</b>
+              </p>
               <img
                 className="userIcon"
                 src={process.env.PUBLIC_URL + this.props.profileIcon}
@@ -18,12 +20,15 @@ class UserBanner extends Component {
               </div>
             </div>
             <div class="media-content">
-              <p className="rankedSoloText">Ranked Solo</p>
+              <p className="rankedSoloText">
+                <b>Ranked Solo</b>
+              </p>
+              <p className="positionText">Support</p>
+              <p className="rankPlacementText">Platinum 4</p>
               <img
                 className="rankedIcon"
                 src={process.env.PUBLIC_URL + this.props.rank}
               />
-              <button className="updateButton">Update</button>
             </div>
             <div class="media-content">
               <p className="rankedSoloText">Ranked Solo</p>
