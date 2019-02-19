@@ -4,9 +4,21 @@ export default {
   getUser: function(queryUser) {
     console.log("INSIDE API.JS", queryUser.region);
     return axios.get(
-      "/api/summoner/" + queryUser.username ,
+      "/api/summoner/" + queryUser.username,
       queryUser
       //+ "/" + queryUser.region
+    );
+  },
+  //GET ROUTE BUT USING POST TO PASS DATA TO MONGOOSE QUERY
+  findByUsername: function(queryUser) {
+    console.log("findByUsername-> queryUser: ", queryUser);
+    return axios.put("/api/userCheck/" + queryUser.username, queryUser);
+  },
+  createProfile: function(newProfileObj) {
+    console.log("newProfileObj: ", newProfileObj);
+    return axios.post(
+      "/api/matchData/" + newProfileObj.accountId,
+      newProfileObj
     );
   },
   getMatchHistory: function(userData) {
@@ -18,15 +30,11 @@ export default {
   getMatchData: function(userData2) {
     console.log("Inside getMatchData: ", userData2);
     return axios.put(
-      "/api/summoner/" + userData2.accountId + "/na/" + userData2.getMatchData, userData2
-    );
-  },
-  createProfile: function(newProfileObj) {
-    console.log("newProfileObj: ", newProfileObj)
-    return axios.post(
-      "/api/matchData/" + newProfileObj.accountId, newProfileObj
+      "/api/summoner/" + userData2.accountId + "/na/" + userData2.getMatchData,
+      userData2
     );
   }
+
   // getSummonerRankedData: function(encryptData) {
   //   console.log("Inside getSummonerRankedData: ", encryptData);
   //   return axios.put(

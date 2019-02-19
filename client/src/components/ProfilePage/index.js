@@ -23,22 +23,17 @@ class ProfilePage extends Component {
   };
 
   componentWillMount() {
-    //Get Player Data
     let queryUser = {
       username: this.props.match.params.username,
-      region: this.props.match.params.region
+      region: this.props.match.params.region.toLowerCase()
     };
-    // console.log("Submit button clicked-> queryUser: ", queryUser);
-    API.getUser(queryUser)
-      .then(res =>
-        this.setState({ profile: res.data }, function onceStateUpdated() {
-          console.log("this.state.profile: ", this.state.profile)
-          this.createProfile();
-          // this.getMatchHistory(this.state.profile.accountId);
-          // this.getSummonerRankedData(this.state.profile.id);
-        })
-      )
-      .catch(err => console.log(err));
+    API.findByUsername(queryUser).then(res =>
+      console.log("findByUsername =====> res.data: ", res.data[0])
+      (res.data[0] != undefined ? this.setState({
+        profile: res.data[0].profile
+      }) : this.getUser())
+    );
+    //Get Player Data
     // this.props.match.params.theme === "1"
     //   ? this.setState({ theme: "is-success" })
     //   : this.props.match.params.theme === "2"
@@ -53,16 +48,38 @@ class ProfilePage extends Component {
     // this.setSelectedButton = this.setSelectedButton.bind(this);
   }
 
+  findByUsername = () => {
+
+  };
+
+  getUser = () => {
+    let queryUser = {
+      username: this.props.match.params.username,
+      region: this.props.match.params.region.toLowerCase()
+    };
+    // console.log("Submit button clicked-> queryUser: ", queryUser);
+    API.getUser(queryUser)
+      .then(res =>
+        this.setState({ profile: res.data }, function onceStateUpdated() {
+          console.log("this.state.profile: ", this.state.profile);
+          this.createProfile();
+          // this.getMatchHistory(this.state.profile.accountId);
+          // this.getSummonerRankedData(this.state.profile.id);
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
   createProfile = () => {
     let p = Object.assign({}, this.state.profile);
     let newProfileObj = {
       profile: p
-    }
+    };
     API.createProfile({ newProfileObj }).then(res => {
       console.log("createProfile: ", res.data);
-      return res.data
-    })
-  }
+      return res.data;
+    });
+  };
 
   // getSummonerRankedData = encryptedID => {
   //   let encryptData = {
@@ -305,9 +322,7 @@ class ProfilePage extends Component {
               profileIcon={[
                 `/images/profileicon/${this.state.profile.profileIconId}.png`
               ].join(" ")}
-              rank={[
-                `/images/ranked/diamond_4.png`
-              ].join(" ")}
+              rank={[`/images/ranked/diamond_4.png`].join(" ")}
             />
             <UserBody>
               {" "}

@@ -5,9 +5,9 @@ class UserBanner extends Component {
   render() {
     return (
       <div>
-        <div class="box">
-          <article class="media">
-            <div class="media-left">
+        <div className="box">
+          <article className="media">
+            <div className="media-left">
               <p className="userText">
                 <b>{this.props.username}</b>
               </p>
@@ -19,7 +19,7 @@ class UserBanner extends Component {
                 <p className="levelText">{this.props.level}</p>
               </div>
             </div>
-            <div class="media-content">
+            <div className="media-content">
               <p className="rankedSoloText">
                 <b>Ranked Solo</b>
               </p>
@@ -30,7 +30,7 @@ class UserBanner extends Component {
                 src={process.env.PUBLIC_URL + this.props.rank}
               />
             </div>
-            <div class="media-content">
+            <div className="media-content">
               <p className="rankedSoloText">Ranked Solo</p>
               <img
                 className="rankedIcon"
