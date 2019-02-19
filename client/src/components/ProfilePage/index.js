@@ -87,7 +87,7 @@ class ProfilePage extends Component {
           //API data for matches is async so use promises to force data to return in order
           async function asyncCall() {
             for (let i = 0; i < this.state.iterations; i++) {
-              console.log("calling");
+              // console.log("calling");
               var result = await this.resolveAfter10thofSecond(
                 this.state.matches.matches[i].gameId.toString()
               );
@@ -103,7 +103,7 @@ class ProfilePage extends Component {
   resolveAfter10thofSecond = gameId => {
     return new Promise(resolve => {
       setTimeout(() => {
-        resolve("resolved");
+        resolve();
         this.getMatchData(gameId);
       }, 100);
     });
@@ -127,7 +127,7 @@ class ProfilePage extends Component {
             };
           },
           function onceStateUpdated() {
-            console.log("this.state.matchData: ", this.state.matchData);
+            // console.log("this.state.matchData: ", this.state.matchData);
             if (+this.state.matchData.length === +this.state.iterations) {
               this.findPlayerMatchStats();
             }
@@ -144,7 +144,7 @@ class ProfilePage extends Component {
 
     //This iterates through all the matchData games returned by API which is now saved to the state
     for (let h = 0; h < this.state.matchData.length; h++) {
-      console.log("h: ", h);
+      // console.log("h: ", h);
       let matchDataArray = this.state.matchData[h];
       //Once the matchData is selected this loop goes through and search for the match paricipant
       //where the Identity matches the profile.accountId (queried users ID)
@@ -187,10 +187,10 @@ class ProfilePage extends Component {
                   };
                 },
                 function onceStateUpdated() {
-                  console.log(
-                    "this.state.selectedPlayerData: ",
-                    this.state.selectedPlayerData
-                  );
+                  // console.log(
+                  //   "this.state.selectedPlayerData: ",
+                  //   this.state.selectedPlayerData
+                  // );
                 }
               );
             }
