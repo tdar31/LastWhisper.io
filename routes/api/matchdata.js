@@ -2,8 +2,13 @@ const router = require("express").Router();
 const matchDataController = require("../../controllers/matchDataController");
 // console.log("INSIDE matchData ROUTES");
 
+// router.route("/")
+
+
 router.route("/:username")
-.get(matchDataController.findByUsername);
+.get(matchDataController.findByUsername)
+.post(matchDataController.createProfile)
+
 // .post(booksController.create);
 
 // router.route("/:username/:region").get(summonerController.getMatchHistory);

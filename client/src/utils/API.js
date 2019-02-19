@@ -21,6 +21,12 @@ export default {
       "/api/summoner/" + userData2.accountId + "/na/" + userData2.getMatchData, userData2
     );
   },
+  createProfile: function(newProfileObj) {
+    console.log("newProfileObj: ", newProfileObj)
+    return axios.post(
+      "/api/matchData/" + newProfileObj.accountId, newProfileObj
+    );
+  }
   // getSummonerRankedData: function(encryptData) {
   //   console.log("Inside getSummonerRankedData: ", encryptData);
   //   return axios.put(

@@ -32,7 +32,9 @@ class ProfilePage extends Component {
     API.getUser(queryUser)
       .then(res =>
         this.setState({ profile: res.data }, function onceStateUpdated() {
-          this.getMatchHistory(this.state.profile.accountId);
+          console.log("this.state.profile: ", this.state.profile)
+          this.createProfile();
+          // this.getMatchHistory(this.state.profile.accountId);
           // this.getSummonerRankedData(this.state.profile.id);
         })
       )
@@ -49,6 +51,17 @@ class ProfilePage extends Component {
   componentDidMount() {
     //Binds this for button selection
     // this.setSelectedButton = this.setSelectedButton.bind(this);
+  }
+
+  createProfile = () => {
+    let p = Object.assign({}, this.state.profile);
+    let newProfileObj = {
+      profile: p
+    }
+    API.createProfile({ newProfileObj }).then(res => {
+      console.log("createProfile: ", res.data);
+      return res.data
+    })
   }
 
   // getSummonerRankedData = encryptedID => {
