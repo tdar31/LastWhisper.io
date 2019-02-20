@@ -254,10 +254,13 @@ class ProfilePage extends Component {
 
   saveMatchData = () => {
     let mData = Object.assign({}, this.state);
-    mData.selectedPlayerData = []
-    mData.matchData = []
-    console.log("mData: ", mData)
-    API.saveMatchData(mData).then(console.log("saved Profile"))
+    mData.selectedPlayerData = [];
+    mData.matchData = [];
+    let matchDat = this.state.matches.matches;
+    matchDat.splice(49, 50);
+    mData.matches.matches = matchDat;
+    // console.log("matchDat: ", mData.matches);
+    API.saveMatchData(mData).then(console.log("saved Profile"));
   };
 
   toggle = () => {
