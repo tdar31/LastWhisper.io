@@ -27,6 +27,8 @@ export default {
       "/api/summoner/" + userData.accountId + "/" + userData.region
     );
   },
+  //Spoofed get route as a put route to allow for data to be passed through
+  //req.body to backend
   getMatchData: function(userData2) {
     console.log("Inside getMatchData: ", userData2);
     return axios.put(
@@ -37,14 +39,16 @@ export default {
   saveMatchData: function(mData) {
     console.log("Inside saveMatchData: ", mData);
     return axios.put("/api/matchData/" + mData.profile.accountId, mData);
+  },
+  getRankedData: function(rData) {
+    console.log("Inside getRankedData: ", rData);
+    return axios.put(
+      "/api/rankedData/" + rData.username, rData
+    );
   }
-
-  // getSummonerRankedData: function(encryptData) {
-  //   console.log("Inside getSummonerRankedData: ", encryptData);
-  //   return axios.put(
-  //     "/api/summoner/" + encryptData.Id + "/na/" + encryptData.dummyData, encryptData
-  //   );
-  // }
+  //
+  //
+  //
   // // Deletes the book with the given id
   // deleteBook: function(id) {
   //   return axios.delete("/api/books/" + id);

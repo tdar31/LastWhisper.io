@@ -25,6 +25,7 @@ class ProfilePage extends Component {
 
   componentWillMount() {
     //Checks if user is in DB first before hitting API
+    //If found populates page with cached DB data for rate limiting
     //If not it calls getUser which hits riot API
     let queryUser = {
       username: this.props.match.params.username.toLowerCase(),
@@ -36,7 +37,8 @@ class ProfilePage extends Component {
           ? this.setState({
               profile: res.data[0].profile,
               matches: res.data[0].matchData,
-              selectedPlayerData: res.data[0].selectedPlayerData
+              selectedPlayerData: res.data[0].selectedPlayerData,
+              rankedStats: res.data[0].rankedStats
             })
           : this.getUser()
       )
@@ -56,6 +58,8 @@ class ProfilePage extends Component {
     // this.setSelectedButton = this.setSelectedButton.bind(this);
   }
 
+  //Get basic account ID info from Riot API if username is not found in DB
+  //encrypted ID's are used for all other API calls
   getUser = () => {
     let queryUser = {
       username: this.props.match.params.username,
@@ -99,6 +103,7 @@ class ProfilePage extends Component {
     );
   };
 
+  //Creates new db Profile if user isn't in DB
   createProfile = () => {
     let profi = Object.assign({}, this.state.profile);
     let newProfileObj = {
@@ -106,25 +111,26 @@ class ProfilePage extends Component {
     };
     API.createProfile({ newProfileObj }).then(res => {
       console.log("createProfile: ", res.data);
-      this.getMatchHistory();
+      this.getRankedData();
     });
   };
 
-  // getSummonerRankedData = encryptedID => {
-  //   let encryptData = {
-  //     encryptId: encryptedID,
-  //     region: this.props.match.params.region,
-  //     dummyData: this.props.match.params.region
-  //   };
-  //   API.getSummonerRankedData(encryptData)
-  //     .then(res => {
-  //       this.setState({ rankedStats: res.data }, function onceStateUpdated() {
-  //         // this.getMatchData(this.state.matches.matches[0].gameId.toString());
-  //         console.log("this.state.rankedStats: ", this.state.rankedStats)
-  //       });
-  //     })
-  //     .catch(err => console.log(err));
-  // }
+  //Get rankedData for summoner
+  //will return empty array if summoner has never queued ranked
+  getRankedData = () => {
+    let rData = {
+      username: this.state.profile.id,
+      region: this.props.match.params.region
+    };
+    API.getRankedData(rData)
+      .then(res => {
+        this.setState({ rankedStats: res.data }, function onceStateUpdated() {
+          console.log("this.state.rankedStats: ", this.state.rankedStats);
+          this.getMatchHistory();
+        });
+      })
+      .catch(err => console.log(err));
+  };
 
   getMatchHistory = () => {
     // console.log("GET MATCH HISTORY: ", this.state.profile);
@@ -240,10 +246,10 @@ class ProfilePage extends Component {
                 },
                 function onceStateUpdated() {
                   this.saveMatchData();
-                  console.log(
-                    "this.state.selectedPlayerData: ",
-                    this.state.selectedPlayerData
-                  );
+                  // console.log(
+                  //   "this.state.selectedPlayerData: ",
+                  //   this.state.selectedPlayerData
+                  // );
                 }
               );
             }
@@ -251,7 +257,7 @@ class ProfilePage extends Component {
         }
       }
     }
-    console.log("end of findPlayerMatchStats", this.state.selectedPlayerData);
+    // console.log("end of findPlayerMatchStats", this.state.selectedPlayerData);
   };
 
   saveMatchData = () => {
@@ -259,10 +265,12 @@ class ProfilePage extends Component {
     // mData.selectedPlayerData = [];
     mData.matchData = [];
     let matchDat = this.state.matches.matches;
-    matchDat.splice(49, 65);
+    matchDat.splice(49, 50);
     mData.matches.matches = matchDat;
-    console.log("matchDat: ", mData.selectedPlayerData);
-    API.saveMatchData(mData).then(console.log("saved Profile"));
+    // console.log("matchDat: ", mData.selectedPlayerData);
+    API.saveMatchData(mData).then(
+      console.log("Postsave: ", this.state)
+    );
   };
 
   toggle = () => {
