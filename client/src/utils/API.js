@@ -33,6 +33,10 @@ export default {
       "/api/summoner/" + userData2.accountId + "/na/" + userData2.getMatchData,
       userData2
     );
+  },
+  saveMatchData: function(mData) {
+    console.log("Inside saveMatchData: ", mData);
+    return axios.put("/api/matchData/" + mData.profile.accountId, mData);
   }
 
   // getSummonerRankedData: function(encryptData) {

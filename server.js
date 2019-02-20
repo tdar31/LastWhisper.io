@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({limit: '150mb', extended: true }));
 app.use(express.json());
 // app.use(bodyParser.json()); // <--- Here
 // app.use(bodyParser.urlencoded({extended: true}));

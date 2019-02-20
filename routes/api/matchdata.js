@@ -8,6 +8,7 @@ const matchDataController = require("../../controllers/matchDataController");
 router.route("/:username")
 // .get(matchDataController.findByUsername)
 .post(matchDataController.createProfile)
+.put(matchDataController.saveMatchData)
 
 // .post(booksController.create);
 
