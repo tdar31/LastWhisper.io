@@ -36,7 +36,7 @@ class UserBanner extends Component {
                 className="rankedIcon"
                 src={process.env.PUBLIC_URL + this.props.rank}
               />
-              <button className="updateButton">Update</button>
+              <button className="updateButton" onClick={this. props.handleOnUpdateClick}>Update</button>
             </div>
           </article>
         </div>

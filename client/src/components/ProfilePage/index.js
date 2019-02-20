@@ -259,7 +259,7 @@ class ProfilePage extends Component {
     // mData.selectedPlayerData = [];
     mData.matchData = [];
     let matchDat = this.state.matches.matches;
-    matchDat.splice(49, 50);
+    matchDat.splice(49, 65);
     mData.matches.matches = matchDat;
     console.log("matchDat: ", mData.selectedPlayerData);
     API.saveMatchData(mData).then(console.log("saved Profile"));
@@ -276,6 +276,20 @@ class ProfilePage extends Component {
       console.log("selectedBTN: ", this.state.selectedButton);
     });
   }
+
+  handleOnUpdateClick = event => {
+    event.preventDefault();
+    console.log("Update Button Clicked");
+    //reset SelectedMatchData
+    this.setState(
+      {
+        selectedPlayerData: []
+      },
+      function after() {
+        this.getMatchHistory();
+      }
+    );
+  };
 
   render() {
     return (
@@ -364,6 +378,7 @@ class ProfilePage extends Component {
                 `/images/profileicon/${this.state.profile.profileIconId}.png`
               ].join(" ")}
               rank={[`/images/ranked/diamond_4.png`].join(" ")}
+              handleOnUpdateClick={this.handleOnUpdateClick}
             />
             <UserBody>
               {" "}
