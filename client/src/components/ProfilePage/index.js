@@ -34,7 +34,9 @@ class ProfilePage extends Component {
       console.log("findByUsername =====> res.data: ", res.data[0])(
         res.data[0] != undefined
           ? this.setState({
-              profile: res.data[0].profile
+              profile: res.data[0].profile,
+              matches: res.data[0].matchData,
+              selectedPlayerData: res.data[0].selectedPlayerData
             })
           : this.getUser()
       )
@@ -237,10 +239,11 @@ class ProfilePage extends Component {
                   };
                 },
                 function onceStateUpdated() {
-                  // console.log(
-                  //   "this.state.selectedPlayerData: ",
-                  //   this.state.selectedPlayerData
-                  // );
+                  this.saveMatchData();
+                  console.log(
+                    "this.state.selectedPlayerData: ",
+                    this.state.selectedPlayerData
+                  );
                 }
               );
             }
@@ -248,18 +251,17 @@ class ProfilePage extends Component {
         }
       }
     }
-    console.log("end of findPlayerMatchStats");
-    this.saveMatchData();
+    console.log("end of findPlayerMatchStats", this.state.selectedPlayerData);
   };
 
   saveMatchData = () => {
     let mData = Object.assign({}, this.state);
-    mData.selectedPlayerData = [];
+    // mData.selectedPlayerData = [];
     mData.matchData = [];
     let matchDat = this.state.matches.matches;
     matchDat.splice(49, 50);
     mData.matches.matches = matchDat;
-    // console.log("matchDat: ", mData.matches);
+    console.log("matchDat: ", mData.selectedPlayerData);
     API.saveMatchData(mData).then(console.log("saved Profile"));
   };
 
