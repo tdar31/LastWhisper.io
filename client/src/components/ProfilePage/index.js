@@ -18,13 +18,16 @@ class ProfilePage extends Component {
     iterations: 5,
     matchData: [],
     selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
-    modal: false
+    modal: false,
+    dbUsername: ""
     // selectedButton: null,
   };
 
   componentWillMount() {
+    //Checks if user is in DB first before hitting API
+    //If not it calls getUser which hits riot API
     let queryUser = {
-      username: this.props.match.params.username,
+      username: this.props.match.params.username.toLowerCase(),
       region: this.props.match.params.region.toLowerCase()
     };
     API.findByUsername(queryUser).then(res =>
@@ -48,10 +51,6 @@ class ProfilePage extends Component {
     // this.setSelectedButton = this.setSelectedButton.bind(this);
   }
 
-  findByUsername = () => {
-
-  };
-
   getUser = () => {
     let queryUser = {
       username: this.props.match.params.username,
@@ -60,20 +59,39 @@ class ProfilePage extends Component {
     // console.log("Submit button clicked-> queryUser: ", queryUser);
     API.getUser(queryUser)
       .then(res =>
-        this.setState({ profile: res.data }, function onceStateUpdated() {
-          console.log("this.state.profile: ", this.state.profile);
-          this.createProfile();
+        //this is where you change the user name to lowercase as
+        //a single word
+        this.correctUsername(res.data)
+        // this.setState({ profile: res.data }, function onceStateUpdated() {
+        //   console.log("this.state.profile: ", this.state.profile);
+        //   this.createProfile();
           // this.getMatchHistory(this.state.profile.accountId);
           // this.getSummonerRankedData(this.state.profile.id);
-        })
+        // })
       )
       .catch(err => console.log(err));
   };
 
+  //Sent all usernames to lowercase with no spaces
+  correctUsername = (profileData) => {
+    // console.log("profileData: ", profileData)
+    let newProfile = Object.assign({}, profileData)
+    newProfile.dbUsername = profileData.name.toLowerCase().split(' ').join('');
+    // let newProfileObj = {
+    //   profile: newProfile
+    // };
+    this.setState({
+      profile: newProfile
+    }, function() {
+      this.createProfile();
+    })
+
+  }
+
   createProfile = () => {
-    let p = Object.assign({}, this.state.profile);
+    let profi = Object.assign({}, this.state.profile);
     let newProfileObj = {
-      profile: p
+      profile: profi  
     };
     API.createProfile({ newProfileObj }).then(res => {
       console.log("createProfile: ", res.data);

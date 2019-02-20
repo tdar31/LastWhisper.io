@@ -9,6 +9,7 @@ const profileSchema = new Schema({
   matchData: [],
   selectedPlayerData: [],
   modal: Boolean,
+  dbUsername: "",
 });
 
 const Profile = mongoose.model("Profile", profileSchema);

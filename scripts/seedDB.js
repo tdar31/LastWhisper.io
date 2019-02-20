@@ -4,8 +4,7 @@ const db = require("../models");
 //Reset DB with local Data
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/fyreggdatabase"
+  process.env.MONGODB_URI || "mongodb://localhost/fyreggdatabase"
 );
 
 const profileSeed = [
@@ -17,9 +16,9 @@ const profileSeed = [
     matchData: [],
     selectedPlayerData: [],
     modal: Boolean,
-  },
+    dbUsername: String
+  }
 ];
-
 
 db.Profile.remove({})
   .then(() => db.Profile.collection.insertMany(profileSeed))
@@ -31,4 +30,3 @@ db.Profile.remove({})
     console.error(err);
     process.exit(1);
   });
-
