@@ -3,3 +3,7 @@
 body {
     font-family: 'Noto Sans', sans-serif;
 }
+
+a, a:active, a:focus {
+    outline: none;
+ }

@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function ProfileNav({ className }) {
+function ProfileNav() {
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
         <a
           role="button"
-          className="navbar-burger burger"
+          class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -18,27 +18,28 @@ function ProfileNav({ className }) {
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-start">
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
           <a className="navbar-item" href="/">
             Home
           </a>
-          <a className="navbar-item">Documentation</a>
+
+          <a className="navbar-item champItem">Champions</a>
+          <a className="navbar-item itemItem">Items</a>
         </div>
 
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Theme</a>
-
-              <div className="navbar-dropdown is-right">
-                <a className="navbar-item">Thresh</a>
-                <hr className="navbar-divider" />
-                <a className="navbar-item">Brand</a>
-                <hr className="navbar-divider" />
-                <a className="navbar-item">Sejuani</a>
-              </div>
-            </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <p className="">
+              <input
+                className="input proNavInput"
+                type="text"
+                placeholder="Search by Summoner Name"
+              />
+            </p>
+            <p className="">
+              <a className="button is-dark proNavSearchButton">Search</a>
+            </p>
           </div>
         </div>
       </div>

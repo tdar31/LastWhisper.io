@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import Nav from "../Nav";
+import ProfileNav from "../ProfileNav";
 import ProfileBody from "../ProfileBody";
 import ProfileContainer from "../ProfileContainer";
 import GameContainer from "../GameContainer";
@@ -9,6 +9,7 @@ import UserBanner from "../UserBanner";
 import UserBody from "../UserBody";
 import RankedModule from "../RankedModule";
 import UserModule from "../UserModule";
+import UtilPanel from "../UtilPanel";
 import Particles from "react-particles-js";
 
 class ProfilePage extends Component {
@@ -387,7 +388,7 @@ class ProfilePage extends Component {
           }}
         /> */}
         <ProfileContainer className={this.state.theme}>
-          <Nav />
+          <ProfileNav />
           <ProfileBody>
             <UserBanner>
               <UserModule
@@ -417,7 +418,7 @@ class ProfilePage extends Component {
                 />
               ))}
             </UserBanner>
-
+            <UtilPanel />
             <UserBody>
               {" "}
               <GameContainer>

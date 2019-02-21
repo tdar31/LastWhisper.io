@@ -1,11 +1,9 @@
-.hero.is-success a:not(.button):not(.dropdown-item):not(.tag) {
-  color: black;
+.proNavInput {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
 }
 
-.hero.is-danger a:not(.button):not(.dropdown-item):not(.tag) {
-  color: black;
-}
-
-.hero.is-info a:not(.button):not(.dropdown-item):not(.tag) {
-  color: black;
+.proNavSearchButton {
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
