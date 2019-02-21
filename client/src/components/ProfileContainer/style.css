@@ -1,9 +1,15 @@
 .profileContainer {
-  background-image: radial-gradient(circle, #535f64, #2f3436);
+  /* background-image: radial-gradient(circle, #535f64, #2f3436);
+  background-image: radial-gradient(circle, #535f64, #2f3436); */
+
   /* min-height: 100vh; */
 }
 
 html,
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+.profileContainer {
+  /* background-image: radial-gradient(circle, #535f64, #2f3436); */
+  background-image: url("../../assets/backgrounds/noisy_net.png");
 }

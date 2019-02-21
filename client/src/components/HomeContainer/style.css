@@ -1,11 +1,11 @@
 html {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .homeContainer {
-  background-image: radial-gradient(circle, #535f64, #2f3436);
+  /* background-image: radial-gradient(circle, #535f64, #2f3436); */
+  background-image: url("../../assets/backgrounds/noisy_net.png");
 }
-
 /* .hero.is-success {
   background-image: radial-gradient(circle, #10a556, #0b1e11);
 }
