@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import moment from "moment";
-import _ from "lodash";
 import "./style.css";
 import GameModuleMatchInfo from "../GameModuleMatchInfo";
 import GameModuleChampInfo from "../GameModuleChampInfo";
@@ -11,8 +10,6 @@ const champJsonData = require("../../assets/jsonData/en_US/championFull.json");
 const itemJsonData = require("../../assets/jsonData/en_US/item.json");
 const summonerJsonData = require("../../assets/jsonData/en_US/summoner.json");
 const runesJsonData = require("../../assets/jsonData/en_US/runesReforged.json");
-
-//https://stackoverflow.com/questions/14220321/how-do-i-return-the-response-from-an-asynchronous-call
 
 class GameItem extends Component {
   state = {

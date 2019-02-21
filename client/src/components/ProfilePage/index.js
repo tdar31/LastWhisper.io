@@ -7,8 +7,10 @@ import GameContainer from "../GameContainer";
 import GameItem from "../GameItem";
 import UserBanner from "../UserBanner";
 import UserBody from "../UserBody";
+import RankedModule from "../RankedModule";
+import UserModule from "../UserModule";
 import Particles from "react-particles-js";
-// import background from "../../../public/images/backgrounds/background-1.png"
+
 class ProfilePage extends Component {
   state = {
     profile: {},
@@ -32,16 +34,20 @@ class ProfilePage extends Component {
       region: this.props.match.params.region.toLowerCase()
     };
     API.findByUsername(queryUser).then(res =>
-      console.log("findByUsername =====> res.data: ", res.data[0])(
-        res.data[0] != undefined
-          ? this.setState({
+      // console.log("findByUsername =====> res.data: ", res.data[0])
+      res.data[0] != undefined
+        ? this.setState(
+            {
               profile: res.data[0].profile,
               matches: res.data[0].matchData,
               selectedPlayerData: res.data[0].selectedPlayerData,
               rankedStats: res.data[0].rankedStats
-            })
-          : this.getUser()
-      )
+            },
+            function ree() {
+              console.log("this.state post DB payload: ", this.state);
+            }
+          )
+        : this.getUser()
     );
     //Get Player Data
     // this.props.match.params.theme === "1"
@@ -131,6 +137,12 @@ class ProfilePage extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  // parseRankedData = () => {
+  //   for (let i = 0; i < this.state.rankedStats.length; i++) {
+
+  //   }
+  // };
 
   getMatchHistory = () => {
     // console.log("GET MATCH HISTORY: ", this.state.profile);
@@ -265,12 +277,11 @@ class ProfilePage extends Component {
     // mData.selectedPlayerData = [];
     mData.matchData = [];
     let matchDat = this.state.matches.matches;
+    //Keeps only the 50 most recent matches instead of 100 to lower DB usage
     matchDat.splice(49, 50);
     mData.matches.matches = matchDat;
     // console.log("matchDat: ", mData.selectedPlayerData);
-    API.saveMatchData(mData).then(
-      console.log("Postsave: ", this.state)
-    );
+    API.saveMatchData(mData).then(console.log("Postsave: ", this.state));
   };
 
   toggle = () => {
@@ -378,16 +389,35 @@ class ProfilePage extends Component {
         <ProfileContainer className={this.state.theme}>
           <Nav />
           <ProfileBody>
-            <UserBanner
-              username={this.state.profile.name}
-              level={this.state.profile.summonerLevel}
-              region={this.props.match.params.region}
-              profileIcon={[
-                `/images/profileicon/${this.state.profile.profileIconId}.png`
-              ].join(" ")}
-              rank={[`/images/ranked/diamond_4.png`].join(" ")}
-              handleOnUpdateClick={this.handleOnUpdateClick}
-            />
+            <UserBanner>
+              <UserModule
+                username={this.state.profile.name}
+                level={this.state.profile.summonerLevel}
+                region={this.props.match.params.region}
+                profileIcon={[
+                  `/images/profileicon/${this.state.profile.profileIconId}.png`
+                ].join(" ")}
+                // handleOnUpdateClick={this.handleOnUpdateClick}
+              />
+              {this.state.rankedStats.map((rankedPlayerData, index) => (
+                <RankedModule
+                  key={index}
+                  leaguePoints={rankedPlayerData.leaguePoints}
+                  losses={rankedPlayerData.losses}
+                  wins={rankedPlayerData.wins}
+                  position={rankedPlayerData.position}
+                  queueType={rankedPlayerData.queueType}
+                  tier={rankedPlayerData.tier}
+                  rank={rankedPlayerData.rank}
+                  rankIcon={[
+                    `/images/ranked/${rankedPlayerData.tier}_${
+                      rankedPlayerData.rank
+                    }.png`
+                  ].join(" ")}
+                />
+              ))}
+            </UserBanner>
+
             <UserBody>
               {" "}
               <GameContainer>
