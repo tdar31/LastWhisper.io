@@ -306,7 +306,7 @@ class ProfilePage extends Component {
         selectedPlayerData: []
       },
       function after() {
-        this.getMatchHistory();
+        this.getRankedData();
       }
     );
   };
@@ -418,7 +418,8 @@ class ProfilePage extends Component {
                 />
               ))}
             </UserBanner>
-            <UtilPanel />
+            <UtilPanel 
+            onClick={this.handleOnUpdateClick}/>
             <UserBody>
               {" "}
               <GameContainer>
