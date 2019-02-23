@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function ProfileNav() {
+function ProfileNav({ onClick, value, onChange, region }) {
   return (
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -35,10 +35,16 @@ function ProfileNav() {
                 className="input proNavInput"
                 type="text"
                 placeholder="Search by Summoner Name"
+                onChange={onChange}
               />
             </p>
             <p className="">
-              <a className="button is-dark proNavSearchButton">Search</a>
+              <a
+                className="button is-dark proNavSearchButton"
+                onClick={onClick}
+              >
+                Search
+              </a>
             </p>
           </div>
         </div>

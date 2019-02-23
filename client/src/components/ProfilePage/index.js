@@ -22,7 +22,8 @@ class ProfilePage extends Component {
     matchData: [],
     selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
     modal: false,
-    dbUsername: ""
+    dbUsername: "",
+    inputValue: ""
     // selectedButton: null,
   };
 
@@ -311,6 +312,32 @@ class ProfilePage extends Component {
     );
   };
 
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const { value } = event.target;
+
+    let typedValue = value.split(" ").join("");
+    // Updating the input's state
+    this.setState(
+      {
+        inputValue: typedValue
+      },
+      function onceStateUpdated() {
+        // console.log("this.state.inputValue: ", this.state.inputValue);
+      }
+    );
+  };
+
+  handleOnSubmit = event => {
+    // console.log("Submit button clicked");
+    event.preventDefault();
+
+    //Take in
+    let queryUser = this.state.inputValue.trim();
+
+    window.location.assign("summoner/" + queryUser + "/na/");
+  };
+
   render() {
     return (
       <div>
@@ -388,7 +415,10 @@ class ProfilePage extends Component {
           }}
         /> */}
         <ProfileContainer className={this.state.theme}>
-          <ProfileNav />
+          <ProfileNav 
+          onChange={this.handleInputChange}
+          onClick={this.handleOnSubmit}
+          />
           <ProfileBody>
             <UserBanner>
               <UserModule
@@ -418,8 +448,7 @@ class ProfilePage extends Component {
                 />
               ))}
             </UserBanner>
-            <UtilPanel 
-            onClick={this.handleOnUpdateClick}/>
+            <UtilPanel onClick={this.handleOnUpdateClick} />
             <UserBody>
               {" "}
               <GameContainer>

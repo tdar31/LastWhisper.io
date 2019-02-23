@@ -42,22 +42,22 @@ class Home extends Component {
     );
   };
 
-  setSelectedButton(id) {
-    this.setState({ selectedButton: id }, function() {
-      // console.log("selectedBTN: ", this.state.selectedButton);
-    });
-  }
-
   handleOnSubmit = event => {
     // console.log("Submit button clicked");
     event.preventDefault();
 
     //Take in
-    let queryUser = this.state.inputValue.trim();
-    let selectedTheme = this.state.selectedButton;
+    let queryUser = this.state.inputValue.trim().toLowerCase();
+    let selectedTheme = this.state.selectedButton.toUpperCase();
 
     window.location.assign("summoner/" + queryUser + "/na/");
   };
+
+  setSelectedButton(id) {
+    this.setState({ selectedButton: id }, function() {
+      // console.log("selectedBTN: ", this.state.selectedButton);
+    });
+  }
 
   render() {
     return (
