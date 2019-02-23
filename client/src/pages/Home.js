@@ -48,9 +48,9 @@ class Home extends Component {
 
     //Take in
     let queryUser = this.state.inputValue.trim().toLowerCase();
-    let selectedTheme = this.state.selectedButton.toUpperCase();
+    // let region = this.state.selectedButton.toUpperCase();
 
-    window.location.assign("summoner/" + queryUser + "/na/");
+    window.location.assign("summoner/" + queryUser + "/NA/");
   };
 
   setSelectedButton(id) {
@@ -62,15 +62,15 @@ class Home extends Component {
   render() {
     return (
       <HomeContainer
-        // className={
-        //   this.state.selectedButton === 1
-        //     ? "is-success"
-        //     : this.state.selectedButton === 2
-        //     ? "is-danger"
-        //     : this.state.selectedButton === 3
-        //     ? "is-info"
-        //     : "is-light"
-        // }
+      // className={
+      //   this.state.selectedButton === 1
+      //     ? "is-success"
+      //     : this.state.selectedButton === 2
+      //     ? "is-danger"
+      //     : this.state.selectedButton === 3
+      //     ? "is-info"
+      //     : "is-light"
+      // }
       >
         <Nav />
         <HomeBody>
@@ -78,16 +78,7 @@ class Home extends Component {
           <SearchBar
             onChange={this.handleInputChange}
             onClick={this.handleOnSubmit}
-          >
-            <Link
-              to={{
-                pathname: "/profile/" + this.state.profile.name,
-                state: { profile: this.state.profile }
-              }}
-            >
-              GO
-            </Link>
-          </SearchBar>
+          />
         </HomeBody>
         {/* <HomeFooter>
           <HomeFooterButton

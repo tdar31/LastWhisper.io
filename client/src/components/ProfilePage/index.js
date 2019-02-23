@@ -333,9 +333,8 @@ class ProfilePage extends Component {
     event.preventDefault();
 
     //Take in
-    let queryUser = this.state.inputValue.trim();
-
-    window.location.assign("summoner/" + queryUser + "/na/");
+    let queryUser = this.state.inputValue.trim().toLowerCase();
+    window.location = ("http://localhost:3000/summoner/"+ queryUser +"/NA");
   };
 
   render() {
