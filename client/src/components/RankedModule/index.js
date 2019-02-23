@@ -19,7 +19,7 @@ function RankedModule({
       </p>
       <p className="positionText">{position}</p>
       <p className="rankPlacementText">
-        {tier} {rank}
+        {tier} {rank} - LP: {leaguePoints}
       </p>
       <img className="rankedIcon" src={rankIcon} />
     </div>

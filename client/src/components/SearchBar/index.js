@@ -14,7 +14,7 @@ function SearchBar({ onClick, value, onChange, region }) {
         />
       </p>
       {/* FIGURE OUT HOW TO KNOW WHICH OPTION IS SELECTED AND RETURN TO FRONT END FOR QUERY */}
-      <p className="control">
+      {/* <p className="control">
         <span className="select">
           <select>
             <option>NA</option>
@@ -30,7 +30,7 @@ function SearchBar({ onClick, value, onChange, region }) {
             <option>LAS</option>
           </select>
         </span>
-      </p>
+      </p> */}
       <p className="control">
         <a className="button is-dark" onClick={onClick}>
           Search

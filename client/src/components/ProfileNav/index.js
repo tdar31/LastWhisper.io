@@ -3,11 +3,11 @@ import "./style.css";
 
 function ProfileNav({ onClick, value, onChange, region }) {
   return (
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+    <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
         <a
           role="button"
-          class="navbar-burger burger"
+          className="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -18,8 +18,8 @@ function ProfileNav({ onClick, value, onChange, region }) {
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-start">
           <a className="navbar-item" href="/">
             Home
           </a>
@@ -28,8 +28,8 @@ function ProfileNav({ onClick, value, onChange, region }) {
           <a className="navbar-item itemItem">Items</a>
         </div>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
+        <div className="navbar-end">
+          <div className="navbar-item">
             <p className="">
               <input
                 className="input proNavInput"

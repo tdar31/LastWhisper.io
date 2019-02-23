@@ -134,17 +134,107 @@ class ProfilePage extends Component {
       .then(res => {
         this.setState({ rankedStats: res.data }, function onceStateUpdated() {
           console.log("this.state.rankedStats: ", this.state.rankedStats);
-          this.getMatchHistory();
+          this.parseRankedData();
+          // this.getMatchHistory();
         });
       })
       .catch(err => console.log(err));
   };
 
-  // parseRankedData = () => {
-  //   for (let i = 0; i < this.state.rankedStats.length; i++) {
+  //queueType
+  //position
+  //tier
+  //rank
+  //wins
+  //losses
+  //
 
-  //   }
-  // };
+  parseRankedData = () => {
+    for (let i = 0; i < this.state.rankedStats.length; i++) {
+      let rankedStatsArray = this.state.rankedStats[i];
+      console.log("rankedStatsArray: ", rankedStatsArray);
+
+      //Calculates total Games played per position
+      let playerRanked = Object.assign({}, this.state.rankedStats[i]);
+      playerRanked.totalGames = +playerRanked.wins + +playerRanked.losses;
+
+      //Updates Queue Type
+      if (playerRanked.queueType === "RANKED_SOLO_5x5") {
+        playerRanked.queueType = "Ranked Solo";
+      }
+
+      //Updates position type
+      if (playerRanked.position === "APEX" || playerRanked.position === "TOP") {
+        playerRanked.position = "Top";
+      }
+
+      if (playerRanked.position === "MIDDLE") {
+        playerRanked.position = "Middle";
+      }
+
+      if (playerRanked.position === "BOTTOM") {
+        playerRanked.position = "ADC";
+      }
+
+      //'NONE' still a bit of mystery going with Jungle for now
+      if (
+        playerRanked.position === "JUNGLE" ||
+        playerRanked.position === "NONE"
+      ) {
+        playerRanked.position = "Jungle";
+      }
+
+      if (playerRanked.position === "UTILITY") {
+        playerRanked.position = "Support";
+      }
+
+      //Update Ranked Rank/Tier
+      //This can definitely be refactored
+      //On the todo list for sure
+      if (playerRanked.tier === "IRON") {
+        playerRanked.tier = "Iron";
+      }
+
+      if (playerRanked.tier === "BRONZE") {
+        playerRanked.tier = "Bronze";
+      }
+
+      if (playerRanked.tier === "SILVER") {
+        playerRanked.tier = "Silver";
+      }
+
+      if (playerRanked.tier === "GOLD") {
+        playerRanked.tier = "Gold";
+      }
+
+      if (playerRanked.tier === "PLATINUM") {
+        playerRanked.tier = "Platinum";
+      }
+
+      if (playerRanked.tier === "DIAMOND") {
+        playerRanked.tier = "Diamond";
+      }
+
+      if (playerRanked.tier === "MASTER") {
+        playerRanked.tier = "Master";
+        playerRanked.rank = "";
+      }
+
+      if (playerRanked.tier === "GRANDMASTER") {
+        playerRanked.tier = "Grandmaster";
+        playerRanked.rank = "";
+      }
+
+      if (playerRanked.tier === "CHALLENGER") {
+        playerRanked.tier = "Challenger";
+        playerRanked.rank = "";
+      }
+
+      this.state.rankedStats[i] = playerRanked;
+      console.log("POST: ", this.state.rankedStats[i]);
+    }
+    this.getMatchHistory();
+  };
 
   getMatchHistory = () => {
     // console.log("GET MATCH HISTORY: ", this.state.profile);
@@ -334,7 +424,7 @@ class ProfilePage extends Component {
 
     //Take in
     let queryUser = this.state.inputValue.trim().toLowerCase();
-    window.location = ("http://localhost:3000/summoner/"+ queryUser +"/NA");
+    window.location = "http://localhost:3000/summoner/" + queryUser + "/NA";
   };
 
   render() {
@@ -414,9 +504,9 @@ class ProfilePage extends Component {
           }}
         /> */}
         <ProfileContainer className={this.state.theme}>
-          <ProfileNav 
-          onChange={this.handleInputChange}
-          onClick={this.handleOnSubmit}
+          <ProfileNav
+            onChange={this.handleInputChange}
+            onClick={this.handleOnSubmit}
           />
           <ProfileBody>
             <UserBanner>
