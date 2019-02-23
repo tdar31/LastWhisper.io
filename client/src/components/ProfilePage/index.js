@@ -119,7 +119,7 @@ class ProfilePage extends Component {
       profile: profi
     };
     API.createProfile({ newProfileObj }).then(res => {
-      console.log("createProfile: ", res.data);
+      // console.log("createProfile: ", res.data);
       this.getRankedData();
     });
   };
@@ -134,7 +134,7 @@ class ProfilePage extends Component {
     API.getRankedData(rData)
       .then(res => {
         this.setState({ rankedStats: res.data }, function onceStateUpdated() {
-          console.log("this.state.rankedStats: ", this.state.rankedStats);
+          // console.log("this.state.rankedStats: ", this.state.rankedStats);
           this.parseRankedData();
           // this.getMatchHistory();
         });
@@ -153,7 +153,7 @@ class ProfilePage extends Component {
   parseRankedData = () => {
     for (let i = 0; i < this.state.rankedStats.length; i++) {
       let rankedStatsArray = this.state.rankedStats[i];
-      console.log("rankedStatsArray: ", rankedStatsArray);
+      // console.log("rankedStatsArray: ", rankedStatsArray);
 
       //Calculates total Games played per position
       let playerRanked = Object.assign({}, this.state.rankedStats[i]);
@@ -249,7 +249,10 @@ class ProfilePage extends Component {
     API.getMatchHistory(userData)
       .then(res => {
         this.setState(
-          { matches: res.data },
+          {
+            matches: res.data,
+            matchData: []
+          },
           //API data for matches is async so use promises to force data to return in order
           async function asyncCall() {
             for (let i = 0; i < this.state.iterations; i++) {
@@ -271,7 +274,7 @@ class ProfilePage extends Component {
       setTimeout(() => {
         resolve();
         this.getMatchData(gameId);
-      }, 100);
+      }, 300);
     });
   };
 
@@ -293,7 +296,10 @@ class ProfilePage extends Component {
             };
           },
           function onceStateUpdated() {
-            // console.log("this.state.matchData: ", this.state.matchData);
+            console.log(
+              "this.state.matchData.length: ",
+              this.state.matchData.length
+            );
             if (+this.state.matchData.length === +this.state.iterations) {
               this.findPlayerMatchStats();
             }
@@ -304,9 +310,12 @@ class ProfilePage extends Component {
   };
 
   findPlayerMatchStats = () => {
+    //Oof here we go
     //3x nested loop that looks through all return match data searching for participantIdentites where
     //the player's id matches the queried players account id then pushing those stats to
     //a new array for rendering in gameItems component in profile page
+    //Another function on the list that definitely will revisit in terms of
+    //refactoring but leaving for now since it works
 
     //This iterates through all the matchData games returned by API which is now saved to the state
     for (let h = 0; h < this.state.matchData.length; h++) {
@@ -340,6 +349,7 @@ class ProfilePage extends Component {
               compiledPlayerData.seasonId = matchDataArray.seasonId;
               compiledPlayerData.teams = matchDataArray.teams;
               compiledPlayerData.platformId = matchDataArray.platformId;
+              console.log("REEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
               this.setState(
                 state => {
@@ -353,11 +363,10 @@ class ProfilePage extends Component {
                   };
                 },
                 function onceStateUpdated() {
-                  this.saveMatchData();
-                  // console.log(
-                  //   "this.state.selectedPlayerData: ",
-                  //   this.state.selectedPlayerData
-                  // );
+                  console.log(
+                    "this.state.selectedPlayerData: ",
+                    this.saveMatchData()
+                  );
                 }
               );
             }
@@ -400,19 +409,20 @@ class ProfilePage extends Component {
         loadingStatus: "loading"
       },
       function resetLoading() {
-        console.log("inside resetLoading")
-        setTimeout(function() {
-          this.triggerUpdateClick();
-        }
-        .bind(this),
-        5000);
+        // console.log("inside resetLoading")
+        setTimeout(
+          function() {
+            this.triggerUpdateClick();
+          }.bind(this),
+          5000
+        );
       }
     );
   };
 
   triggerUpdateClick = () => {
     //reset SelectedMatchData
-    console.log("---TRIGGERUPDATECLICK---");
+    // console.log("---TRIGGERUPDATECLICK---");
     this.setState(
       {
         selectedPlayerData: [],
