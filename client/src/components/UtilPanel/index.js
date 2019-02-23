@@ -1,11 +1,16 @@
 import React from "react";
 import "./style.css";
 
-function UtilPanel({ onClick, children }) {
+function UtilPanel({ type = "active", className, onClick, children }) {
   return (
     <div className="utilBanner">
-      <button className="updateButton" onClick={onClick}>Update!</button>
-
+      <button
+        className={["button updateButton", `is-${type}`, className].join(" ")}
+        // className={loading}
+        onClick={onClick}
+      >
+        Update!
+      </button>
     </div>
   );
 }

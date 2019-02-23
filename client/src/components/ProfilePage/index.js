@@ -23,7 +23,8 @@ class ProfilePage extends Component {
     selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
     modal: false,
     dbUsername: "",
-    inputValue: ""
+    inputValue: "",
+    loadingStatus: "active"
     // selectedButton: null,
   };
 
@@ -394,12 +395,30 @@ class ProfilePage extends Component {
   handleOnUpdateClick = event => {
     event.preventDefault();
     console.log("Update Button Clicked");
-    //reset SelectedMatchData
     this.setState(
       {
-        selectedPlayerData: []
+        loadingStatus: "loading"
       },
-      function after() {
+      function resetLoading() {
+        console.log("inside resetLoading")
+        setTimeout(function() {
+          this.triggerUpdateClick();
+        }
+        .bind(this),
+        5000);
+      }
+    );
+  };
+
+  triggerUpdateClick = () => {
+    //reset SelectedMatchData
+    console.log("---TRIGGERUPDATECLICK---");
+    this.setState(
+      {
+        selectedPlayerData: [],
+        loadingStatus: "active"
+      },
+      function afterStateUpdated() {
         this.getRankedData();
       }
     );
@@ -541,7 +560,10 @@ class ProfilePage extends Component {
                 />
               ))}
             </UserBanner>
-            <UtilPanel onClick={this.handleOnUpdateClick} />
+            <UtilPanel
+              onClick={this.handleOnUpdateClick}
+              type={this.state.loadingStatus}
+            />
             <UserBody>
               {" "}
               <GameContainer>
