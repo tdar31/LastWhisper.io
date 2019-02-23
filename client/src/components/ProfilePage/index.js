@@ -163,30 +163,33 @@ class ProfilePage extends Component {
         playerRanked.queueType = "Ranked Solo";
       }
 
-      //Updates position type
-      if (playerRanked.position === "APEX" || playerRanked.position === "TOP") {
-        playerRanked.position = "Top";
-      }
+      // Updates position type
+      //**Leaving this for now.  Need to figure out what "APEX" is as Top and
+      //mid laners can be both APEX and doesn't seem to be a way to figure out
+      //the difference between them**
+      // if (playerRanked.position === "TOP") {
+      //   playerRanked.position = "Top";
+      // }
 
-      if (playerRanked.position === "MIDDLE") {
-        playerRanked.position = "Middle";
-      }
+      // if (playerRanked.position === "MIDDLE") {
+      //   playerRanked.position = "Middle";
+      // }
 
-      if (playerRanked.position === "BOTTOM") {
-        playerRanked.position = "ADC";
-      }
+      // if (playerRanked.position === "BOTTOM") {
+      //   playerRanked.position = "ADC";
+      // }
 
-      //'NONE' still a bit of mystery going with Jungle for now
-      if (
-        playerRanked.position === "JUNGLE" ||
-        playerRanked.position === "NONE"
-      ) {
-        playerRanked.position = "Jungle";
-      }
+      // //'NONE' still a bit of mystery going with Jungle for now
+      // if (
+      //   playerRanked.position === "JUNGLE" ||
+      //   playerRanked.position === "NONE"
+      // ) {
+      //   playerRanked.position = "Jungle";
+      // }
 
-      if (playerRanked.position === "UTILITY") {
-        playerRanked.position = "Support";
-      }
+      // if (playerRanked.position === "UTILITY") {
+      //   playerRanked.position = "Support";
+      // }
 
       //Update Ranked Rank/Tier
       //This can definitely be refactored
@@ -217,17 +220,17 @@ class ProfilePage extends Component {
 
       if (playerRanked.tier === "MASTER") {
         playerRanked.tier = "Master";
-        playerRanked.rank = "";
+        // playerRanked.rank = "";
       }
 
       if (playerRanked.tier === "GRANDMASTER") {
         playerRanked.tier = "Grandmaster";
-        playerRanked.rank = "";
+        // playerRanked.rank = "";
       }
 
       if (playerRanked.tier === "CHALLENGER") {
         playerRanked.tier = "Challenger";
-        playerRanked.rank = "";
+        // playerRanked.rank = "";
       }
 
       this.state.rankedStats[i] = playerRanked;
@@ -525,6 +528,7 @@ class ProfilePage extends Component {
                   leaguePoints={rankedPlayerData.leaguePoints}
                   losses={rankedPlayerData.losses}
                   wins={rankedPlayerData.wins}
+                  totalGames={rankedPlayerData.totalGames}
                   position={rankedPlayerData.position}
                   queueType={rankedPlayerData.queueType}
                   tier={rankedPlayerData.tier}

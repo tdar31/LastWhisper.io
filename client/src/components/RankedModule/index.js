@@ -3,6 +3,7 @@ import "./style.css";
 
 function RankedModule({
   leaguePoints,
+  totalGames,
   losses,
   wins,
   position,
@@ -17,11 +18,14 @@ function RankedModule({
       <p className="rankedSoloText">
         <b>{queueType}</b>
       </p>
-      <p className="positionText">{position}</p>
-      <p className="rankPlacementText">
-        {tier} {rank} - LP: {leaguePoints}
-      </p>
       <img className="rankedIcon" src={rankIcon} />
+
+      <p className="rankPlacementText">
+        {tier} {rank}
+      </p>
+      <p className="gamesPlayedText">
+        LP: {leaguePoints} - W: {wins} L: {losses}
+      </p>
     </div>
   );
 }
