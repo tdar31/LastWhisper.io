@@ -409,28 +409,38 @@ class ProfilePage extends Component {
         loadingStatus: "loading"
       },
       function resetLoading() {
-        // console.log("inside resetLoading")
-        setTimeout(
-          function() {
-            this.triggerUpdateClick();
-          }.bind(this),
-          5000
-        );
+        this.triggerUpdateClick();
+        this.triggerLoader();
       }
+    );
+  };
+
+  triggerLoader = () => {
+    setTimeout(
+      function() {
+        this.setState({
+          loadingStatus: "active"
+        });
+      }.bind(this),
+      5000
     );
   };
 
   triggerUpdateClick = () => {
     //reset SelectedMatchData
     // console.log("---TRIGGERUPDATECLICK---");
-    this.setState(
-      {
-        selectedPlayerData: [],
-        loadingStatus: "active"
-      },
-      function afterStateUpdated() {
-        this.getRankedData();
-      }
+    setTimeout(
+      function() {
+        this.setState(
+          {
+            selectedPlayerData: []
+          },
+          function afterStateUpdated() {
+            this.getRankedData();
+          }
+        );
+      }.bind(this),
+      3000
     );
   };
 
