@@ -11,6 +11,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/summonernotfound" component={Home} />
           <Route exact path="/summoner/:username/:region" component={ProfilePage} />
           <Route exact path="/summoner/:username/:region/:theme" component={ProfilePage} />
           <Route exact path="/summoner/:username/:region/:matchData" component={ProfilePage} />

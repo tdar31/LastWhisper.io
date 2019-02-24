@@ -9,6 +9,7 @@ import UserBanner from "../UserBanner";
 import UserBody from "../UserBody";
 import RankedModule from "../RankedModule";
 import UserModule from "../UserModule";
+import UserNotFound from "../UserNotFound";
 import UtilPanel from "../UtilPanel";
 import Particles from "react-particles-js";
 
@@ -21,10 +22,10 @@ class ProfilePage extends Component {
     iterations: 5,
     matchData: [],
     selectedPlayerData: [], //This state doesn't get pushed to DB.  Only used to parse data
-    modal: false,
     dbUsername: "",
     inputValue: "",
-    loadingStatus: "active"
+    loadingStatus: "active",
+    error: false
     // selectedButton: null,
   };
 
@@ -88,10 +89,22 @@ class ProfilePage extends Component {
         // this.getSummonerRankedData(this.state.profile.id);
         // })
       )
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log("ERR", err);
+        this.summonerNotFound();
+      });
+  };
+
+  //UPDATES UI IF SUMMONER ISN'T FOUND BY RIOT API
+  summonerNotFound = () => {
+    console.log("SUMMONER NOT FOUND !");
+    this.setState({
+      error: true
+    })
   };
 
   //Sent all usernames to lowercase with no spaces
+  //used only for DB so that search for cached user data is easier
   correctUsername = profileData => {
     // console.log("profileData: ", profileData)
     let newProfile = Object.assign({}, profileData);
@@ -142,19 +155,10 @@ class ProfilePage extends Component {
       .catch(err => console.log(err));
   };
 
-  //queueType
-  //position
-  //tier
-  //rank
-  //wins
-  //losses
-  //
-
+  //Parses text returned by ranked data so that it makes sense 
+  //when displayed on frontend
   parseRankedData = () => {
     for (let i = 0; i < this.state.rankedStats.length; i++) {
-      let rankedStatsArray = this.state.rankedStats[i];
-      // console.log("rankedStatsArray: ", rankedStatsArray);
-
       //Calculates total Games played per position
       let playerRanked = Object.assign({}, this.state.rankedStats[i]);
       playerRanked.totalGames = +playerRanked.wins + +playerRanked.losses;
@@ -165,7 +169,7 @@ class ProfilePage extends Component {
       }
 
       // Updates position type
-      //**Leaving this for now.  Need to figure out what "APEX" is as Top and
+      //**Leaving this for now even though its commented out.  Need to figure out what "APEX" is as Top and
       //mid laners can be both APEX and doesn't seem to be a way to figure out
       //the difference between them**
       // if (playerRanked.position === "TOP") {
@@ -349,7 +353,6 @@ class ProfilePage extends Component {
               compiledPlayerData.seasonId = matchDataArray.seasonId;
               compiledPlayerData.teams = matchDataArray.teams;
               compiledPlayerData.platformId = matchDataArray.platformId;
-              console.log("REEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
               this.setState(
                 state => {
@@ -470,81 +473,23 @@ class ProfilePage extends Component {
   };
 
   render() {
-    return (
+    return this.state.error ? (
+      //THIS IS FOR IF RIOT API CANT FIND SUMMONER NAME
+      //NOT A 404 PAGE
       <div>
-        {/* <Particles
-          params={{
-            particles: {
-              number: {
-                value: 35,
-                density: { enable: true, value_area: 800 }
-              },
-              color: { value: "#ffffff" },
-              shape: {
-                type: "edge",
-                stroke: { width: 0, color: "#000000" },
-                polygon: { nb_sides: 1 }
-                // image: { src: "img/github.svg", width: 100, height: 100 }
-              },
-              opacity: {
-                value: 0.21646062821684559,
-                random: false,
-                anim: {
-                  enable: false,
-                  speed: 1,
-                  opacity_min: 0.1,
-                  sync: false
-                }
-              },
-              size: {
-                value: 3.0,
-                random: false
-              },
-              line_linked: {
-                enable: false,
-                distance: 150,
-                color: "#ffffff",
-                opacity: 0.4,
-                width: 1
-              },
-              move: {
-                enable: true,
-                speed: 5,
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-                attract: {
-                  enable: false,
-                  rotateX: 600,
-                  rotateY: 641.3648243462092
-                }
-              }
-            },
-            interactivity: {
-              detect_on: "window",
-              events: {
-                onhover: { enable: false, mode: "bubble" },
-                //   onclick: { enable: false, mode: "push" },
-                resize: true
-              },
-              modes: {
-                grab: { distance: 400, line_linked: { opacity: 1 } },
-                bubble: {
-                  distance: 400,
-                  size: 40,
-                  duration: 2,
-                  opacity: 8,
-                  speed: 3
-                },
-                repulse: { distance: 200, duration: 0.4 },
-                push: { particles_nb: 4 },
-                remove: { particles_nb: 2 }
-              }
-            }
-          }}
-        /> */}
+        <ProfileContainer className={this.state.theme}>
+          <ProfileNav
+            onChange={this.handleInputChange}
+            onClick={this.handleOnSubmit}
+          />
+          <ProfileBody>
+            <UserNotFound />
+          </ProfileBody>
+        </ProfileContainer>
+      </div>
+    ) : (
+      //IF SUMMONER IS SUCCESSFULLY FOUND BY RIOT API
+      <div>
         <ProfileContainer className={this.state.theme}>
           <ProfileNav
             onChange={this.handleInputChange}

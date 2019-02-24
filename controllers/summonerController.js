@@ -16,8 +16,12 @@ module.exports = {
         return res.data;
       })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(function(error) {
+        console.log(error.response.data.status);
+        res.json(error.response.data.status.message)
+      });
   },
+
   getMatchHistory: function(req, res) {
     // console.log("GET MATCH HISTORY // req.params: ", req.params);
     axios
@@ -58,23 +62,23 @@ module.exports = {
       });
   }
   // getSummonerRankedData: function(req, res) {
-    // console.log("GET SummonerRankedData // req.params: ", req.body.data);
-    // axios
-    //   .post(
-    //     "https://na1.api.riotgames.com/lol/league/v4/positions/by-summoner/" +
-    //       req.body.matchData +
-    //       "?api_key=" +
-    //       process.env.RITOAPIKEY
-    //   )
-    //   .then(res => {
-    //     // let json = stringify(res.data);
-    //     // console.log(json)
-    //     return res.data;
-    //   })
-    //   .then(dbModel => res.json(dbModel))
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+  // console.log("GET SummonerRankedData // req.params: ", req.body.data);
+  // axios
+  //   .post(
+  //     "https://na1.api.riotgames.com/lol/league/v4/positions/by-summoner/" +
+  //       req.body.matchData +
+  //       "?api_key=" +
+  //       process.env.RITOAPIKEY
+  //   )
+  //   .then(res => {
+  //     // let json = stringify(res.data);
+  //     // console.log(json)
+  //     return res.data;
+  //   })
+  //   .then(dbModel => res.json(dbModel))
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
   // }
   //
   //https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/9L5-DLyjjuEFWRp23w1yN8P4YBRAyiVbe02xb7gPyN2WZg?api_key=RGAPI-857f3576-0292-44a1-91f7-23773fea6e35

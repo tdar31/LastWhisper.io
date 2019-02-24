@@ -1,0 +1,14 @@
+.userNotFoundText {
+  text-align: center;
+  color: whitesmoke;
+  font-size: 36px;
+  padding: 10px;
+}
+
+.notFoundIMG {
+  border-radius: 10px;
+}
+
+.userNotFoundContent {
+  margin: 0px !important;
+}
