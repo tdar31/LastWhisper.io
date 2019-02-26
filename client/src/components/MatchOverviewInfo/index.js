@@ -2,12 +2,35 @@ import React, { Component } from "react";
 import "./style.css";
 
 class MatchOverviewInfo extends Component {
-  state = {};
+  state = {
+    isData: false,
+    gameCreation: "",
+    gameDuration: "",
+    gameId: "",
+    gameMode: "",
+    gameType: "",
+    mapId: "",
+    queueId: "",
+    platformId: "",
+    seasonId: ""
+  };
 
   componentDidUpdate() {
     //makes API call to DB to check for matchID and see if it already is in the DB
     //IF not make API call for matchtimeline for data
-    console.log(this.props)
+    if (this.state.isData === false) {
+      this.setState(
+        {
+          isData: true,
+          // participantIdentities: this.props.participantIdentities,
+          // participants: this.props.participants,
+          // teams: this.props.teams
+        },
+        function MatchOverviewInfo() {
+          console.log("MatchOverviewInfo: ", this.state);
+        }
+      );
+    }
   }
 
   render() {

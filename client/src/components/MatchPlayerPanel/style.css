@@ -1,0 +1,14 @@
+.MatchPlayerPanel {
+  
+}
+
+.playerIcon {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
+}
+
+.playerUsername {
+  display: inline-block;
+}

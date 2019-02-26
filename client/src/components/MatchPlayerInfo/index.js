@@ -4,26 +4,36 @@ import MatchPlayerPanel from "../MatchPlayerPanel";
 
 class MatchPlayerInfo extends Component {
   state = {
-    matchData: [1,2,3]
+    isData: false,
+    partLength: "",
+    participantIdentities: [],
+    participants: [],
+    teams: []
   };
   //this.props.matchdata
   componentDidUpdate() {
-    // this.setState({
-
-    // })
-    // for (let i = 0; i < this.props.participants.length; i++) {
-    //   let participantsArr = this.props.participants[i]
-    console.log(this.props)
-
-    // }
+    if (this.state.isData === false) {
+      this.setState(
+        {
+          isData: true,
+          partLength: "",
+          participantIdentities: this.props.participantIdentities,
+          participants: this.props.participants,
+          teams: this.props.teams
+        },
+        function MatchPlayerInfo() {
+          console.log("MatchPlayerInfo: ", this.state);
+          //FOR LOOP UPDATING ID TO USERNAME FROM PARTI/IDENTITIES
+        }
+      );
+    }
   }
 
   render() {
     return (
       <div className="MatchPlayerInfo">
-        MatchPlayerInfo
-        {this.state.matchData.map((matchData, index) => (
-          <MatchPlayerPanel />
+        {this.state.participants.map((partData, index) => (
+          <MatchPlayerPanel key={index} />
         ))}
       </div>
     );
