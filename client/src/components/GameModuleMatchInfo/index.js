@@ -11,7 +11,7 @@ function GameModuleMatchInfo({
 }) {
   return (
     <div className="GameModuleMatchInfo">
-      <div className="queueId">Normal</div>
+      <div className="queueId">{queueId}</div>
       <b className="outcome">{outcome}</b>
       <div className="gameCreationDate">{gameCreationDate}</div>
       <div className="gameCreationTime">{gameCreationTime}</div>

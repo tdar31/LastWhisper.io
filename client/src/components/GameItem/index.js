@@ -21,6 +21,9 @@ class GameItem extends Component {
     KDA: "",
     champName: "",
     item0: "",
+    gameMode: "",
+    gameType: "",
+    queueId: "",
     champKeyPairs: [],
     itemKeyPairs: [],
     summonerKeyPairs: [],
@@ -245,6 +248,86 @@ class GameItem extends Component {
         }
       );
     }
+
+    //
+    //Updating gameMode based on queueId
+    //https://developer.riotgames.com/game-constants.html REFERENCE
+    //Bot Matches
+    if (
+      this.props.queueId === 800 ||
+      this.props.queueId === 810 ||
+      this.props.queueId === 820 ||
+      this.props.queueId === 830 ||
+      this.props.queueId === 840 ||
+      this.props.queueId === 850
+    ) {
+      this.setState({
+        queueId: "Bot Match"
+      });
+    }
+
+    //ARURF
+    if (this.props.queueId === 900 || this.props.queueId === 1010) {
+      this.setState({
+        queueId: "ARURF"
+      });
+    }
+
+    //ARAM
+    if (this.props.queueId === 450 || this.props.queueId === 100) {
+      this.setState({
+        queueId: "ARAM"
+      });
+    }
+
+    //Normal Draft Pick
+    if (this.props.queueId === 400) {
+      this.setState({
+        queueId: "Normal (Draft Pick)"
+      });
+    }
+
+    //Normal Blind Pick
+    if (this.props.queueId === 430) {
+      this.setState({
+        queueId: "Normal (Draft Pick)"
+      });
+    }
+
+    //Ranked Solo Pick
+    if (this.props.queueId === 420) {
+      this.setState({
+        queueId: "Ranked Solo"
+      });
+    }
+
+    //Ranked Flex Pick
+    if (this.props.queueId === 440) {
+      this.setState({
+        queueId: "Ranked Flex"
+      });
+    }
+
+    //Twisted Treeline Blind
+    if (this.props.queueId === 460) {
+      this.setState({
+        queueId: "Twisted Treeline Blind"
+      });
+    }
+
+    //Twisted Treeline Ranked
+    if (this.props.queueId === 470) {
+      this.setState({
+        queueId: "Twisted Treeline Blind"
+      });
+    }
+
+    //Clash
+    if (this.props.queueId === 700) {
+      this.setState({
+        queueId: "Clash"
+      });
+    }
     //
     //Updates everything calculated above and push it to state
     this.setState({
@@ -277,6 +360,7 @@ class GameItem extends Component {
           gameCreationTime={this.state.gameCreationTime}
           gameDuration={this.state.gameDuration}
           outcome={this.state.win}
+          queueId={this.state.queueId}
         />
         <GameModuleChampInfo
           champName={this.state.champName}
