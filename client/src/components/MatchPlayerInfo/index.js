@@ -33,7 +33,50 @@ class MatchPlayerInfo extends Component {
     return (
       <div className="MatchPlayerInfo">
         {this.state.participants.map((partData, index) => (
-          <MatchPlayerPanel key={index} />
+          <MatchPlayerPanel
+            key={index}
+            championId={[`/images/tiles/${partData.championId}.jpg`].join(
+              " "
+            )}
+            playerLevel={partData.stats.champLevel}
+            spell1Id={[
+              `/images/summonerspell/${partData.spell1Id}.png`
+            ].join(" ")}
+            spell2Id={[
+              `/images/summonerspell/${partData.spell2Id}.png`
+            ].join(" ")}
+            perkPrimaryStyle={[
+              `/images/perk-images/Styles/${
+                partData.stats.perkPrimaryStyle
+              }.png`
+            ].join(" ")}
+            perkSubStyle={[
+              `/images/perk-images/Styles/${
+                partData.stats.perkSubStyle
+              }.png`
+            ].join(" ")}
+            item0={[`/images/item/${partData.stats.item0}.png`].join(
+              " "
+            )}
+            item1={[`/images/item/${partData.stats.item1}.png`].join(
+              " "
+            )}
+            item2={[`/images/item/${partData.stats.item2}.png`].join(
+              " "
+            )}
+            item3={[`/images/item/${partData.stats.item3}.png`].join(
+              " "
+            )}
+            item4={[`/images/item/${partData.stats.item4}.png`].join(
+              " "
+            )}
+            item5={[`/images/item/${partData.stats.item5}.png`].join(
+              " "
+            )}
+            item6={[`/images/item/${partData.stats.item6}.png`].join(
+              " "
+            )}
+          />
         ))}
       </div>
     );

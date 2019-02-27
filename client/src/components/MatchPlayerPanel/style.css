@@ -1,5 +1,11 @@
-.MatchPlayerPanel {
-  
+.playerIcon,
+.playerUsername,
+.playerKDA,
+.playerDamage,
+.playerWard,
+.playerCS,
+.playerLevel {
+  display: inline-block;
 }
 
 .playerIcon {
@@ -9,6 +15,19 @@
   border: 2px solid black;
 }
 
-.playerUsername {
+.spell1Icon,
+.spell2Icon,
+.perkPrimaryIcon,
+.perkSubIcon,
+.playerItem0,
+.playerItem1,
+.playerItem2,
+.playerItem3,
+.playerItem4,
+.playerItem5,
+.playerItem6 {
   display: inline-block;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
 }
