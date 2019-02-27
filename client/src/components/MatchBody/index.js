@@ -5,7 +5,7 @@ function MatchBody({ children }) {
   return (
     <div className="hero-body">
       <div className="container">
-        {children}
+        <div className="matchContain">{children}</div>
       </div>
     </div>
   );

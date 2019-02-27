@@ -1,24 +1,38 @@
+.MatchPlayerPanel {
+  text-align: center;
+  padding: 5px;
+  background-color: rgb(179, 179, 179);
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
 .playerIcon,
 .playerUsername,
 .playerKDA,
 .playerDamage,
 .playerWard,
 .playerCS,
-.playerLevel {
+.playerLevel,
+.playerChampName {
+  vertical-align: middle;
   display: inline-block;
 }
 
 .playerIcon {
   display: inline-block;
-  height: 25px;
-  width: 25px;
-  border: 2px solid black;
+  height: 60px;
+  width: 60px;
+  border: 2px solid #999999;
+  border-radius: 10px;
 }
-
 .spell1Icon,
 .spell2Icon,
-.perkPrimaryIcon,
-.perkSubIcon,
 .playerItem0,
 .playerItem1,
 .playerItem2,
@@ -26,8 +40,25 @@
 .playerItem4,
 .playerItem5,
 .playerItem6 {
-  display: inline-block;
-  height: 25px;
-  width: 25px;
+  height: 40px;
+  width: 40px;
   border: 2px solid black;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.perkPrimaryIcon,
+.perkSubIcon {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.perkPrimaryIcon,
+.playerItem0,
+.playerItem6 {
+  margin-left: 5px;
 }
