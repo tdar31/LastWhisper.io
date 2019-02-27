@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "./style.css";
+import MatchOverviewPanel from "../MatchOverviewPanel";
 
 class MatchOverviewInfo extends Component {
   state = {
@@ -15,7 +16,7 @@ class MatchOverviewInfo extends Component {
     mapId: "",
     queueId: "",
     platformId: "",
-    seasonId: "",
+    seasonId: ""
   };
 
   componentDidUpdate() {
@@ -148,7 +149,16 @@ class MatchOverviewInfo extends Component {
   }
 
   render() {
-    return <div className="MatchOverviewInfo">MatchOverviewInfo</div>;
+    return (
+      <div className="MatchOverviewInfo">
+        <MatchOverviewPanel 
+        gameCreationDate={this.state.gameCreationDate}
+        gameCreationTime={this.state.gameCreationTime}
+        gameDuration={this.state.gameDuration}
+        queueId={this.state.queueId}
+        />
+      </div>
+    );
   }
 }
 
