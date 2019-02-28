@@ -1,3 +1,10 @@
 .MatchOverviewPanel {
   display: inline-block;
 }
+
+.queueId,
+.gameCreationDate,
+.gameCreationTime,
+.gameDuration {
+  color: whitesmoke;
+}

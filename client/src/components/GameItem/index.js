@@ -16,6 +16,7 @@ class GameItem extends Component {
     gameCreationDate: "",
     gameCreationTime: "",
     gameDuration: "",
+    gameId: "",
     win: "",
     deaths: "",
     KDA: "",
@@ -42,7 +43,6 @@ class GameItem extends Component {
   };
 
   componentWillMount() {
-    // console.log("runesJsonData: ", runesJsonData);
 
     //Finds all items and pairs them with their ID in an array of objects for parsing through
     //For-in loop since json data provided by Riot is a single nested object
@@ -405,7 +405,7 @@ class GameItem extends Component {
           item6={process.env.PUBLIC_URL + this.props.item6}
           item6Name={this.state.item6}
         />
-        <GameModuleFullMatchInfo />
+        <GameModuleFullMatchInfo gameId={this.props.gameId} />
       </div>
     );
   }

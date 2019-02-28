@@ -11,10 +11,10 @@ function MatchOverviewPanel({
 }) {
   return (
     <div className="MatchOverviewPanel">
-      <span className="queueId">{queueId}</span>
-      <span className="gameCreationDate">{gameCreationDate}</span>
-      <span className="gameCreationTime">{gameCreationTime}</span>
-      <span className="gameDuration">{gameDuration}</span>
+      <p className="queueId">{queueId}</p>
+      <p className="gameCreationDate">{gameCreationDate}</p>
+      <p className="gameCreationTime">Started at: {gameCreationTime}</p>
+      <p className="gameDuration">Duration: {gameDuration}</p>
     </div>
   );
 }

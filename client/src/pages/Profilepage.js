@@ -339,6 +339,7 @@ class Profilepage extends Component {
               compiledPlayerData.seasonId = matchDataArray.seasonId;
               compiledPlayerData.teams = matchDataArray.teams;
               compiledPlayerData.platformId = matchDataArray.platformId;
+              compiledPlayerData.gameId = matchDataArray.gameId;
 
               this.setState(
                 state => {
@@ -528,6 +529,7 @@ class Profilepage extends Component {
                     platformId={playerData.platformId}
                     queueId={playerData.queueId}
                     seasonId={playerData.seasonId}
+                    gameId={[`/match/${playerData.gameId}`].join(" ")}
                     championIdRAW={playerData.championId.toString()}
                     championId={[
                       `/images/tiles/${playerData.championId}.jpg`

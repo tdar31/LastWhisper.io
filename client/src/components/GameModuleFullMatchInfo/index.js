@@ -2,10 +2,10 @@ import React from "react";
 // import ReactTooltip from "react-tooltip";
 import "./style.css";
 
-function GameModuleFullMatchInfo() {
+function GameModuleFullMatchInfo({ gameId }) {
   return (
     <div className="GameModuleFullMatchInfo">
-      <div className="fullMatchText">View<br></br>Match Details</div>
+      <a className="fullMatchText" href={gameId}>View<br></br>Match Details</a>
     </div>
   );
 }
