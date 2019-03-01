@@ -9,7 +9,8 @@ import ProfileNav from "../components/ProfileNav";
 
 class MatchPage extends Component {
   state = {
-    matchData: []
+    matchData: [],
+    inputValue: ""
   };
 
   componentWillMount() {
@@ -38,10 +39,38 @@ class MatchPage extends Component {
     //IF not make API call for matchtimeline for data
   }
 
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const { value } = event.target;
+
+    let typedValue = value.split(" ").join("");
+    // Updating the input's state
+    this.setState(
+      {
+        inputValue: typedValue
+      },
+      function onceStateUpdated() {
+        // console.log("this.state.inputValue: ", this.state.inputValue);
+      }
+    );
+  };
+
+  handleOnSubmit = event => {
+    // console.log("Submit button clicked");
+    event.preventDefault();
+
+    //Take in
+    let queryUser = this.state.inputValue.trim().toLowerCase();
+    window.location = "http://localhost:3000/summoner/" + queryUser + "/NA";
+  };
+
   render() {
     return (
       <MatchContainer>
-        <ProfileNav />
+        <ProfileNav
+          onChange={this.handleInputChange}
+          onClick={this.handleOnSubmit}
+        />
         <MatchBody>
           <MatchOverviewInfo
             gameCreation={this.state.matchData.gameCreation}
