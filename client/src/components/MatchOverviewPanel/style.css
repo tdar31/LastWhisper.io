@@ -2,9 +2,22 @@
   display: inline-block;
 }
 
-.queueId,
-.gameCreationDate,
-.gameCreationTime,
-.gameDuration {
+.queueIdMO,
+.gameCreationDateMO,
+.gameCreationTimeMO,
+.gameDurationMO {
   color: whitesmoke;
+
+}.gameCreationDateMO,
+.gameCreationTimeMO,
+.gameDurationMO {
+  font-size: 12px;
+}
+
+.queueIdMO {
+  margin-top: 15px;
+}
+
+.gameDurationMO {
+  margin-bottom: 15px;
 }

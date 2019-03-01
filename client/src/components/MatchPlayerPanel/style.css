@@ -1,5 +1,5 @@
 .MatchPlayerPanel {
-  text-align: center;
+  /* text-align: center; */
   padding: 5px;
   background-color: rgb(179, 179, 179);
   margin-bottom: 5px;
@@ -55,11 +55,25 @@
   width: 40px;
   margin-right: 5px;
   padding: 5px;
-  background-color: #616161;;
+  background-color: #616161;
 }
 
 .perkPrimaryIcon,
 .playerItem0,
 .playerItem6 {
   margin-left: 5px;
+}
+
+.playerUsername {
+  font-size: 12px;
+  margin: 0px 5px 0px 10px;
+}
+
+.playerLevel {
+  font-size: 12px;
+}
+
+.iconContain {
+  float: right;
+  margin-top: 10px;
 }

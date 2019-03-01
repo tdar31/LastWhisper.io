@@ -93,13 +93,13 @@ class MatchPlayerInfo extends Component {
         },
         function MatchPlayerInfo() {
           // console.log("MatchPlayerInfo: ", this.state);
-          this.parse();
+          this.parseChampNames();
         }
       );
     }
   }
 
-  parse = () => {
+  parseChampNames = () => {
     // console.log("inside parse()");
     let tempParticipantsArr = [];
     for (let i = 0; i < this.state.participants.length; i++) {
@@ -113,13 +113,48 @@ class MatchPlayerInfo extends Component {
           let tempParticipant = Object.assign({}, this.state.participants[i]);
           tempParticipant.championName = this.state.champKeyPairs[j].name;
           tempParticipantsArr.push(tempParticipant);
+          //Breaks loop
           if (tempParticipantsArr.length === 10) {
-            this.setState({
-              participants: tempParticipantsArr
-            }, function() {
-              // console.log("postChampUpdate: ", this.state.participants)
-            })
+            this.setState(
+              {
+                participants: tempParticipantsArr
+              },
+              function() {
+                this.parseUsername();
+                // console.log("postChampUpdate: ", this.state.participants)
+              }
+            );
           }
+        }
+      }
+    }
+  };
+
+  parseUsername = () => {
+    console.log(this.state.participantIdentities[0])
+    let tempParticipantsArr = [];
+    for (let i = 0; i < this.state.participants.length; i++) {
+      for (let j = 0; j < this.state.participantIdentities.length; j++) {
+        if (
+          this.state.participants[i].participantId.toString() ==
+          this.state.participantIdentities[j].participantId.toString()
+        ) {
+          let tempParticipant = Object.assign({}, this.state.participants[i]);
+          tempParticipant.participantId = this.state.participantIdentities[
+            j
+          ].player.summonerName;
+          tempParticipantsArr.push(tempParticipant);
+        }
+        //Breaks loop
+        if (tempParticipantsArr.length === 10) {
+          this.setState(
+            {
+              participants: tempParticipantsArr
+            },
+            function() {
+              console.log("postUsernameUpdate: ", this.state.participants);
+            }
+          );
         }
       }
     }
@@ -134,6 +169,8 @@ class MatchPlayerInfo extends Component {
             championId={[`/images/tiles/${partData.championId}.jpg`].join(" ")}
             championName={partData.championName}
             playerLevel={partData.stats.champLevel}
+            playerUsername={partData.participantId}
+            playerPage={[`/summoner/${partData.participantId}/NA`].join(" ")}
             spell1Id={[`/images/summonerspell/${partData.spell1Id}.png`].join(
               " "
             )}
