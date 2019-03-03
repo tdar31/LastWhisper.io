@@ -22,6 +22,7 @@
 .playerChampName {
   vertical-align: middle;
   display: inline-block;
+  font-size: 12px;
 }
 
 .playerIcon {
@@ -42,14 +43,14 @@
 .playerItem6 {
   height: 40px;
   width: 40px;
-  border: 2px solid black;
+  border: 2px solid #999999;
   border-radius: 10px;
   margin-right: 5px;
 }
 
 .perkPrimaryIcon,
 .perkSubIcon {
-  border: 2px solid black;
+  border: 2px solid #999999;
   border-radius: 10px;
   height: 40px;
   width: 40px;
@@ -76,4 +77,13 @@
 .iconContain {
   float: right;
   margin-top: 10px;
+}
+
+a {
+  color: #4a4a4a;
+}
+
+.playerLevel,
+.playerCS {
+  margin-right: 5px;
 }

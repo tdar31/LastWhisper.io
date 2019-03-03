@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+/* @import url("https://fonts.googleapis.com/css?family=Press+Start+2P"); */
+
+@font-face {
+  font-family: "Press Start 2P";
+  src: url(../../assets/fonts/PressStart2P/PressStart2P-Regular.ttf)
+    format("truetype");
+}
 
 .dot,
 .bannerTxt,

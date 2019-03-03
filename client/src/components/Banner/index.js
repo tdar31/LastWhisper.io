@@ -8,12 +8,6 @@ function Banner() {
       <span className="dot">.</span>
       <span className="bannerTxt">gg</span>
     </div>
-
-    // <div className="Banner notification">
-    //  fyre.gg
-
-    // {/* <img src="https://via.placeholder.com/750x450"></img> */}
-    // </div>
   );
 }
 

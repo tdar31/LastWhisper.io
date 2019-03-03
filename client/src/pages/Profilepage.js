@@ -405,6 +405,22 @@ class Profilepage extends Component {
     );
   };
 
+  handleOnLoadMoreClick = event => {
+    event.preventDefault();
+    console.log("LoadMore Button Clicked");
+    let iter = this.state.iterations + 5
+    this.setState(
+      {
+        iterations: iter,
+      },
+      function resetLoading() {
+        console.log("this.state.iterations: ", this.state.iterations)
+        this.triggerUpdateClick();
+        this.triggerLoader();
+      }
+    );
+  };
+
   triggerLoader = () => {
     setTimeout(
       function() {
@@ -434,6 +450,8 @@ class Profilepage extends Component {
     );
   };
 
+
+  
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     const { value } = event.target;
@@ -514,6 +532,7 @@ class Profilepage extends Component {
             </UserBanner>
             <UtilPanel
               onClick={this.handleOnUpdateClick}
+              onClickMore={this.handleOnLoadMoreClick}
               type={this.state.loadingStatus}
             />
             <UserBody>

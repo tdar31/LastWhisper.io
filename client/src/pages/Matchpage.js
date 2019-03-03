@@ -84,6 +84,7 @@ class MatchPage extends Component {
             seasonId={this.state.matchData.seasonId}
           />
           <MatchPlayerInfo
+            gameDuration={this.state.matchData.gameDuration}
             participantIdentities={this.state.matchData.participantIdentities}
             participants={this.state.matchData.participants}
             teams={this.state.matchData.teams}

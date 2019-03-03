@@ -1,7 +1,13 @@
 import React from "react";
 import "./style.css";
 
-function UtilPanel({ type = "active", className, onClick, children }) {
+function UtilPanel({
+  type = "active",
+  className,
+  onClick,
+  onClickMore,
+  children
+}) {
   return (
     <div className="utilBanner">
       <button
@@ -10,6 +16,9 @@ function UtilPanel({ type = "active", className, onClick, children }) {
         onClick={onClick}
       >
         Update!
+      </button>
+      <button className="button updateButton" onClick={onClickMore}>
+        Load More Matches!
       </button>
     </div>
   );

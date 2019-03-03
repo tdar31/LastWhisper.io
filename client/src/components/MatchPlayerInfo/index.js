@@ -131,7 +131,7 @@ class MatchPlayerInfo extends Component {
   };
 
   parseUsername = () => {
-    console.log(this.state.participantIdentities[0])
+    console.log(this.state.participantIdentities[0]);
     let tempParticipantsArr = [];
     for (let i = 0; i < this.state.participants.length; i++) {
       for (let j = 0; j < this.state.participantIdentities.length; j++) {
@@ -153,9 +153,64 @@ class MatchPlayerInfo extends Component {
             },
             function() {
               console.log("postUsernameUpdate: ", this.state.participants);
+              this.parseKDA();
             }
           );
         }
+      }
+    }
+  };
+
+  parseKDA = () => {
+    let tempParticipantsArr = [];
+    for (let i = 0; i < this.state.participants.length; i++) {
+      //Calculating Creep Score + Creep Score Per Minute
+      let creepS =
+        (+this.state.participants[i].stats.totalMinionsKilled +
+          +this.state.participants[i].stats.neutralMinionsKilled) /
+        Math.floor(this.props.gameDuration / 60);
+      //Total Creep Score
+      let cs =
+        +this.state.participants[i].stats.totalMinionsKilled +
+        +this.state.participants[i].stats.neutralMinionsKilled;
+      //Creep Score Per Minute
+      let csPM = Math.round(creepS * 10) / 10;
+      //
+      //
+      let kd =
+        (+this.state.participants[i].stats.kills +
+          +this.state.participants[i].stats.assists) /
+        +this.state.participants[i].stats.deaths;
+      let kda = Math.round(kd * 10) / 10;
+
+      //Calculating KDA score
+      if (this.state.participants[i].stats.deaths === 0) {
+        this.setState(
+          {
+            deaths: "1"
+          },
+          function onceDeathStateUpdated() {
+            // this.calculateKDA();
+          }
+        );
+      }
+
+      let tempParticipant = Object.assign({}, this.state.participants[i]);
+      tempParticipant.cs = cs;
+      tempParticipant.csPM = csPM;
+      tempParticipant.kda = kda;
+      tempParticipantsArr.push(tempParticipant);
+      //
+      //Breaks loop
+      if (tempParticipantsArr.length === 10) {
+        this.setState(
+          {
+            participants: tempParticipantsArr
+          },
+          function() {
+            console.log("postUsernameUpdate2: ", this.state.participants);
+          }
+        );
       }
     }
   };
@@ -166,11 +221,18 @@ class MatchPlayerInfo extends Component {
         {this.state.participants.map((partData, index) => (
           <MatchPlayerPanel
             key={index}
+            win={partData.win}
             championId={[`/images/tiles/${partData.championId}.jpg`].join(" ")}
             championName={partData.championName}
             playerLevel={partData.stats.champLevel}
             playerUsername={partData.participantId}
             playerPage={[`/summoner/${partData.participantId}/NA`].join(" ")}
+            cs={partData.cs}
+            csPM={partData.csPM}
+            kda={partData.kda}
+            kills={partData.kills}
+            assists={partData.assists}
+            deaths={partData.deaths}
             spell1Id={[`/images/summonerspell/${partData.spell1Id}.png`].join(
               " "
             )}

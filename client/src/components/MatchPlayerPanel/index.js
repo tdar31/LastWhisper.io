@@ -3,6 +3,7 @@ import ReactTooltip from "react-tooltip";
 import "./style.css";
 
 function MatchPlayerPanel({
+  win,
   championId,
   championName,
   playerUsername,
@@ -18,7 +19,13 @@ function MatchPlayerPanel({
   item3,
   item4,
   item5,
-  item6
+  item6,
+  cs,
+  csPM,
+  kda,
+  kills,
+  assists,
+  deaths
 }) {
   return (
     <div>
@@ -29,10 +36,13 @@ function MatchPlayerPanel({
           {playerUsername}
         </a>
         <p className="playerLevel">Level: {playerLevel}</p>
-        <p className="playerKDA">KDA</p>
-        <p className="playerDamage">Damage</p>
-        <p className="playerWard">Ward</p>
-        <p className="playerCS">CS</p>
+
+        {/* <p className="playerDamage">Damage</p>
+        <p className="playerWard">Ward</p> */}
+        <p className="playerCS">
+          {cs} ({csPM}) CS 
+        </p>
+        <p className="playerKDA">KDA: {kda}</p> 
         <div className="helper iconContain">
           <img className="helper spell1Icon" src={spell1Id} />
           <img className="helper spell2Icon" src={spell2Id} />
