@@ -28,3 +28,12 @@ a:focus {
   height: 5em;
   border-width: 0.25em;
 }
+
+.notification {
+  box-shadow: None !important;
+}
+
+.suggest {
+  color: whitesmoke;
+  margin: 10px;
+}
