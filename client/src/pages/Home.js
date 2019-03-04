@@ -96,31 +96,9 @@ class Home extends Component {
         <Nav />
         <HomeBody>
           <div>
-            <div className="statusNotification"
+            {/* <div className="statusNotification"
               onClick={this.createNotification()}
-            />
-            {/* <hr />
-            <button
-              className="btn btn-success"
-              onClick={this.createNotification("success")}
-            >
-              Success
-            </button>
-            <hr />
-            <button
-              className="btn btn-warning"
-              onClick={this.createNotification("warning")}
-            >
-              Warning
-            </button>
-            <hr />
-            <button
-              className="btn btn-danger"
-              onClick={this.createNotification("error")}
-            >
-              Error
-            </button> */}
-
+            /> */}
             <NotificationContainer />
           </div>
           <Banner />

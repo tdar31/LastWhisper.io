@@ -15,6 +15,8 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
 }
+app.use(express.static("client/public"));
+
 // Add routes, both API and view
 app.use(routes);
 

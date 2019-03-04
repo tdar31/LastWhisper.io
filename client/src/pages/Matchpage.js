@@ -61,7 +61,7 @@ class MatchPage extends Component {
 
     //Take in
     let queryUser = this.state.inputValue.trim().toLowerCase();
-    window.location = "http://localhost:3000/summoner/" + queryUser + "/NA";
+    window.location = "https://whispering-eyrie-27356.herokuapp.com/" + queryUser + "/NA";
   };
 
   render() {
