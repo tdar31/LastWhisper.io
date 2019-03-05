@@ -99,7 +99,7 @@ class Home extends Component {
             {/* <div className="statusNotification"
               onClick={this.createNotification()}
             /> */}
-            <NotificationContainer />
+            {/* <NotificationContainer /> */}
           </div>
           <Banner />
           <p className="suggest"><i>Try Meteos, Goldenglue or Doublelift</i></p>
