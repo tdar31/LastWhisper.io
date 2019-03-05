@@ -6,7 +6,7 @@ Video demo of current build (**Due to the amount of images needed for every cham
 https://www.youtube.com/watch?v=cv91pvVsuew
 
 *Current features*
- - Search Riot DB for match statistics on specific players.  Defaults to five most recent matches pulling kills/assists/deaths, items and match duration and creation times.  Build profile page with dyamnic photos and tooltips of items, spells and calucations of relavent statistics just as Kill/Death Ratio and Creep Score.  Currently only allows for NA region but API routing built out to dyanmically allow for searching in 16 regions in the future.
+ - Search Riot DB for match statistics on specific players.  Defaults to five most recent matches pulling kills/assists/deaths, items and match duration and creation times.  Build profile page with dynamic photos and tooltips of items, spells and calculations of relevant statistics just as Kill/Death Ratio and Creep Score.  Currently only allows for NA region but API routing built out to dyanmically allow for searching in 16 regions in the future.
  - Pull statistics on specific matches and pull data on all ten players included in the game similar to the profile pages.
  - Built out DB caching in order to allow for rate limiting.  API checks DB for cached profiles and matches prior hit Riot API for profile/match statistics.  Profile page has built out update profile button which allows user to manually refresh statistics to most recent matches.
 
