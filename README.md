@@ -2,7 +2,7 @@
 
 The idea of fyre.gg is to provide on demand and indepth player statistics for the game of League of Legends.  The game boasts a player base of hundreds of millions of players world wide and is considered to be one of the most popular games in the world.  Below is a gif of the site in action locally.  
 
-Video demo of current build
+Video demo of current build (**Due to the amount of images needed for every champ, item, spell hosting on a free version of Heroku is not an option due to size.**)
 https://www.youtube.com/watch?v=cv91pvVsuew
 
 *Current features*
