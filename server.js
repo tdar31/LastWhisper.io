@@ -1,22 +1,20 @@
 const express = require("express");
 require('dotenv').config()
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
-app.use(express.urlencoded({limit: '150mb', extended: true }));
+// app.use(express.urlencoded({limit: '150mb', extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(bodyParser.json()); // <--- Here
 // app.use(bodyParser.urlencoded({extended: true}));
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/public"));
+  app.use(express.static("client/build"));
 }
-app.use(express.static("client/public"));
-
 // Add routes, both API and view
 app.use(routes);
 
