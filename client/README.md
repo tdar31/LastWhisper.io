@@ -90,3 +90,10 @@ compiledPlayerData.teams = matchDataArray.teams;
 compiledPlayerData.platformId = matchDataArray.platformId;
 
 isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc. 
+
+
+ - Deploy successfully
+ - Build out loaders for match info and player info
+ - Move certain operations to back end for parsing in order to improve optimization.  Specifically the id to name key's for items, champs and spells
+ - Cleanup CSS for match page
+ - Build out champion's, items and spell pages
