@@ -97,4 +97,4 @@ isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot G
  - Move certain operations to back end for parsing in order to improve optimization.  Specifically the id to name key's for items, champs and spells
  - Cleanup CSS for match page
  - Build out champion's, items and spell pages
- - updating this readme more
+ - updating this readme morefdsfsd
