@@ -23,7 +23,11 @@ class Home extends Component {
 
   componentDidMount() {
     this.setSelectedButton = this.setSelectedButton.bind(this);
-    NotificationManager.info("", "Close after 3000msClose after 3000msClose after 3000msClose after 3000msClose after 3000msClose after 3000msClose after 3000ms", 30000);
+    NotificationManager.info(
+      "",
+      "Close after 3000msClose after 3000msClose after 3000msClose after 3000msClose after 3000msClose after 3000msClose after 3000ms",
+      30000
+    );
   }
 
   toggle() {
@@ -102,7 +106,9 @@ class Home extends Component {
             {/* <NotificationContainer /> */}
           </div>
           <Banner />
-          <p className="suggest"><i>Try Meteos, Goldenglue or Doublelift</i></p>
+          <p className="suggest">
+            <i>Try Meteos, Goldenglue or Doublelift</i>
+          </p>
           <SearchBar
             onChange={this.handleInputChange}
             onClick={this.handleOnSubmit}

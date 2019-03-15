@@ -33,7 +33,7 @@ function SearchBar({ onClick, value, onChange, region }) {
         </span>
       </p> */}
       <p className="control">
-        <Link to={"/summoner/" + { value } + "/NA"}>
+        <Link to={"/summoner/" + {value} + "/NA"}>
           <a className="button is-dark">Search</a>
         </Link>
         <a className="button is-success" onClick={onClick}>
