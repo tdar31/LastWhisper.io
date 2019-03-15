@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function SearchBar({ onClick, value, onChange, region }) {
@@ -32,9 +33,14 @@ function SearchBar({ onClick, value, onChange, region }) {
         </span>
       </p> */}
       <p className="control">
-        <a className="button is-dark" onClick={onClick}>
-          Search
-        </a>
+        <Link to={"/summoner/C9Nisqyyy/NA"}>
+          <a className="button is-dark" >
+            Search
+          </a>
+        </Link>
+        <a className="button is-success" onClick={onClick}>
+            OldButton
+          </a>
       </p>
     </div>
   );
