@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 3001;
 // app.use(express.urlencoded({limit: '150mb', extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(__dirname));
+
 // app.use(bodyParser.json()); // <--- Here
 // app.use(bodyParser.urlencoded({extended: true}));
 // Serve up static assets (usually on heroku)
