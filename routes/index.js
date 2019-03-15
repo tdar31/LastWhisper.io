@@ -15,9 +15,11 @@ router.use("/api", apiRoutes);
 //   res.sendFile(path.join(__dirname + "/client", "build", "index.html"));
 // });
 
-// router.use('/*', function(req, res) {
-//   console.log(path.join(__dirname + '/client', 'build', 'index.html'));
-//   res.sendFile(path.join(__dirname, "../client/public/index.html"));
-// })
+router.use("*", function(req, res) {
+  console.log(path.join(__dirname + "/client", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../client/public/index.html"));
+});
+
+// router.use('*', (req, res) => res.sendFile(path.resolve('build', 'index.html'));
 
 module.exports = router;
